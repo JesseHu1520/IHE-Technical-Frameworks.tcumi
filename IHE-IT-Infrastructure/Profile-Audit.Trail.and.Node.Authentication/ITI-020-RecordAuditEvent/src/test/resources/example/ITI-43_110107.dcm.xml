@@ -1,0 +1,24 @@
+<AuditMessage>
+	<EventIdentification EventActionCode="C" EventDateTime="${timeStamp}" EventOutcomeIndicator="0">
+		<EventID csd-code="110107" codeSystemName="DCM" originalText="Import" />
+		<EventTypeCode csd-code="ITI-43" originalText="Retrieve Document Set" codeSystemName="IHE Transactions" />
+	</EventIdentification>
+	<ActiveParticipant UserID="https://ihexds.nist.gov:9085/tf6/services/xdsrepositoryb" UserIsRequestor="false" NetworkAccessPointID="Sanjeev-PC" NetworkAccessPointTypeCode="1">
+		<RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source" />
+	</ActiveParticipant>
+	<ActiveParticipant UserID="&lt;ReplyTo/&gt;" AlternativeUserID="3245" UserIsRequestor="true" NetworkAccessPointTypeCode="2" NetworkAccessPointID="Sanjeev-PC">
+		<RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination" />
+	</ActiveParticipant>
+	<ActiveParticipant UserID="DOE" UserIsRequestor="true">
+		<RoleIDCode csd-code="12" codeSystemName="EMARC" originalText="Registrar" />
+	</ActiveParticipant>
+	<AuditSourceIdentification code="1" AuditSourceID="XDSRegistry@ica1.ihe.net"/>
+	<ParticipantObjectIdentification ParticipantObjectID="Patient ID no" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+		<ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881" />
+	</ParticipantObjectIdentification>
+	<ParticipantObjectIdentification ParticipantObjectID="&lt;ihe:DocumentUniqueID&gt;" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="3">
+		<ParticipantObjectIDTypeCode csd-code="9" originalText="Report Number" codeSystemName="RFC-3881" />
+		<ParticipantObjectDetail type="Repository Unique Id" value="MS4xOS42LjI0LjEwOS40Mi4xLjU="/>
+		<ParticipantObjectDetail type="ihe:homeCommunityID" value="dXJuOm9pZDoxLjE5LjYuMjQuMTA5LjQyLjEuMw=="/>
+	</ParticipantObjectIdentification>
+</AuditMessage>

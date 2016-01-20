@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuditMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <EventIdentification EventOutcomeIndicator="0" EventDateTime="${timeStamp}" EventActionCode="C">
+        <EventID codeSystemName="DCM" originalText="Patient Record" csd-code="110110"/>
+        <EventTypeCode codeSystemName="IHE Transactions" originalText="Patient Identity Feed" csd-code="ITI-44"/>
+    </EventIdentification>
+    <ActiveParticipant NetworkAccessPointTypeCode="2" NetworkAccessPointID="127.0.0.1" UserIsRequestor="true" AlternativeUserID="00002752" UserID="XDSDEMO|XDSDEMO_ADT">
+        <RoleIDCode codeSystemName="DCM" originalText="Source" csd-code="110153"/>
+    </ActiveParticipant>
+    <ActiveParticipant NetworkAccessPointTypeCode="2" NetworkAccessPointID="10.242.0.151" UserIsRequestor="false" AlternativeUserID="pixman" UserID="ECW|OpenPIXPDQ">
+        <RoleIDCode codeSystemName="DCM" originalText="Destination" csd-code="110152"/>
+    </ActiveParticipant>
+	<ActiveParticipant UserID="DOE" UserIsRequestor="true">
+		<RoleIDCode csd-code="12" codeSystemName="EMARC" originalText="Registrar" />
+	</ActiveParticipant>
+    <AuditSourceIdentification code="1" AuditSourceID="ECW" AuditEnterpriseSiteID="ECW"/>
+    <ParticipantObjectIdentification ParticipantObjectTypeCodeRole="1" ParticipantObjectTypeCode="1" ParticipantObjectID="981139165^^^AlE1&amp;1.3.6.1.4.1.21367.13.20.5120&amp;ISO">
+        <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
+        <ParticipantObjectName>Rose^Steve</ParticipantObjectName>
+        <ParticipantObjectDetail value="MDAwMDI3NTI=" type="II"/>
+    </ParticipantObjectIdentification>
+</AuditMessage>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/POM/4.0.0 http://maven.apache.org/POM/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>edu.tcu.mi.ihe</groupId>
+		<artifactId>Profile-Audit.Trail.and.Node.Authentication</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>ITI-020-RecordAuditEvent</artifactId>
+	<packaging>jar</packaging>
+	
+	<name>ITI-020-RecordAuditEvent</name>
+	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>IHE-Technical-Frameworks-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>IHE-Technical-Frameworks-utility</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+		</plugins>
+	</build>
+</project>

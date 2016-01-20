@@ -1,0 +1,145 @@
+
+
+<script th:inline="javascript" th:fragment="javascript">
+	/*<![CDATA[*/
+	$(function() {	
+		$('body').scrollspy({
+		    target: '.bs-docs-sidebar',
+		    offset: 40
+		});
+	});
+
+	/*]]>*/
+</script>
+
+<div th:fragment="content">
+	<div class="container bs-docs-container">
+		<div class="col-md-9 well" role="main">
+			<div id="top" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>ITI-41:提供與註冊文件集 - Provide And Register DocumentSet</h3>
+				<h5>範例說明：</h5>
+				<p>
+				提供一個交易模式，將後面七大類的交易細節填寫至 "put some code after/replace here" 之後。<br/>	
+				endpoint 為 Registry 位置，可測試於 http://ihexds.nist.gov:12090/tf6/services/xdsrepositoryb?wsdl。
+				</p>
+				<script src="https://gist.github.com/Gaduo/63f57e59216c9f6d51e8.js"></script>
+			</div>
+		
+			<div id="function01" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>01. 新增文件 - Create a Document</h3>
+				<h5>範例說明：</h5>
+				<script src="https://gist.github.com/Gaduo/1e1c9a2f697e46a6d9a0.js"></script>
+				<hr/>	
+			</div>
+			
+			<div id="function02" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>02. 新增空目錄 - Create a Empty Folder</h3>
+				<h5>範例說明：</h5>
+				<script src="https://gist.github.com/Gaduo/9334517220f72521c1d0.js"></script>
+				<hr/>
+			</div>
+			
+			<div id="function03" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>03. 新增目錄內包含文件 - Create a Folder who include a Document</h3>
+				<h5>範例說明：</h5>
+				<script src="https://gist.github.com/Gaduo/c61a51b9266ede3f2f5e.js"></script>
+				<hr/>
+			</div>
+			
+			<div id="function04" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>04. 文件的生命週期 - LifeCyle</h3>
+				<h5>範例說明：</h5>
+				<p>
+					對文件執行一些操作，如取代(Replace)、附加(Append)、翻譯(Transform)、翻譯並取代(Transform and Replace)、附加簽章(Signature)等行為。<br/>
+					Step 01. 準備一個文件實體 (Document Entry)，<br/>
+					Step 02. 準備好目標文件實體的 UUID，可用 ITI-18 事先查詢，再指令欲執行的行為。
+				</p>
+				<script src="https://gist.github.com/Gaduo/3fc09afa5de8abb182ba.js"></script>
+				<hr/>
+			</div>
+			
+			<div id="function05" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>05. 新增文件至已存在的目錄中 - Add DocumentEntry to a Existing Folder</h3>
+				<h5>範例說明：</h5>
+				<script src="https://gist.github.com/Gaduo/d2cb602a1bc4b92edc5b.js"></script>
+				<hr/>
+			</div>
+			
+			<div id="function06" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>06. 已存在的文件移動至已存在的目錄中 - Move a Existing Document to a Existing Folder</h3>
+				<h5>範例說明：</h5>
+				<script src="https://gist.github.com/Gaduo/9748eeb519e90b498573.js"></script>
+				<hr/>
+			</div>
+			
+			<div id="function07" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>07. 已存在的文件移動至新的目錄中 - Create a Folder, and Move a Existing Document in it.</h3>
+				<h5>範例說明：</h5>
+				<p>
+					第一行，docId 為註冊於 Registry 的 document entry uuid，可以透過一些方法取得，例如利用 ITI-18 查詢。<br/>
+					builder.moveDocumentToFolder 回傳的 Folder 為新的目錄物件。<br/>
+					第二行之後，初始化新的目錄資訊。			
+				</p>
+				<script src="https://gist.github.com/Gaduo/7a3336fd56c0410d5392.js"></script>
+				<hr/>
+			</div>
+			
+			<div id="functionResp" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>*. 解析回應訊息 - Parse the response message.</h3>
+				<h5>範例說明：</h5>
+				<p>
+				</p>
+				<script src="https://gist.github.com/Gaduo/7a3336fd56c0410d5392.js"></script>
+				<hr/>
+			</div>
+			
+			<script src="https://gist.github.com/Gaduo/dfa751c9a4ee000fb00a.js"></script>
+		</div>
+		<div class="col-md-3" role="complementary" >
+			<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+				<br/>
+				<br/>
+				<ul class="nav">
+					<li><a href="#top">前置初始化資訊</a></li>
+					<li><a href="#function01">01. 新增文件</a></li>
+					<li><a href="#function02">02. 新增空目錄</a></li>
+					<li><a href="#function03">03. 新增目錄內包含文件</a></li>
+					<li>
+						<a href="#function04">04. 文件的生命週期</a>
+						<ul class="nav" >
+							<li><a href="#">附加</a></li>
+							<li><a href="#">覆蓋(取代)</a></li>
+							<li><a href="#">翻譯</a></li>
+							<li><a href="#">翻譯並覆蓋</a></li>
+							<li><a href="#">附加簽章</a></li>
+						</ul>
+					</li>
+					<li><a href="#function05">05. 新增文件至已存在的目錄中</a></li>
+					<li><a href="#function06">06. 已存在的文件移動至已存在的目錄中</a></li>
+					<li><a href="#function07">07. 已存在的文件移動至新的目錄中</a></li>
+					<li><a href="#functionResp">*. 解析回應訊息</a></li>
+				</ul>
+				<a class="back-to-top" href="#top"> Back to top </a>
+			</nav>
+		</div>
+	</div>
+	
+</div>

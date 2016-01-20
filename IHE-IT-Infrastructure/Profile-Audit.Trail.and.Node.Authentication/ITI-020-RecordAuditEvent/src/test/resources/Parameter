@@ -1,0 +1,337 @@
+//http://pic.dhe.ibm.com/infocenter/wmbhelp/v8r0m0/index.jsp?topic=%2Fcom.ibm.healthcare.doc%2Fha05230-41.htm
+
+
+ITI_41:Repository
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>
+
+    <xsd:element name="AuditXDSRepositoryProvideAndRegisterDocumentSetBEvent" type="AuditXDSRepositoryProvideAndRegisterDocumentSetBEvent"/>
+    <xsd:complexType name="AuditXDSRepositoryProvideAndRegisterDocumentSetBEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-41 Provide and Register Document Set-b event for XDS.b Document Repository actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="RepositoryEndpointURI" type="xsd:string"/>
+            <xsd:element name="SourceUserID" type="xsd:string"/>
+            <xsd:element name="SourceIPAddress" type="xsd:string"/>
+            <xsd:element name="SubmissionSetUniqueID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+ITI_41:Source
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>
+
+    <xsd:element name="AuditXDSSourceProvideAndRegisterDocumentSetBEvent" type="AuditXDSSourceProvideAndRegisterDocumentSetBEvent"/>
+    <xsd:complexType name="AuditXDSSourceProvideAndRegisterDocumentSetBEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-41 Provide and Register Document Set-b event for XDS.b Document Source actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="RepositoryEndpointURI" type="xsd:string"/>
+            <xsd:element name="SubmissionSetUniqueID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+
+<!------------------------------------------------------------------->
+ITI_18:Consumer
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>
+
+    <xsd:element name="AuditXDSConsumerRegistryStoredQueryEvent" type="AuditXDSConsumerRegistryStoredQueryEvent"/>
+    <xsd:complexType name="AuditXDSConsumerRegistryStoredQueryEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-18 Registry Stored Query event for XDS.a and XDS.b Document Consumer actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="RegistryEndpointURI" type="xsd:string"/>
+            <xsd:element name="StoredQueryUUID" type="xsd:string"/>
+            <xsd:element name="AdhocQueryRequestPayload" type="xsd:string"/>
+            <xsd:element name="HomeCommunityID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+ITI_18:Registry
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>
+
+    <xsd:element name="AuditXDSRegistryStoredQueryEvent" type="AuditXDSRegistryStoredQueryEvent"/>
+    <xsd:complexType name="AuditXDSRegistryStoredQueryEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-18 Registry Stored Query event for XDS.a and XDS.b Document Registry actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="RegistryEndpointURI" type="xsd:string"/>
+            <xsd:element name="ConsumerUserID" type="xsd:string"/>
+            <xsd:element name="ConsumerUserName" type="xsd:string"/>
+            <xsd:element name="ConsumerIPAddress" type="xsd:string"/>
+            <xsd:element name="StoredQueryUUID" type="xsd:string"/>
+            <xsd:element name="AdhocQueryRequestPayload" type="xsd:string"/>
+            <xsd:element name="HomeCommunityID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+ITI_18:XCA Initiating Gateway actors
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>
+
+    <xsd:element name="AuditXCAInitiatingGatewayRegistryStoredQueryEvent" type="AuditXCAInitiatingGatewayRegistryStoredQueryEvent"/>
+    <xsd:complexType name="AuditXCAInitiatingGatewayRegistryStoredQueryEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-18 Registry Stored Query event for XCA Initiating Gateway actors - audits as an XDS Document Registry</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="ConsumerUserID" type="xsd:string"/>
+            <xsd:element name="ConsumerUserName" type="xsd:string"/>
+            <xsd:element name="ConsumerIPAddress" type="xsd:string"/>
+            <xsd:element name="RepositoryEndpointURI" type="xsd:string"/>
+            <xsd:element name="StoredQueryUUID" type="xsd:string"/>
+            <xsd:element name="AdhocQueryRequestPayload" type="xsd:string"/>
+            <xsd:element name="HomeCommunityID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+ITI_18:XCA Responding Gateway
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>
+
+    <xsd:element name="AuditXCARespondingGatewayRegistryStoredQueryEvent" type="AuditXCARespondingGatewayRegistryStoredQueryEvent"/>
+    <xsd:complexType name="AuditXCARespondingGatewayRegistryStoredQueryEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-18 Registry Stored Query event for XCA Responding Gateway actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="RegistryEndpointURI" type="xsd:string"/>
+            <xsd:element name="StoredQueryUUID" type="xsd:string"/>
+            <xsd:element name="AdhocQueryRequestPayload" type="xsd:string"/>
+            <xsd:element name="HomeCommunityID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+<!------------------------------------------------------------------->
+ITI_8:PIXManager Create Patient
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>    
+
+    <xsd:element name="AuditPIXManagerCreatePatientRecordEvent" type="AuditPIXManagerCreatePatientRecordEvent"/>
+    <xsd:complexType name="AuditPIXManagerCreatePatientRecordEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-8 Patient Identity Feed create patient record event for Patient Identifier Cross-reference Manager actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="PIXManagerURI" type="xsd:string"/>
+            <xsd:element name="SourceIPAddress" type="xsd:string"/>
+            <xsd:element name="ReceivingFacility" type="xsd:string"/>
+            <xsd:element name="ReceivingApplication" type="xsd:string"/>
+            <xsd:element name="SendingFacility" type="xsd:string"/>
+            <xsd:element name="SendingApplication" type="xsd:string"/>
+            <xsd:element name="MessageControlID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+
+ITI_8:PIXSource Create
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>
+
+    <xsd:element name="AuditPIXSourceCreatePatientRecordEvent" type="AuditPIXSourceCreatePatientRecordEvent"/>
+    <xsd:complexType name="AuditPIXSourceCreatePatientRecordEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-8 Patient Identity Feed create patient record event for Patient Identity Source actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="PIXManagerURI" type="xsd:string"/>
+            <xsd:element name="ReceivingFacility" type="xsd:string"/>
+            <xsd:element name="ReceivingApplication" type="xsd:string"/>
+            <xsd:element name="SendingFacility" type="xsd:string"/>
+            <xsd:element name="SendingApplication" type="xsd:string"/>
+            <xsd:element name="MessageControlID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+ITI_8:PIXManager Delete
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>    
+
+    <xsd:element name="AuditPIXManagerDeletePatientRecordEvent" type="AuditPIXManagerDeletePatientRecordEvent"/>
+    <xsd:complexType name="AuditPIXManagerDeletePatientRecordEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-8 Patient Identity Feed delete patient record event for Patient Identifier Cross-reference Manager actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="PIXManagerURI" type="xsd:string"/>
+            <xsd:element name="SourceIPAddress" type="xsd:string"/>
+            <xsd:element name="ReceivingFacility" type="xsd:string"/>
+            <xsd:element name="ReceivingApplication" type="xsd:string"/>
+            <xsd:element name="SendingFacility" type="xsd:string"/>
+            <xsd:element name="SendingApplication" type="xsd:string"/>
+            <xsd:element name="MessageControlID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+ITI_8:PIXSource Delete
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>
+
+	  <xsd:element name="AuditPIXSourceDeletePatientRecordEvent" type="AuditPIXSourceDeletePatientRecordEvent"/>
+    <xsd:complexType name="AuditPIXSourceDeletePatientRecordEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-8 Patient Identity Feed delete patient record event for Patient Identity Source actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="PIXManagerURI" type="xsd:string"/>
+            <xsd:element name="ReceivingFacility" type="xsd:string"/>
+            <xsd:element name="ReceivingApplication" type="xsd:string"/>
+            <xsd:element name="SendingFacility" type="xsd:string"/>
+            <xsd:element name="SendingApplication" type="xsd:string"/>
+            <xsd:element name="MessageControlID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+
+ITI_8:PIXManager Update
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>    
+
+    <xsd:element name="AuditPIXManagerUpdatePatientRecordEvent" type="AuditPIXManagerUpdatePatientRecordEvent"/>
+    <xsd:complexType name="AuditPIXManagerUpdatePatientRecordEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-8 Patient Identity Feed update patient record event for Patient Identifier Cross-reference Manager actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="PIXManagerURI" type="xsd:string"/>
+            <xsd:element name="SourceIPAddress" type="xsd:string"/>
+            <xsd:element name="ReceivingFacility" type="xsd:string"/>
+            <xsd:element name="ReceivingApplication" type="xsd:string"/>
+            <xsd:element name="SendingFacility" type="xsd:string"/>
+            <xsd:element name="SendingApplication" type="xsd:string"/>
+            <xsd:element name="MessageControlID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+ 
+ITI_8:PIXSource Update
+ 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>
+
+    <xsd:element name="AuditPIXSourceUpdatePatientRecordEvent" type="AuditPIXSourceUpdatePatientRecordEvent"/>
+    <xsd:complexType name="AuditPIXSourceUpdatePatientRecordEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-8 Patient Identity Feed update patient record event for Patient Identity Source actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="PIXManagerURI" type="xsd:string"/>
+            <xsd:element name="ReceivingFacility" type="xsd:string"/>
+            <xsd:element name="ReceivingApplication" type="xsd:string"/>
+            <xsd:element name="SendingFacility" type="xsd:string"/>
+            <xsd:element name="SendingApplication" type="xsd:string"/>
+            <xsd:element name="MessageControlID" type="xsd:string"/>
+            <xsd:element name="PatientID" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+<!------------------------------------------------------------------->
+ITI_9:PIXManager
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>    
+
+    <xsd:element name="AuditPIXManagerPIXQueryEvent" type="AuditPIXManagerPIXQueryEvent"/>
+    <xsd:complexType name="AuditPIXManagerPIXQueryEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-9 PIX Query event for Patient Identifier Cross-reference (PIX) Manager actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="PIXManagerURI" type="xsd:string"/>
+            <xsd:element name="ConsumerIPAddress" type="xsd:string"/>
+            <xsd:element name="ReceivingFacility" type="xsd:string"/>
+            <xsd:element name="ReceivingApplication" type="xsd:string"/>
+            <xsd:element name="SendingFacility" type="xsd:string"/>
+            <xsd:element name="SendingApplication" type="xsd:string"/>
+            <xsd:element name="MessageControlID" type="xsd:string"/>
+            <xsd:element name="QueryParameters" type="xsd:string"/>
+            <xsd:element name="PatientIDs" type="PatientIDs"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+ITI_9:PIXConsumer
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://com.ibm.healthcare/ATNA" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://com.ibm.healthcare/ATNA">
+   	<xsd:include schemaLocation="ATNATypes.xsd"/>
+    
+    <xsd:element name="AuditPIXConsumerQueryEvent" type="AuditPIXConsumerQueryEvent"/>
+    <xsd:complexType name="AuditPIXConsumerQueryEvent">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Audits an ITI-9 PIX Query event for Patient Identifier Cross-reference (PIX) Consumer actors</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="EventOutcome" type="xsd:string"/>
+            <xsd:element name="PIXManagerURI" type="xsd:string"/>
+            <xsd:element name="ReceivingFacility" type="xsd:string"/>
+            <xsd:element name="ReceivingApplication" type="xsd:string"/>
+            <xsd:element name="SendingFacility" type="xsd:string"/>
+            <xsd:element name="SendingApplication" type="xsd:string"/>
+            <xsd:element name="MessageControlID" type="xsd:string"/>
+            <xsd:element name="QueryParameters" type="xsd:string"/>
+            <xsd:element name="PatientIDs" type="PatientIDs"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
+
+
+<!------------------------------------------------------------------->
+
+
+
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/POM/4.0.0 http://maven.apache.org/POM/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>edu.tcu.mi.ihe</groupId>
+		<artifactId>IHE-Technical-Frameworks</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>IHE-Technical-Frameworks-core</artifactId>
+	<packaging>jar</packaging>
+
+	<name>IHE-Technical-Frameworks-core</name>
+	<description>IHE-Technical-Frameworks-core</description>
+	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise
+	</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<hapi.version>2.2</hapi.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.ws.commons.axiom</groupId>
+			<artifactId>axiom-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ws.commons.axiom</groupId>
+			<artifactId>axiom-impl</artifactId>
+		</dependency>
+
+		<!-- This is the core HAPI library -->
+		<dependency>
+			<groupId>ca.uhn.hapi</groupId>
+			<artifactId>hapi-base</artifactId>
+			<version>${hapi.version}</version>
+		</dependency>
+		<!-- These are structure JARs for HL7 v2.1 and 2.5.1 (as an example) -->
+		<dependency>
+			<groupId>ca.uhn.hapi</groupId>
+			<artifactId>hapi-structures-v231</artifactId>
+			<version>${hapi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi</groupId>
+			<artifactId>hapi-structures-v25</artifactId>
+			<version>${hapi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi</groupId>
+			<artifactId>hapi-extend</artifactId>
+			<version>${hapi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi</groupId>
+			<artifactId>hapi-hl7overhttp</artifactId>
+			<version>${hapi.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>IHE-Technical-Frameworks-utility</artifactId>
+		</dependency>
+	</dependencies>
+</project>

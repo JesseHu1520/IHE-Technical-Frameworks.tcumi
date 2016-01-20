@@ -1,0 +1,62 @@
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/POM/4.0.0 http://maven.apache.org/POM/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>edu.tcu.mi.ihe</groupId>
+		<artifactId>IHE-IT-Infrastructure</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>Profile-Cross-Enterprise.Document.Sharing</artifactId>
+	<name>Profile-Cross-Enterprise Document Sharing(XDS)</name>
+	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise
+	</url>
+	<description>Cross-Enterprise Document Sharing</description>
+	<packaging>pom</packaging>
+	<modules>
+		<module>ITI-018-RegistryStoredQuery</module>
+		<module>ITI-041-ProvideAndRegisterDocumentSet</module>
+		<module>ITI-043-RetrieveDocumentSet</module>
+		<!-- <module>ITI-042-RegisterDocumentSet</module> <module>ITI-057-UpdateDocumentSet</module> 
+			<module>ITI-061-RegisterOnDemandDocumentEntry</module> <module>ITI-062-DeleteDocumentSet</module> -->
+	</modules>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-integration</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ws.commons.axiom</groupId>
+			<artifactId>axiom-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ws.commons.axiom</groupId>
+			<artifactId>axiom-dom</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ws.commons.axiom</groupId>
+			<artifactId>axiom-impl</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by ZK Studio -->
+<zk>
+	<device-config>
+		<device-type>ajax</device-type>
+		<automatic-timeout>true</automatic-timeout>
+		<timeout-uri>/</timeout-uri>
+		<timeout-message></timeout-message>
+	</device-config>
+	<system-config>
+		<label-location>/WEB-INF/applicationResources.properties
+		</label-location>
+		<label-location>/WEB-INF/applicationResources_zh_CN.properties
+		</label-location>
+		<label-location>/WEB-INF/applicationResources_zh_TW.properties
+		</label-location>
+	</system-config>
+	<library-property>
+		<name>org.zkoss.web.classWebResource.cache</name>
+		<value>false</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeM</name>
+		<value>15px</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeS</name>
+		<value>10px</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeXS</name>
+		<value>9px</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontFamilyT</name>
+		<value>微軟正黑體</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontFamilyC</name>
+		<value>微軟正黑體</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.Paging.mold</name>
+		<value>os</value>
+	</library-property>
+	<error-reload>
+		<device-type>ajax</device-type>
+		<error-code>301</error-code>
+		<reload-uri>/timeout.zul</reload-uri>
+	</error-reload>
+	<error-reload>
+		<device-type>ajax</device-type>
+		<error-code>402</error-code>
+		<reload-uri>/timeout.zul</reload-uri>
+	</error-reload>
+	<error-reload>
+		<device-type>ajax</device-type>
+		<error-code>410</error-code>
+		<reload-uri>/timeout.zul</reload-uri>
+		<connection-type>server-push</connection-type>
+	</error-reload>
+	<!-- session-config>
+		<device-type>ajax</device-type>
+		<automatic-timeout>true</automatic-timeout>
+		<session-timeout>1</session-timeout>
+		<timeout-message>script:<![CDATA[
+	   	   $("#z-timeout").remove();
+		   $('body').append('<div id="z-timeout"><span>Timeout, <b>move mouse</b> to refresh...<img src="/zkdemo/images/refresh2.gif" style="display:none;"/></span></div>');
+		   $("#z-timeout").slideDown(1000);
+		   $('body').mouseover(function() {
+		     $("img","#z-timeout").show();
+			 $('#container > div:gt(0)').fadeOut(1000);
+			 setTimeout("location.reload()", 1500);
+		   });
+	    ]]></timeout-message>
+	</session-config-->
+</zk>

@@ -1,0 +1,10 @@
+<QueryGenerator>
+	<RegistryUrl>
+		https://203.64.84.214:8011/axis2/services/xdsregistryb?wsdl
+	</RegistryUrl>
+	<QueryUUID>urn:uuid:5c4f972b-d56b-40ac-a5fc-c8ca9b40b9d4</QueryUUID>
+	<ReturnType>LeafClass</ReturnType>
+	<Parameter name="$XDSDocumentEntryEntryUUID">
+		<Value>'urn:uuid:aac7c490-b667-4687-a6ce-a40a8fb72427'</Value>
+	</Parameter>
+</QueryGenerator>

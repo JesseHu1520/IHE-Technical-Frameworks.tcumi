@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuditMessage>
+ 	<EventIdentification EventDateTime="${timeStamp}" EventOutcomeIndicator="0" EventActionCode="E">
+ 		<EventID csd-code="110123" codeSystemName="DCM" originalText="Logout" />
+ 	</EventIdentification>
+ 	<ActiveParticipant UserID="farley.granger@wb.com" UserIsRequestor="true"/>
+ 	<ActiveParticipant UserID="fe80::5999:d1ef:63de:a8bb%11" UserIsRequestor="true" NetworkAccessPointTypeCode="1" NetworkAccessPointID="125.20.175.12">
+ 		<RoleIDCode csd-code="110150" codeSystemName="DCM" originalText="Application" />
+ 	</ActiveParticipant>
+ 	<AuditSourceIdentification code="1" AuditEnterpriseSiteID="End User" AuditSourceID="farley.granger@wb.com"/>
+ </AuditMessage>
+ 

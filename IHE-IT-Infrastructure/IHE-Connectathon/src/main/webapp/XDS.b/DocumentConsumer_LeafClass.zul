@@ -1,0 +1,18 @@
+<vlayout width="800px">
+    <div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('edu.tcu.mi.zk.view_model.xds_b.DocumentConsumer_LeafClassVM')">
+        <label value="@load(vm.uuid)" style="font-size: 14px; font-weight: bold;" />
+        <button hflex="1" label="下載" onClick="@command('download')"/>
+        <grid model="@load(vm.list)">
+            <template name="model">
+                <row>
+                    <cell>
+                        <label hflex="1" value="@load(each.key)" />
+                    </cell>
+                    <cell>
+                        <label hflex="1" value="@load(each.value)" />
+                    </cell>
+                </row>
+            </template>
+        </grid>
+    </div>
+</vlayout>

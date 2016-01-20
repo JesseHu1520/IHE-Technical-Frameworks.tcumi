@@ -1,0 +1,141 @@
+<Configuration>
+	<Connection name="合華-Security">
+		<PatitentId>c6002e5679534ea^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO
+		</PatitentId>
+		<Repository>
+			<Endpoint>https://192.168.1.42:8021/axis2/services/xdsrepositoryb?wsdl
+			</Endpoint>
+			<UniqueId>1.3.6.1.4.1.21367.2013.1.2.1125</UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>https://192.168.1.42:8011/axis2/services/xdsregistryb?wsdl
+			</Endpoint>
+		</Registry>
+	</Connection>
+	<Connection name="方正-Security">
+		<PatitentId>c6002e5679534ea^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO
+		</PatitentId>
+		<Repository>
+			<Endpoint>https://192.168.1.39:8021/axis2/services/xdsrepositoryb
+			</Endpoint>
+			<UniqueId></UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>https://192.168.1.39:8011/axis2/services/xdsregistryb
+			</Endpoint>
+		</Registry>
+	</Connection>
+	<Connection name="OpenXDS-Security">
+		<PatitentId>c6002e5679534ea^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO
+		</PatitentId>
+		<Repository>
+			<Endpoint>https://localhost:8021/axis2/services/xdsrepositoryb?wsdl
+			</Endpoint>
+			<UniqueId>1.3.6.1.4.1.21367.2010.1.2.1125</UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>https://localhost:8011/axis2/services/xdsregistryb?wsdl
+			</Endpoint>
+		</Registry>
+	</Connection>
+	<Connection name="NIST">
+		<PatitentId>c6002e5679534ea^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO
+		</PatitentId>
+		<Repository>
+			<Endpoint>http://ihexds.nist.gov:12080/tf6/services/xdsrepositoryb?wsdl
+			</Endpoint>
+			<UniqueId>1.3.6.1.4.1.21367.2011.2.3.7</UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>http://ihexds.nist.gov:12080/tf6/services/xdsregistryb?wsdl
+			</Endpoint>
+		</Registry>
+	</Connection>
+	<Connection name=".net 微軟">
+		<PatitentId>498ef443e7ac4a6^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO
+		</PatitentId>
+		<Repository>
+			<Endpoint>http://203.64.84.218:1025/XdsService/XDSRepository?wsdl
+			</Endpoint>
+			<UniqueId>1.3.6.1.4.1.21367.13.40.8</UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>http://203.64.84.218:1025/XdsService/XDSRegistry?wsdl
+			</Endpoint>
+		</Registry>
+	</Connection>
+	<Connection name="杭創-Security">
+		<PatitentId>c6002e5679534ea^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO
+		</PatitentId>
+		<Repository>
+			<Endpoint>https://192.168.1.15:8010/axis2/services/xdsrepositoryb
+			</Endpoint>
+			<UniqueId>1.3.6.1.4.1.21367.2010.1.2.4000</UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>https://192.168.1.15:8020/axis2/services/xdsregistryb
+			</Endpoint>
+		</Registry>
+	</Connection>
+	<Connection name="華裔-Security">
+		<PatitentId>5655294897af4b7^^^&amp;1.19.6.24.109.42.1.3&amp;ISO
+		</PatitentId>
+		<Repository>
+			<Endpoint>https://192.168.1.54:8443/simed-repository/services/xdsrepositoryb
+			</Endpoint>
+			<UniqueId>1.19.6.24.109.42.1.1</UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>https://192.168.1.54:8443/simed-registry/services/xdsregistryb
+			</Endpoint>
+		</Registry>
+	</Connection>
+	<Connection name="美迪康-Security">
+		<PatitentId>5655294897af4b7^^^&amp;1.19.6.24.109.42.1.3&amp;ISO
+		</PatitentId>
+		<Repository>
+			<Endpoint>https://192.168.1.107:4433/XdsService/XDSRepository
+			</Endpoint>
+			<UniqueId>1.3.6.1.4.1.21367.13.518.400</UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>https://192.168.1.107:4433/XdsService/XDSRegistry
+			</Endpoint>
+		</Registry>
+	</Connection>
+	<Connection name="GE-Security">
+		<PatitentId>5655294897af4b7^^^&amp;1.19.6.24.109.42.1.3&amp;ISO
+		</PatitentId>
+		<Repository>
+			<Endpoint>https://192.168.1.107:4433/XdsService/XDSRepository
+			</Endpoint>
+			<UniqueId>1.19.6.24.109.42.1.3</UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>https://192.168.1.107:4433/XdsService/XDSRegistry
+			</Endpoint>
+		</Registry>
+	</Connection>
+	<Connection name="联影-Security">
+		<PatitentId>5655294897af4b7^^^&amp;1.19.6.24.109.42.1.3&amp;ISO
+		</PatitentId>
+		<Repository>
+			<Endpoint>https://192.168.1.94:9080/XdsService/XDSRepository
+			</Endpoint>
+			<UniqueId>1.2.3.3.21.121</UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>https://192.168.1.94:9080/xdsservice/xdsregistry</Endpoint>
+		</Registry>
+	</Connection>
+	<Connection name="大会-Security">
+		<PatitentId>dfc59af3f33d470^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO</PatitentId>
+		<Repository>
+			<Endpoint>https://192.168.4.91:9085/tf6/services/xdsrepositoryb</Endpoint>
+			<UniqueId></UniqueId>
+		</Repository>
+		<Registry>
+			<Endpoint>https://192.168.4.91:9085/tf6/services/xdsregistryb</Endpoint>
+		</Registry>
+	</Connection>
+</Configuration>

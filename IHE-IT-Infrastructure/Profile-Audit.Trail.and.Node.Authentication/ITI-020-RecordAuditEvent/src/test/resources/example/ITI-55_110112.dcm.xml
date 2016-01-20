@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<AuditMessage>
+
+	<EventIdentification EventOutcomeIndicator="0" EventDateTime="${timeStamp}" EventActionCode="E">
+		<EventID csd-code="110112" codeSystemName="DCM" originalText="Query" />
+		<EventTypeCode csd-code="ITI-55" codeSystemName="IHE Transactions" originalText="Cross Gateway Patient Discovery" />
+	</EventIdentification>
+
+	<ActiveParticipant UserID="wsaReplyToContents" AlternativeUserID="BR-549" UserIsRequestor="true" NetworkAccessPointTypeCode="1" NetworkAccessPointID="server.source.org">
+		<RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source" />
+	</ActiveParticipant>
+
+	<ActiveParticipant UserID="bill.martin@company.org" UserIsRequestor="true" />
+
+	<ActiveParticipant UserID="SOAPEndpointURI" UserIsRequestor="false" NetworkAccessPointTypeCode="2" NetworkAccessPointID="123.23.4.55">
+		<RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination" />
+	</ActiveParticipant>
+
+	<AuditSourceIdentification code="1" AuditSourceID="DMNB03" AuditEnterpriseSiteID="WC" />
+	
+	<ParticipantObjectIdentification ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24" ParticipantObjectID="id">
+		<ParticipantObjectIDTypeCode csd-code="ITI-55" codeSystemName="IHE Transactions" originalText="Cross Gateway Patient Discovery" />
+		<ParticipantObjectQuery>VXRpbC5qYXhiTWFyc2hhbFRvU3RyaW5nKGJvZHkp</ParticipantObjectQuery>
+	</ParticipantObjectIdentification>
+</AuditMessage>

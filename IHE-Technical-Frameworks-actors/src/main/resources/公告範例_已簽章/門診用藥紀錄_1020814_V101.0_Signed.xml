@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cdp:ContentPackage xmlns:cdp="http://www.hl7.org.tw/EMR/CDocumentPayload/v1.0" xmlns="urn:hl7-org:v3" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org.tw/EMR/CDocumentPayload/v1.0 CDA_Package_V01.xsd">
+	<cdp:ContentContainer range="0">
+		<cdp:StructuredContent>
+			<ClinicalDocument classCode="DOCCLIN" moodCode="EVN" xmlns="urn:hl7-org:v3" xmlns:voc="urn:hl7-org:v3/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd">
+				<!--
+					********************************************************
+					CDA Header
+					********************************************************
+				-->
+				<typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3" />
+				<templateId extension="114_V101.0" root="2.16.886.101.20003.20014" />
+				<!--系統產生唯一編碼
+					1. 每產生一份文件都需指定新的OID。
+					2. 若以台大醫院為例，台大醫院之OID為2.16.886.111.100000.100000。
+				 -->
+				<id extension="201009040001" root="2.16.886.111.100000.100000" />
+				<!--表示本文件為門診用藥-->
+				<code code="57833-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prescription for medication" />
+				<title>門診用藥</title>
+				<!-- 文件列印日期 格式為 : YYYY[MM[DD[HH[MM]]]]  西元年月日時分-->
+				<effectiveTime value="201107191105" />
+				<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="normal" />
+				<!-- 語言碼 -->
+				<languageCode code="zh-TW" />
+				<!-- 本文件之病患資料 -->
+				<recordTarget typeCode="RCT" contextControlCode="OP">
+					<patientRole classCode="PAT">
+						<!--4. 病歷號碼
+							@extension : 在該院之病歷號
+							@root : 該院之OID
+						-->
+						<id extension="123456" root="2.16.886.111.100000.100000" />
+						<!-- 病患基本資料 -->
+						<patient classCode="PSN" determinerCode="INSTANCE">
+							<!--3. 身分證號
+								@extension : 此病患之身分證號
+								@root : 2.16.886.101.20003.20001(內政部)
+								若使用居留證號碼，@root : 2.16.886.101.20003.20001(內政部)
+								若使用護照號碼，@root : 發給護照號碼機構之OID
+							-->
+							<id extension="Q113290236" root="2.16.886.101.20003.20001" />
+							<!--5 姓名-->
+							<name>李大千</name>
+							<!--6. 性別
+							   @code : 性別代碼
+							   @codeSystem : 2.16.840.1.113883.5.1 (HL7 Vocabulary OID)
+							-->
+							<administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender" displayName="Male" />
+							<!--7. 出生日期-->
+							<birthTime value="19570228" />
+						</patient>
+						<!--醫事機構 
+							@extension : 醫事機構代碼
+							@root : 2.16.886.101.20003.20014
+						-->
+						<providerOrganization classCode="ORG" determinerCode="INSTANCE">
+							<!--1. 醫療機構代碼-->
+							<id extension="0401190010" root="2.16.886.101.20003.20014" />
+							<!--2. 醫療機構名稱-->
+							<name>臺大醫院</name>
+						</providerOrganization>
+					</patientRole>
+				</recordTarget>
+				<!-- author1 -->
+				<author typeCode="AUT" contextControlCode="OP">
+					<!--醫師記錄日期時間-->
+					<time value="201105211416" />
+					<assignedAuthor classCode="ASSIGNED">
+						<!--醫師醫院代碼-->
+						<id extension="KP00017" root="2.16.886.111.100000.100000" />
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!--13. 醫師姓名-->
+							<name>賴一施</name>
+						</assignedPerson>
+					</assignedAuthor>
+				</author>
+				<!-- 本文件保管單位 -->
+				<custodian typeCode="CST">
+					<assignedCustodian classCode="ASSIGNED">
+						<representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+							<!--1. 醫療機構代碼-->
+							<id extension="0401190010" root="2.16.886.101.20003.20014" />
+							<!--2. 醫療機構名稱-->
+							<name>臺大醫院</name>
+						</representedCustodianOrganization>
+					</assignedCustodian>
+				</custodian>
+				<componentOf typeCode="COMP">
+					<encompassingEncounter classCode="ENC" moodCode="EVN">
+						<!--8. 門診日期-->
+						<effectiveTime value="20110521" />
+						<location typeCode="LOC">
+							<healthCareFacility classCode="SDLOC">
+								<location classCode="PLC" determinerCode="INSTANCE">
+									<!--9. 科別-->
+									<name>家醫科</name>
+								</location>
+							</healthCareFacility>
+						</location>
+					</encompassingEncounter>
+				</componentOf>
+				<!--
+					********************************************************
+					CDA Body Level 2 
+					********************************************************
+				-->
+				<component typeCode="COMP" contextConductionInd="true">
+					<structuredBody classCode="DOCBODY" moodCode="EVN">
+						<!--
+						10.診斷
+							********************************************************
+							Diagnosis
+							********************************************************
+						-->
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="29548-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis" />
+								<title>診斷</title>
+								<text>
+									<paragraph>Tuberculosis</paragraph>
+									<paragraph>Influenza</paragraph>
+								</text>
+								<entry>
+									<observation classCode="COND" moodCode="EVN">
+										<code code="011" codeSystem="2.16.840.1.113883.6.2" codeSystemName="ICD9CM" displayName="Tuberculosis" />
+									</observation>
+								</entry>
+								<entry>
+									<observation classCode="COND" moodCode="EVN">
+										<code code="487" codeSystem="2.16.840.1.113883.6.2" codeSystemName="ICD9CM" displayName="Influenza" />
+									</observation>
+								</entry>
+							</section>
+						</component>
+						<!--
+							處方
+							********************************************************
+							Medication prescribed
+							********************************************************
+						-->
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="29551-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medication prescribed" />
+								<title>處方</title>
+								<text>
+									<table>
+										<thead>
+											<tr><td>項次</td><td>處方箋種類註記</td><td>藥品代碼</td><td>藥品商品名稱</td><td>藥品學名</td><td>劑型</td><td>劑量</td><td>劑量單位</td><td>頻率</td><td>給藥途徑</td><td>給藥日數</td><td>給藥總量</td><td>給藥總量單位</td><td>實際給藥總量</td><td>實際給藥總量單位</td><td>磨粉註記</td><td>註記</td></tr>
+										</thead>
+										<tbody>
+											<tr><td>1</td><td>GENRL</td><td>A040130100</td><td>TINTEN TABLETS 500MG</td><td>ACETAMINOPHEN TAB 500MG (FOIL)</td><td>錠劑</td><td>1</td><td>錠</td><td>每天三次飯後(TID PC)</td><td>口服</td><td>4</td><td>12</td><td>錠</td><td>12</td><td>錠</td><td>N</td><td>力停疼錠500公絲</td></tr>
+											<tr><td>2</td><td>GENRL</td><td>A030862157</td><td>COUGH MIXTURE </td><td>PLATYCODON FLUID EXTRACT 20ML SOD CITRATE 1G/100ML 120ML/BTL</td><td>內服液劑</td><td>10</td><td>CC</td><td>需要時使用(PRN)</td><td>口服</td><td>5</td><td>1</td><td>瓶</td><td>1</td><td>瓶</td><td>N</td><td>鎮咳祛痰液</td></tr>
+											<tr><td>3</td><td>GENRL</td><td>A042687100</td><td>REGROW SUSTAINED RELEASE F.C. TABLET 60MG "T.T.Y." </td><td>DEXTROMETHOPHAN HBR 60MG/TAB</td><td>持續性膜衣錠劑</td><td>1</td><td>錠</td><td>睡前使用(HS)</td><td>口服</td><td>5</td><td>5</td><td>錠</td><td>5</td><td>錠</td><td>N</td><td>愛舒可羅持續性膜衣錠60公絲</td></tr>
+											<tr><td>4</td><td>GENRL</td><td>A0284531G0</td><td>MUCOSOLVAN TABLETS 30MG</td><td>AMBROXOL 30MG TAB</td><td>錠劑</td><td>1</td><td>錠</td><td>每天三次(TID)</td><td>口服</td><td>5</td><td>15</td><td>錠</td><td>15</td><td>錠</td><td>N</td><td>沐舒痰錠30公絲</td></tr>
+											<tr><td>5</td><td>GENRL</td><td>B023792100</td><td>XYZAL FILM-COATED TABLETS 5MG</td><td>LEVOCETIRIZINE 5MG/TAB</td><td>膜衣錠</td><td>1</td><td>錠</td><td>每天一次(QD)</td><td>口服</td><td>5</td><td>5</td><td>錠</td><td>5</td><td>錠</td><td>N</td><td>驅異樂膜衣錠5公絲</td></tr>
+										</tbody>
+									</table>
+								</text>
+								<!--第一種藥品-->
+								<entry>
+									<substanceAdministration classCode="SBADM" moodCode="EVN">
+										<!--11. 項次 -->
+										<id extension="1" />	
+										<!--13. 藥品健保碼 
+											  displayName 為選擇性，可以填健保的藥品名稱 -->				
+										<code code="A040130100" codeSystem="2.16.886.101.20003.20014" codeSystemName="全民健保藥品代碼" displayName="TINTEN TABLETS 500MG" />
+										<!--27. 註記 -->		
+										<text>力停疼錠500公絲</text>							   
+										<!--21. 給藥日數-->
+										<repeatNumber value="4" />
+										<!--20.  給藥途徑-->										
+										<routeCode code="PO" codeSystem="2.16.886.101.20003.20014" codeSystemName="全民健保藥品使用途徑代碼" displayName="口服" />
+										<!--17.  劑量, 18. 劑量單位 (每次一錠)
+											若為"適量"，則使用<doseQuantity value="1" unit="適量"/>		
+										-->
+										<doseQuantity value="1" unit="{TABLET}" />			
+										<!--16.  劑型-->
+										<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm" displayName="Tablet" />
+										<consumable>
+											<manufacturedProduct>
+												<manufacturedLabeledDrug>
+													<!--14. 藥品商品名 -->
+													<name>TINTEN TAB 500MG</name>
+												</manufacturedLabeledDrug>
+											</manufacturedProduct>
+										</consumable>
+										<entryRelationship typeCode="COMP">
+											<supply classCode="SPLY" moodCode="RQO">
+												<!--26.磨粉註記-->
+												<text>N</text>
+												<independentInd value="false" />
+												<!--24. 實際給藥總量、25. 實際給藥總量單位-->
+												<quantity value="12" unit="{TABLET}" />
+												<product>
+													<manufacturedProduct>
+														<manufacturedMaterial> 
+															<!--15. 藥品學名 -->		
+															<name>ACETAMINOPHEN TAB 500MG (FOIL)</name>							   
+														</manufacturedMaterial>
+													</manufacturedProduct>
+												</product>
+											</supply>
+										</entryRelationship>
+										<entryRelationship typeCode="COMP">
+											<supply classCode="SPLY" moodCode="PRP">
+<code code="GENRL" codeSystem="2.16.840.1.113883.11.17449" codeSystemName="ActMedicalServiceCode" displayName="General(一般處方)" />
+												<independentInd value="false" />
+												<!--22. 給藥總量、23. 給藥總量單位-->
+												<quantity value="12" unit="{TABLET}" />             
+											</supply>
+										</entryRelationship>
+										<!--19. 頻率 每天三次飯後(TIDPC)-->
+										<entryRelationship typeCode="COMP">
+											<act classCode="ACT" moodCode="EVN" negationInd="false">
+												<code code="52810-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Current medication, Frequency" />
+												<text xsi:type="ST">TIDPC</text>
+											</act>
+										</entryRelationship>
+									</substanceAdministration>
+								</entry> 				   
+      <!--第二種藥品-->
+	  <entry typeCode="DRIV">
+<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
+			<id extension="2" />	
+<code code="A030862157" codeSystem="2.16.886.101.20003.20014" codeSystemName="全民健保藥品代碼" displayName="COUGH MIXTURE" />
+			<text>鎮咳祛痰液</text>						
+			<repeatNumber value="5" />
+<routeCode code="PO" codeSystem="2.16.886.101.20003.20014" codeSystemName="全民健保藥品使用途徑代碼" displayName="口服" />
+			<doseQuantity value="10" unit="CC"></doseQuantity>		
+<administrationUnitCode code="ORALSOL" codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm" displayName="Oral Solution" />
+			<consumable>
+				<manufacturedProduct>
+					<manufacturedLabeledDrug>
+					  <name>COUGH MIXTURE 120ML/BTL</name>
+					</manufacturedLabeledDrug>
+			      </manufacturedProduct>
+			    </consumable>
+         <entryRelationship typeCode="COMP">
+            <supply classCode="SPLY" moodCode="RQO">
+            <text>N</text>
+            <independentInd value="false" />            
+             <quantity value="1" unit="{BTL}" />
+              <product>
+				<manufacturedProduct>
+					<manufacturedMaterial> 
+<name>PLATYCODON FLUID EXTRACT 20ML SOD CITRATE 1G/100ML 120ML/BTL</name>
+    				</manufacturedMaterial>
+	       		</manufacturedProduct>
+		      </product>
+            </supply>
+         </entryRelationship>
+         <entryRelationship typeCode="COMP">
+            <supply classCode="SPLY" moodCode="PRP">
+<code code="GENRL" codeSystem="2.16.840.1.113883.11.17449" codeSystemName="ActMedicalServiceCode" displayName="General(一般處方)" />
+            <independentInd value="false" />
+             <quantity value="1" unit="{BTL}" />
+            </supply>
+         </entryRelationship>
+         <entryRelationship typeCode="COMP">
+			<act classCode="ACT" moodCode="EVN" negationInd="false">
+<code code="52810-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Current medication, Frequency" />
+				<text xsi:type="ST">PRN</text>
+			</act>
+		</entryRelationship>
+	   </substanceAdministration>
+	 </entry>
+    <!--第三種藥品-->
+		   <entry>
+<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
+			<id extension="3" />	
+<code code="A042687100" codeSystem="2.16.886.101.20003.20014" codeSystemName="全民健保藥品代碼" displayName="REGROW SUSTAINED RELEASE F.C. TABLET 60MG" />
+			<text>愛舒可羅持續性膜衣錠60公絲</text>
+			<repeatNumber value="5" />
+<routeCode code="PO" codeSystem="2.16.886.101.20003.20014" codeSystemName="全民健保藥品使用途徑代碼" displayName="口服" />
+			<doseQuantity value="1" unit="{TABLET}" />		
+<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm" displayName="Tablet" />
+			<consumable>
+				<manufacturedProduct>
+					<manufacturedLabeledDrug>
+			    		<name>REGROW SR 60MG/TAB</name>
+					</manufacturedLabeledDrug>
+			      </manufacturedProduct>
+			    </consumable>
+         <entryRelationship typeCode="COMP">
+            <supply classCode="SPLY" moodCode="RQO">
+            <text>N</text>
+            <independentInd value="false" />            
+             <quantity value="5" unit="{TABLET}" />
+              <product>
+				<manufacturedProduct>
+					<manufacturedMaterial> 
+			          <name>DEXTROMETHOPHAN HBR 60MG/TAB</name>	
+    				</manufacturedMaterial>
+	       		</manufacturedProduct>
+		      </product>
+            </supply>
+         </entryRelationship>
+         <entryRelationship typeCode="COMP">
+            <supply classCode="SPLY" moodCode="PRP">
+<code code="GENRL" codeSystem="2.16.840.1.113883.11.17449" codeSystemName="ActMedicalServiceCode" displayName="General(一般處方)" />
+            <independentInd value="false" />
+             <quantity value="5" unit="{TABLET}" />
+            </supply>
+         </entryRelationship>
+         <entryRelationship typeCode="COMP">
+			<act classCode="ACT" moodCode="EVN" negationInd="false">
+<code code="52810-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Current medication, Frequency" />
+				<text xsi:type="ST">HS</text>
+			</act>
+		</entryRelationship>
+	     </substanceAdministration>
+       </entry> 
+    <!--第四種藥品-->
+		   <entry>
+<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
+			<id extension="4" />					
+<code code="A0284531G0" codeSystem="2.16.886.101.20003.20014" codeSystemName="全民健保藥品代碼" displayName="MUCOSOLVAN TABLETS 30MG" />
+			<text>沐舒痰錠30公絲</text>
+			<repeatNumber value="5" />
+<routeCode code="PO" codeSystem="2.16.886.101.20003.20014" codeSystemName="全民健保藥品使用途徑代碼" displayName="口服" />
+			<doseQuantity value="1" unit="{TABLET}" />		
+<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm" displayName="Tablet" />
+			<consumable>
+				<manufacturedProduct>
+					<manufacturedLabeledDrug>
+			    		<name>MUCOSOLVAN TAB 30MG</name>
+					</manufacturedLabeledDrug>
+			      </manufacturedProduct>
+			    </consumable>
+         <entryRelationship typeCode="COMP">
+            <supply classCode="SPLY" moodCode="RQO">
+            <text>N</text>
+            <independentInd value="false" />            
+             <quantity value="15" unit="{TABLET}" />
+              <product>
+				<manufacturedProduct>
+					<manufacturedMaterial> 
+			          <name>AMBROXOL 30MG TAB</name>
+    				</manufacturedMaterial>
+	       		</manufacturedProduct>
+		      </product>
+            </supply>
+         </entryRelationship>
+         <entryRelationship typeCode="COMP">
+            <supply classCode="SPLY" moodCode="PRP">
+<code code="GENRL" codeSystem="2.16.840.1.113883.11.17449" codeSystemName="ActMedicalServiceCode" displayName="General(一般處方)" />
+            <independentInd value="false" />
+             <quantity value="15" unit="{TABLET}" />
+            </supply>
+         </entryRelationship>
+         <entryRelationship typeCode="COMP">
+			<act classCode="ACT" moodCode="EVN" negationInd="false">
+<code code="52810-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Current medication, Frequency" />
+				<text xsi:type="ST">TID</text>
+			</act>
+		</entryRelationship>
+		     </substanceAdministration>
+	       </entry>
+    <!--第五種藥品-->
+		   <entry>
+<substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
+			<id extension="5" />			
+<code code="B023792100" codeSystem="2.16.886.101.20003.20014" codeSystemName="全民健保藥品代碼" displayName="XYZAL FILM-COATED TABLETS 5MG" />
+			<text>驅異樂膜衣錠5公絲</text>
+			<repeatNumber value="5" />
+<routeCode code="PO" codeSystem="2.16.886.101.20003.20014" codeSystemName="全民健保藥品使用途徑代碼" displayName="口服" />
+			<doseQuantity value="1" unit="{TABLET}" />		
+<administrationUnitCode code="TAB" codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm" displayName="Tablet" />
+			<consumable>
+				<manufacturedProduct>
+					<manufacturedLabeledDrug>
+			    		<name>XYZAL FILM-COATED TABLETS 5MG</name>
+					</manufacturedLabeledDrug>
+			      </manufacturedProduct>
+			    </consumable>
+         <entryRelationship typeCode="COMP">
+            <supply classCode="SPLY" moodCode="RQO">
+            <text>N</text>
+            <independentInd value="false" />            
+             <quantity value="5" unit="{TABLET}" />
+              <product>
+				<manufacturedProduct>
+					<manufacturedMaterial> 
+			          <name>LEVOCETIRIZINE 5MG/TAB</name>
+    				</manufacturedMaterial>
+	       		</manufacturedProduct>
+		      </product>
+            </supply>
+         </entryRelationship>
+         <entryRelationship typeCode="COMP">
+            <supply classCode="SPLY" moodCode="PRP">
+<code code="GENRL" codeSystem="2.16.840.1.113883.11.17449" codeSystemName="ActMedicalServiceCode" displayName="General(一般處方)" />
+            <independentInd value="false" />
+             <quantity value="5" unit="{TABLET}" />
+            </supply>
+         </entryRelationship>
+         <entryRelationship typeCode="COMP">
+			<act classCode="ACT" moodCode="EVN" negationInd="false">
+<code code="52810-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Current medication, Frequency" />
+				<text xsi:type="ST">QD</text>
+			</act>
+		</entryRelationship>
+		     </substanceAdministration>
+	       </entry>	       
+							</section>
+						</component>
+					</structuredBody>
+				</component>
+			</ClinicalDocument>
+		</cdp:StructuredContent>
+	</cdp:ContentContainer>
+<ds:Signature Id="IS0001" xmlns:xades="http://uri.etsi.org/01903/v1.4.1#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><ds:Reference URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><!--Digest Value of Xml Document--><ds:DigestValue>S2tbEAHyPyYogw5QvtbiLa8LpgI=</ds:DigestValue></ds:Reference></ds:SignedInfo><!--Signature Value of SignedInfo--><ds:SignatureValue>aTzhDDwISzS9QQkwL503W2TkPHK7egbZ40D8F/wJW0Lvt8yyo4Js2EqVZZYQVHXoYirhq2bgLNx/GfEtIDEC9P5Jn7Vux1UKcUXujb7TnEgLdHCweNDcI3Eul3rIwJimm2KUhXRNxQJeVMqpA88sSslS2RFiLJFpUcJKFVmNHdNV3Lz/vAGPLD3gwSvuJesiJkVzHvtmOH0VK9iF7CMriD2TTl7UPb1U5VKeiHVB5EY/vUzx1KGsCcO3tU7m6atYEgsm7jV7z/IhZzlP3Q7axSa2gWdYQoq7f7MIAL0QqMeWg5h6hxCXGEwrQXXYYrvXTbCxW4EACHP+z6d2hlji0A==</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIEoTCCA4mgAwIBAgIQAQDt5AAAASj4c+zuAAAEwDANBgkqhkiG9w0BAQUFADBDMRUwEwYDVQQKHgyITGU/lmKIW3Uff3IxHTAbBgNVBAseFG4simaRq06LYZGLSXuhdAZOLV/DMQswCQYDVQQGEwJUVzAeFw0xMDA2MDIxMTM3NDZaFw0xNTA2MDIxMTM3NDZaMCQxCzAJBgNVBAYTAlRXMRUwEwYDVQQKHgxuLIpmkatOi2pfacswggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCn+WbIzODFzpvZpic5FNzXGQkI9ZyweeZx6bZD8lIl1Jmuh4471/QJ3sXAxZheDSOziSYfD3bPFFHrFc2nqCMEI/6vlX+U4iQ10+7R0nL111z3e9PJzoyOLoJ+xNHb2wYqonMw09ZK6WGKTR0ZZDuZCGGVzgz3dO2fbQz8XGrA9wDzgPyFr4oICPX+KKeTUj5VFifKhtf61dMkX25SvvUXpwQKO6KQpbpmdRZ+VrPVZssIgk7Opyg3Rt+qKFEgFwl9OyFLpTd5N4n+0/IWrwzGspozBfwv74nyNPW7K4CdJ1sRdGVWuuA8NEFtJBuAupIAOGgMQ9XdNXUp2i3xeEbRAgMBAAGjggGuMIIBqjAdBgNVHQ4EFgQUhXDU8wva5dtFKM6JcgfRKyRA/VUwHwYDVR0jBBgwFoAUmKi/CYatF99ESK2x5D0s8StLKz8wSgYDVR0fBEMwQTA/oD2gO4Y5aHR0cDovL2hjYW9jc3AubmF0Lmdvdi50dy9yZXBvc2l0b3J5L0hDQS9DUkwvY29tcGxldGUuY3JsMAsGA1UdDwQEAwIHgDCBowYIKwYBBQUHAQEEgZYwgZMwTQYIKwYBBQUHMAGGQWh0dHA6Ly9oY2FvY3NwLm5hdC5nb3YudHcvcmVwb3NpdG9yeS9IQ0EvQ2VydHMvSXNzdWVkVG9UaGlzQ0EucDdiMEIGCCsGAQUFBzAChjZodHRwOi8vaGNhb2NzcC5uYXQuZ292LnR3L2NnaS1iaW4vT0NTUC9vY3NwX3NlcnZlci5leGUwFgYDVR0gBA8wDTALBgdghnZlAAMDMAAwUQYDVR0JBEowSDAVBgdghnYBZAIBMQoGCGCGdgFkAwIVMBYGB2CGdgFkAgIxCxMJc2Vjb25kYXJ5MBcGB2CGdgFkAm8xDAwKRkZGRkZGRkZGMDANBgkqhkiG9w0BAQUFAAOCAQEAPsVHWx0uAaaszobxxTppH+Xe9B+5sX2+KFnEMPMecUA6iG537jypMK+jOz6TpRY9juN8N3MVqayoec8WxRn1qSKRncN/TUkrPH4h1irW2YSfiRHL9bw/MaDCwy9d6Pn2s5ZtPO7mQ1SPzzXVuXbJyXM3sdYY5osGuthnxkQyFfCMTX7mvWxy6OM4wq5ra4cqJ2qqgQbLixpOXfiVLbuW3qoS6UuxDw3WqOb7CbaYJlMn0MJwbGRjTIw/ciu0y4uWXb27+rgEZBUfnDs1oX2smlMxUeDW7AJnmJ2FFyryPYCmcxMZmcOKDDHfeEe42Xx+bFa2xYExPxFYiI2vyRdahQ==</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object xmlns:xades="http://uri.etsi.org/01903/v1.4.1#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><xades:QualifyingProperties Target="#IS0001"><xades:UnsignedProperties><xades:UnsignedSignatureProperties><xades:SignatureTimeStamp><xades:EncapsulatedTimeStamp>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</xades:EncapsulatedTimeStamp></xades:SignatureTimeStamp></xades:UnsignedSignatureProperties></xades:UnsignedProperties></xades:QualifyingProperties></ds:Object></ds:Signature></cdp:ContentPackage>

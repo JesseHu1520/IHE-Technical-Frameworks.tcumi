@@ -1,0 +1,6 @@
+http://ihewiki.wustl.edu/wiki/index.php/XDS_Test_Kit_Test_Requirements#Provide_and_Register_Document_Set_.28-a_and_-b.29
+
+http://hit-testing.nist.gov:12080/
+
+http://ihexds.nist.gov:12080/LogReader/
+http://ihexds.nist.gov:12080/tf6/services/xdsrepositoryb?wsdl

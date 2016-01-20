@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AuditMessage>
+
+	<EventIdentification EventActionCode="E" EventDateTime="${timeStamp}" EventOutcomeIndicator="0">
+		<EventID csd-code="110112" originalText="Query" codeSystemName="DCM"/>
+		<EventTypeCode csd-code="ITI-9" originalText="PIX Query" codeSystemName="IHE Transactions"/>
+	</EventIdentification>
+	
+	<ActiveParticipant UserID="1.2.840.114350.1.13.99998.8734|1.2.840.114350.1.13.99998.8734" UserIsRequestor="true" NetworkAccessPointID="remoteHost?" NetworkAccessPointTypeCode="1">
+		<RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+	</ActiveParticipant>
+    
+    <ActiveParticipant UserID="farley.granger@wb.com" UserIsRequestor="true"/>
+	
+	<ActiveParticipant UserID="1.2.840.114350.1.13.99999.4567|1.2.840.114350.1.13.99999.4567" AlternativeUserID="5216" UserIsRequestor="false" NetworkAccessPointID="10.145.243.142" NetworkAccessPointTypeCode="2">
+		<RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
+	</ActiveParticipant>
+	
+	<AuditSourceIdentification code="1" AuditEnterpriseSiteID="" AuditSourceID="SUN PIX/PDQ"/>
+	
+	<ParticipantObjectIdentification ParticipantObjectID="GHCADT-JD356^^^IHEGHCADT&amp;1.2.840.114350.1.13.99998.8734&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+		<ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
+	</ParticipantObjectIdentification>
+	
+	<ParticipantObjectIdentification ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+		<ParticipantObjectIDTypeCode csd-code="ITI-9" originalText="PIX Query" codeSystemName="IHE Transactions"/>
+		<ParticipantObjectQuery>VXRpbC5qYXhiTWFyc2hhbFRvU3RyaW5nKGJvZHkp</ParticipantObjectQuery>
+		<ParticipantObjectDetail type="2220c1c4-87ef-11dc-b865-3603d6866807" value="TWpJeU1HTXhZelF0T0RkbFppMHhNV1JqTFdJNE5qVXRNell3TTJRMk9EWTJPREEzDQo="/>
+	</ParticipantObjectIdentification>
+	
+</AuditMessage>

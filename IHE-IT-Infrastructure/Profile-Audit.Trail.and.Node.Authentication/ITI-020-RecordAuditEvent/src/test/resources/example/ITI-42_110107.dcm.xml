@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AuditMessage> 
+	<EventIdentification EventActionCode="C" EventDateTime="${timeStamp}" EventOutcomeIndicator="8"> 
+		<EventID csd-code="110107" originalText="Import" codeSystemName="DCM"/> 
+		<EventTypeCode csd-code="ITI-42" codeSystemName="IHE Transactions" originalText="Register Document Set - b"/> 
+	</EventIdentification> <!-- Source: Document Source --> 
+	<ActiveParticipant UserID="1.3.6.1.4.1.21367.13.2250" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2" AlternativeUserID="127.0.0.1"> 
+		<RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source"/> 
+	</ActiveParticipant> <!-- Dest: ICA Registry --> 
+	<ActiveParticipant UserID="ica:oid:8c63214d-1852-4744-9898-b386f4fb11fb" UserIsRequestor="false" NetworkAccessPointID="ica1.ihe.net" AlternativeUserID="ica1.ihe.net" NetworkAccessPointTypeCode="2"> 
+		<RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination"/> 
+	</ActiveParticipant> <!-- Audit Source --> 
+	<AuditSourceIdentification code="1" AuditSourceID="XDSRegistry@ica1.ihe.net"/> <!-- Submission Set --> 
+	<ParticipantObjectIdentification ParticipantObjectID="1.42.20110118092037.683" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="20"> 
+		<ParticipantObjectIDTypeCode csd-code="urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd" codeSystemName="IHE XDS Metadata" originalText="submission set classificationNode"/> 
+	</ParticipantObjectIdentification> <!-- Patient --> 
+	<ParticipantObjectIdentification ParticipantObjectID="123123123^^^&amp;amp;1.2.3.4.100&amp;amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1"> 
+		<ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/> 
+	</ParticipantObjectIdentification> 
+</AuditMessage>

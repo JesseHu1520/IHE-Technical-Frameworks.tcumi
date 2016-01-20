@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/POM/4.0.0 http://maven.apache.org/POM/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>edu.tcu.mi.ihe</groupId>
+		<artifactId>Profile-Patient.Identifier.Cross-Referencing</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>ITI-009-PIXQuery</artifactId>
+	<name>ITI-009-PIXQuery</name>
+	
+	<description>
+		This section corresponds to Transaction ITI-9 of the IHE IT Infrastructure Technical Framework.
+		Transaction ITI-9 is used by the Patient Identifier Cross-reference Consumer and Patient Identifier Cross-reference Manager actors.
+	</description>
+	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>IHE-Technical-Frameworks-utility</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>IHE-Technical-Frameworks-core</artifactId>
+		</dependency>
+		
+		<!-- This is the core HAPI library -->
+		<dependency>
+			<groupId>ca.uhn.hapi</groupId>
+			<artifactId>hapi-base</artifactId>
+			<version>${hapi.version}</version>
+		</dependency>
+
+		<!-- These are structure JARs for HL7 v2.1 and 2.5.1 (as an example) -->
+		<dependency>
+			<groupId>ca.uhn.hapi</groupId>
+			<artifactId>hapi-structures-v25</artifactId>
+			<version>${hapi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi</groupId>
+			<artifactId>hapi-hl7overhttp</artifactId>
+			<version>${hapi.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+		</plugins>
+	</build>
+</project>

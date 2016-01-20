@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="MetadataGenerator" type="metadataType"/>
+
+  <xs:complexType name="metadataType">
+     <xs:sequence>
+       <xs:element name="RepositoryUrl" type="xs:string" minOccurs="0"/>
+       <xs:element name="SourcePatientId" type="xs:string" minOccurs="1"/>
+       <xs:element name="PatientInfo" type="PatientInfo" minOccurs="1"/>
+       <xs:element name="Authors" type="Authors" minOccurs="1"/>
+       <xs:element name="ContentTypeCode" type="xs:string" minOccurs="1"/>
+       <xs:element name="Documents" type="Documents" minOccurs="0"/>
+       <xs:element name="Folders" type="Folders" minOccurs="0"/>
+     </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PatientInfo">
+     <xs:sequence>
+       <xs:element name="PID-3" type="xs:string" minOccurs="1"/>
+       <xs:element name="PID-5" type="xs:string" minOccurs="1"/>
+       <xs:element name="PID-7" type="xs:string" minOccurs="1"/>
+       <xs:element name="PID-8" type="xs:string" minOccurs="1"/>
+       <xs:element name="PID-11" type="xs:string" minOccurs="0"/>
+     </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Authors">
+    <xs:sequence>
+      <xs:element name="Author" type="Author" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+	<xs:complexType name="Author">
+		<xs:sequence>
+			<xs:element name="authorPerson" type="xs:string" minOccurs="0" />
+			<xs:element name="authorInstitution" type="xs:string" minOccurs="0" />
+			<xs:element name="authorRole" type="xs:string" minOccurs="0" />
+			<xs:element name="authorSpecialty" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+  <xs:complexType name="Documents">
+    <xs:sequence>
+      <xs:element name="Document" type="Document" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Document">
+     <xs:sequence>
+       <xs:element name="Title" type="xs:string" minOccurs="1"/>
+       <xs:element name="Description" type="xs:string" minOccurs="1"/>
+       <xs:element name="CreationTime" type="xs:string" minOccurs="1"/>
+       <xs:element name="MimeType" type="xs:string" minOccurs="1"/>
+       <xs:element name="Content" type="xs:string" minOccurs="1"/>
+       <xs:element name="DocumentAuthors" type="DocumentAuthors" minOccurs="1"/>
+       <xs:element name="ClassCode" type="xs:string" minOccurs="1"/>
+       <xs:element name="FormatCode" type="xs:string" minOccurs="1"/>
+       <xs:element name="HealthcareFacilityTypeCode" type="xs:string" minOccurs="1"/>
+       <xs:element name="PracticeSettingCode" type="xs:string" minOccurs="1"/>
+       <xs:element name="TypeCode" type="xs:string" minOccurs="1"/>
+       <xs:element name="ConfidentialityCodes" type="Codes" minOccurs="1" maxOccurs="unbounded"/>
+       <xs:element name="EventCodeList" type="Codes" minOccurs="0" maxOccurs="unbounded"/>
+       <xs:element name="Operation" type="xs:int"/>
+       <xs:element name="ExistingDocumentId" type="xs:string" minOccurs="1"/>
+     </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Codes">
+    <xs:sequence>
+      <xs:element name="Code" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DocumentAuthors">
+    <xs:sequence>
+      <xs:element name="DocumentAuthor" type="DocumentAuthor" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DocumentAuthor">
+    <xs:complexContent>
+      <xs:extension base="Author">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Folders">
+    <xs:sequence>
+      <xs:element name="Folder" type="Folder" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Folder">
+     <xs:sequence>
+       <xs:element name="Title" type="xs:string" minOccurs="1"/>
+       <xs:element name="Description" type="xs:string" minOccurs="1"/>
+       <xs:element name="Documents" type="Documents" minOccurs="0"/>
+       <xs:element name="FolderCodeList" type="Codes" minOccurs="1"/>
+       <xs:element name="ExistingFolderId" type="xs:string" minOccurs="1"/>
+     </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

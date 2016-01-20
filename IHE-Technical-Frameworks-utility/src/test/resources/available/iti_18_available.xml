@@ -1,0 +1,5 @@
+<query:AdhocQueryRequest xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0"><rs:RequestSlotList xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"/><query:ResponseOption returnType="ObjectRef"/><rim:AdhocQuery xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0" id="urn:uuid:958f3006-baad-4929-a4de-ff1114824431"><rim:Slot name="$XDSFolderStatus"><rim:ValueList><rim:Value>(
+			'urn:oasis:names:tc:ebxml-regrep:StatusType:Approved'
+		)</rim:Value></rim:ValueList></rim:Slot><rim:Slot name="$XDSFolderPatientId"><rim:ValueList><rim:Value>
+			'20131214^^^&amp;1.3.6.1.4.1.21367.2005.3.7&amp;ISO'
+		</rim:Value></rim:ValueList></rim:Slot></rim:AdhocQuery></query:AdhocQueryRequest>

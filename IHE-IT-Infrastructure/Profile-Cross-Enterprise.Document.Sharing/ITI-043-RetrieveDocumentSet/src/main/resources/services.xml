@@ -1,0 +1,14 @@
+<service name="RetrieveDocumentSet-Gaduo" targetNamespace="http://www.w3.org/2005/08/addressing">
+	<description>
+		RetrieveGenerator
+	</description>
+	<module ref="soapmonitor" />
+	<parameter name="ServiceClass">
+		edu.tcu.mi.ihe.iti.xds_transaction.service.RetrieveDocumentSet
+	</parameter>
+	<operation name="RetrieveGenerator">
+		<actionMapping>urn:Gaduo:Retrieve:Document:Set</actionMapping>
+		<messageReceiver
+			class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+	</operation>
+</service>

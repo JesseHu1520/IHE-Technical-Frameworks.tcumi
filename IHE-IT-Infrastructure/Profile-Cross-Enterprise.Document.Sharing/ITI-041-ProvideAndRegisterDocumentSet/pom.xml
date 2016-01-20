@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/POM/4.0.0 http://maven.apache.org/POM/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>edu.tcu.mi.ihe</groupId>
+		<artifactId>Profile-Cross-Enterprise.Document.Sharing</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>ITI-041-ProvideAndRegisterDocumentSet</artifactId>
+	<packaging>jar</packaging>
+	
+	<name>ITI-041-ProvideAndRegisterDocumentSet</name>
+	<description>ProvideAndRegisterDocumentSet</description>
+	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<dependencies>
+		
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>ITI-020-RecordAuditEvent</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>IHE-Technical-Frameworks-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>IHE-Technical-Frameworks-utility</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/../src/main/resources</directory>
+			</resource>
+		</resources>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+	<!-- 
+java2wsdl
+			<plugin>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-java2wsdl-maven-plugin</artifactId>
+				<configuration>
+					<serviceName>MetadataGenerator</serviceName>
+					<className>edu.tcu.mi.ihe.iti.xds_transaction.service.ProvideAndRegisterDocumentSet</className>
+					<outputFileName>${project.build.directory}/ProvideAndRegisterDocumentSet.wsdl</outputFileName>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>java2wsdl</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>			
+			<plugin>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-aar-maven-plugin</artifactId>
+				<configuration>
+					<servicesXmlFile>${basedir}/src/main/resources/services.xml</servicesXmlFile>
+					<wsdlFile>${project.build.directory}/ProvideAndRegisterDocumentSet.wsdl</wsdlFile>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>aar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+	-->
+		</plugins>
+	</build> 
+</project>

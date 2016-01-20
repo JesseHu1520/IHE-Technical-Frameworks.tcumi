@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<cdp:ContentPackage xmlns:cdp="http://www.hl7.org.tw/EMR/CDocumentPayload/v1.0"
+	xmlns="urn:hl7-org:v3" xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.hl7.org.tw/EMR/CDocumentPayload/v1.0 CDA_Package_V01.xsd">
+	<cdp:ContentContainer range="0">
+		<cdp:StructuredContent>
+			<ClinicalDocument classCode="DOCCLIN" moodCode="EVN"
+				xmlns="urn:hl7-org:v3" xmlns:voc="urn:hl7-org:v3/voc"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd">
+				<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040" />
+				<templateId extension="115_V101.0" root="2.16.886.101.20003.20014" />
+				<id extension="1.123456.20100801121101.1" root="2.16.886.111.100000.100000" />
+				<code code="18842-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Discharge Summary" />
+				<title>出院病歷摘要單</title>
+				<effectiveTime value="201107191042" />
+				<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="normal" />
+				<languageCode code="zh-TW" />
+				<recordTarget typeCode="RCT" contextControlCode="OP">
+					<patientRole classCode="PAT">
+						<id extension="123456" root="2.16.886.111.100000.100000" />
+						<patient classCode="PSN" determinerCode="INSTANCE">
+							<id extension="E290082480" root="2.16.886.101.20003.20001" />
+							<name>陳小美</name>
+							<administrativeGenderCode code="F"
+								codeSystem="2.16.840.1.113883.5.1" />
+							<birthTime value="19801225" />
+						</patient>
+						<providerOrganization classCode="ORG"
+							determinerCode="INSTANCE">
+							<id extension="0401180014" root="2.16.886.101.20003.20014" />
+							<name>國立臺灣大學醫學院附設醫院</name>
+						</providerOrganization>
+					</patientRole>
+				</recordTarget>
+				<author typeCode="AUT" contextControlCode="OP">
+					<!--醫師記錄日期時間 -->
+					<time value="201107102145" />
+					<assignedAuthor classCode="ASSIGNED">
+						<id extension="H0001" root="2.16.886.111.100000.100000" />
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<name>王小明</name>
+						</assignedPerson>
+					</assignedAuthor>
+				</author>
+				<custodian typeCode="CST">
+					<assignedCustodian classCode="ASSIGNED">
+						<representedCustodianOrganization
+							classCode="ORG" determinerCode="INSTANCE">
+							<id extension="0401180014" root="2.16.886.101.20003.20014" />
+							<name>國立臺灣大學醫學院附設醫院</name>
+						</representedCustodianOrganization>
+					</assignedCustodian>
+				</custodian>
+				<participant typeCode="REFB">
+					<associatedEntity classCode="PROV">
+						<id extension="0401190010" root="2.16.886.101.20003.20014" />
+						<scopingOrganization>
+							<name>臺大北護醫院</name>
+						</scopingOrganization>
+					</associatedEntity>
+				</participant>
+				<participant typeCode="REFT">
+					<associatedEntity classCode="PROV">
+						<id extension="7534010026" root="2.16.886.101.20003.20014" />
+						<scopingOrganization>
+							<name>陽明大學附設醫院護理之家</name>
+						</scopingOrganization>
+					</associatedEntity>
+				</participant>
+				<componentOf typeCode="COMP">
+					<encompassingEncounter classCode="ENC"
+						moodCode="EVN">
+						<effectiveTime>
+							<low value="20110701" />
+							<high value="20110707" />
+						</effectiveTime>
+						<location typeCode="LOC">
+							<healthCareFacility classCode="SDLOC">
+								<location classCode="PLC" determinerCode="INSTANCE">
+									<name>急診部</name>
+									<addr>001</addr>
+								</location>
+							</healthCareFacility>
+						</location>
+					</encompassingEncounter>
+				</componentOf>
+				<component typeCode="COMP" contextConductionInd="true">
+					<structuredBody classCode="DOCBODY" moodCode="EVN">
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="46241-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital admission Dx" />
+								<title>住院臆斷</title>
+								<text>
+									<paragraph>ICD9 487 疑似流行性感冒</paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="11535-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital discharge Dx" />
+								<title>出院診斷</title>
+								<text>Tuberculosis</text>
+								<entry>
+									<observation classCode="OBS" moodCode="EVN">
+										<code code="018" codeSystem="2.16.840.1.113883.6.2" codeSystemName="ICD-9-CM" displayName="Tuberculosis">
+										</code>
+										<statusCode code="Completed" />
+									</observation>
+								</entry>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="22037-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Cancer Staging" />
+								<title>癌症期別</title>
+								<text>
+									<paragraph>第一期</paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="10154-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Chief complaint" />
+								<title>主訴</title>
+								<text>
+									<paragraph>咳嗽已兩月未癒，並於近日咳嗽帶血絲。</paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="10164-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of past illness" />
+								<title>病史</title>
+								<text>
+									<paragraph>N/A</paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="29545-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Physical findings" />
+								<title>理學檢查發現</title>
+								<text>
+									<paragraph>身體消瘦，聽診時發現胸部囉音，且疑似肋膜腔積液</paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Laboratory Data" />
+								<title>檢驗</title>
+								<text>
+									<paragraph> 201107011211 血液檢驗 血液 白血球過高 </paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="19146-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Specific Examination" />
+								<title>特殊檢查</title>
+								<text>
+									<paragraph> 201107031020 心電圖 心律不整 </paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="19005-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Imaging Study" />
+								<title>醫療影像檢查</title>
+								<text>
+									<paragraph>X光 胸部 201107051230 肺結核</paragraph>
+								</text>
+								<entry>
+									<observationMedia classCode="DGIMG" moodCode="EVN">
+										<value mediaType="image/jpeg" representation="B64">
+											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
+										</value>
+									</observationMedia>
+								</entry>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="22034-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Pathology Report" />
+								<title>病理報告</title>
+								<text>
+									<paragraph>N/A</paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="8724-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Surgical Method and finding" />
+								<title>手術日期及方法</title>
+								<text>
+									<paragraph>N/A</paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="8648-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital course" />
+								<title>住院治療經過</title>
+								<text>
+									<paragraph>住院後因心跳過慢(35~50/min)會診心臟科，於使用Eltroxin後改善。</paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="55109-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Complications Document" />
+								<title>合併症與併發症</title>
+								<text>
+									<paragraph> 斷續有發燒現象、並無併發症 </paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="8653-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital Discharge Instructions" />
+								<title>出院指示</title>
+								<text>
+									<paragraph>使用退燒藥及抗結核藥、已經康復但須持續追蹤、避免辛辣食物、定時量測與紀錄體溫、預約1000831回診王小明醫師、一週份抗結核藥</paragraph>
+								</text>
+							</section>
+						</component>
+						<component typeCode="COMP" contextConductionInd="true">
+							<section classCode="DOCSECT" moodCode="EVN">
+								<code code="42345-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Discharge Status" />
+								<title>出院狀況</title>
+								<text>
+									<paragraph>治癒出院</paragraph>
+								</text>
+							</section>
+						</component>
+					</structuredBody>
+				</component>
+			</ClinicalDocument>
+		</cdp:StructuredContent>
+	</cdp:ContentContainer>
+	<ds:Signature Id="IS0001" xmlns:xades="http://uri.etsi.org/01903/v1.4.1#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+		<ds:SignedInfo>
+			<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+			<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+			<ds:Reference URI="">
+				<ds:Transforms>
+					<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+				</ds:Transforms>
+				<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+				<!--Digest Value of Xml Document -->
+				<ds:DigestValue>0Wfclg3NfpJX1BPOBW8pUskMQ7s=</ds:DigestValue>
+			</ds:Reference>
+		</ds:SignedInfo>
+		<!--Signature Value of SignedInfo -->
+		<ds:SignatureValue>hDMQwpvB77KYzKaAUh5BofMRkuqvsIhr6nPmJPjvq4HqHEeFM7co7aa7s0nYwrHUAtWZNfToawSVAcFAtE+zZBkkIUclRF8Y9V7UzgR+JALtUaAJNV/zPitwxf6QhCAbmy0SBatY4qb9kfSs1VYvuF0Os+nhcg9ajRH95+ucZoMbtp7MqJ4gN1PDl9swNMGS60b3ifdoHzi3yqnuDU7ii/c8v3IHzaxKJgkuANDAkjnsuuu+Drz47x2v6FjAkDikkO4/GXzLny70C6Rs3loJsOX/vLqW8s32xxCNP1GaMHf3KdLPuEXaU3jGOh2BPj6aY0903A0k4qdyAIa5IscN+A==</ds:SignatureValue>
+		<ds:KeyInfo>
+			<ds:X509Data>
+				<ds:X509Certificate>MIIEoTCCA4mgAwIBAgIQAQDt5AAAASj4c+zuAAAEwDANBgkqhkiG9w0BAQUFADBDMRUwEwYDVQQKHgyITGU/lmKIW3Uff3IxHTAbBgNVBAseFG4simaRq06LYZGLSXuhdAZOLV/DMQswCQYDVQQGEwJUVzAeFw0xMDA2MDIxMTM3NDZaFw0xNTA2MDIxMTM3NDZaMCQxCzAJBgNVBAYTAlRXMRUwEwYDVQQKHgxuLIpmkatOi2pfacswggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCn+WbIzODFzpvZpic5FNzXGQkI9ZyweeZx6bZD8lIl1Jmuh4471/QJ3sXAxZheDSOziSYfD3bPFFHrFc2nqCMEI/6vlX+U4iQ10+7R0nL111z3e9PJzoyOLoJ+xNHb2wYqonMw09ZK6WGKTR0ZZDuZCGGVzgz3dO2fbQz8XGrA9wDzgPyFr4oICPX+KKeTUj5VFifKhtf61dMkX25SvvUXpwQKO6KQpbpmdRZ+VrPVZssIgk7Opyg3Rt+qKFEgFwl9OyFLpTd5N4n+0/IWrwzGspozBfwv74nyNPW7K4CdJ1sRdGVWuuA8NEFtJBuAupIAOGgMQ9XdNXUp2i3xeEbRAgMBAAGjggGuMIIBqjAdBgNVHQ4EFgQUhXDU8wva5dtFKM6JcgfRKyRA/VUwHwYDVR0jBBgwFoAUmKi/CYatF99ESK2x5D0s8StLKz8wSgYDVR0fBEMwQTA/oD2gO4Y5aHR0cDovL2hjYW9jc3AubmF0Lmdvdi50dy9yZXBvc2l0b3J5L0hDQS9DUkwvY29tcGxldGUuY3JsMAsGA1UdDwQEAwIHgDCBowYIKwYBBQUHAQEEgZYwgZMwTQYIKwYBBQUHMAGGQWh0dHA6Ly9oY2FvY3NwLm5hdC5nb3YudHcvcmVwb3NpdG9yeS9IQ0EvQ2VydHMvSXNzdWVkVG9UaGlzQ0EucDdiMEIGCCsGAQUFBzAChjZodHRwOi8vaGNhb2NzcC5uYXQuZ292LnR3L2NnaS1iaW4vT0NTUC9vY3NwX3NlcnZlci5leGUwFgYDVR0gBA8wDTALBgdghnZlAAMDMAAwUQYDVR0JBEowSDAVBgdghnYBZAIBMQoGCGCGdgFkAwIVMBYGB2CGdgFkAgIxCxMJc2Vjb25kYXJ5MBcGB2CGdgFkAm8xDAwKRkZGRkZGRkZGMDANBgkqhkiG9w0BAQUFAAOCAQEAPsVHWx0uAaaszobxxTppH+Xe9B+5sX2+KFnEMPMecUA6iG537jypMK+jOz6TpRY9juN8N3MVqayoec8WxRn1qSKRncN/TUkrPH4h1irW2YSfiRHL9bw/MaDCwy9d6Pn2s5ZtPO7mQ1SPzzXVuXbJyXM3sdYY5osGuthnxkQyFfCMTX7mvWxy6OM4wq5ra4cqJ2qqgQbLixpOXfiVLbuW3qoS6UuxDw3WqOb7CbaYJlMn0MJwbGRjTIw/ciu0y4uWXb27+rgEZBUfnDs1oX2smlMxUeDW7AJnmJ2FFyryPYCmcxMZmcOKDDHfeEe42Xx+bFa2xYExPxFYiI2vyRdahQ==</ds:X509Certificate>
+			</ds:X509Data>
+		</ds:KeyInfo>
+		<ds:Object xmlns:xades="http://uri.etsi.org/01903/v1.4.1#"
+			xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+			<xades:QualifyingProperties Target="#IS0001">
+				<xades:UnsignedProperties>
+					<xades:UnsignedSignatureProperties>
+						<xades:SignatureTimeStamp>
+							<xades:EncapsulatedTimeStamp>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</xades:EncapsulatedTimeStamp>
+						</xades:SignatureTimeStamp>
+					</xades:UnsignedSignatureProperties>
+				</xades:UnsignedProperties>
+			</xades:QualifyingProperties>
+		</ds:Object>
+	</ds:Signature>
+</cdp:ContentPackage>

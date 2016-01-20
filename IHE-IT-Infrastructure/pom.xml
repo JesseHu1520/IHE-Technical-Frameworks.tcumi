@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/POM/4.0.0 http://maven.apache.org/POM/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>IHE-IT-Infrastructure</artifactId>
+	<packaging>pom</packaging>
+
+	<name>IHE-IT-Infrastructure</name>
+	<description>
+		Integrating The Healthcare Enterprise IT Infrastructure
+	</description>
+	<url>https://github.com/Gaduo/IHE-IT-Infrastructure</url>
+
+	<parent>
+		<groupId>edu.tcu.mi.ihe</groupId>
+		<artifactId>IHE-Technical-Frameworks</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+		<hapi.version>2.1</hapi.version>
+		<axiom.version>1.2.14</axiom.version>
+	</properties>
+
+	<modules>
+		<module>Profile-Consistent.Time</module>
+		<module>Profile-Cross-Enterprise.Document.Sharing</module>
+		<module>Profile-Patient.Identifier.Cross-Referencing</module>
+		<!-- <module>Profile-Patient.Demographics.Query</module> -->
+		<module>Profile-Audit.Trail.and.Node.Authentication</module>
+		<!-- <module>Profile-Cross-Community.Access</module> -->
+		<module>Profile-Mobile.access.to.Health.Documents</module>
+		<module>IHE-Connectathon</module>
+	</modules>
+
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Sonatype Nexus snapshot repository</name>
+			<url>http://203.64.84.174:8081/nexus/content/repositories/snapshots
+			</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>

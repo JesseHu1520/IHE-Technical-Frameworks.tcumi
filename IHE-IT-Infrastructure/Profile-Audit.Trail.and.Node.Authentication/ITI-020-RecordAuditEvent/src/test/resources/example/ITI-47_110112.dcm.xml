@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<AuditMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="healthcare-security-audit.xsd">
+	<EventIdentification EventActionCode="E" EventDateTime="${timeStamp}" EventOutcomeIndicator="8">
+		<EventID csd-code="110112" originalText="Query" codeSystemName="DCM"/>
+		<EventTypeCode csd-code="ITI-47" originalText="Patient Demographics Query" codeSystemName="IHE Transactions"/>
+	</EventIdentification>
+	<ActiveParticipant UserID="PatientKeeper|PK-SIMPK" AlternativeUserID="9452" UserIsRequestor="false" NetworkAccessPointID="10.242.8.71" NetworkAccessPointTypeCode="2">
+		<RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+	</ActiveParticipant>
+	<ActiveParticipant UserID="XDSDEMO_ADT|XDSDEMO" UserIsRequestor="false" NetworkAccessPointID="10.242.2.15" NetworkAccessPointTypeCode="2">
+		<RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
+	</ActiveParticipant>
+	<ActiveParticipant UserIsRequestor="true" UserID="CLN/granger.farley"/>
+	<AuditSourceIdentification code="1" AuditSourceID="PatientKeeper"/>
+	<ParticipantObjectIdentification ParticipantObjectID="@PID.5.1.1^C*" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+		<ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
+	</ParticipantObjectIdentification>
+	<ParticipantObjectIdentification ParticipantObjectID="" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+		<ParticipantObjectIDTypeCode csd-code="ITI-47" originalText="Patient Demographics Query" codeSystemName="IHE Transactions"/>
+		<ParticipantObjectQuery>TVNIfF5+XCZ8UGF0aWVudEtlZXBlcnxQSy1TSU1QS3xYRFNERU1PX0FEVHxYRFNERU1PfDIwMTEwMTE4MTIwMzUyLTA2MDB8fFFCUF5RMjJeUUJQX1EyMXw4MzE1OTI5MjY4ODE1NDg1MTkzfFB8Mi41DVFQRHxJSEUgUERRIFF1ZXJ5fDc0NDg2ODAyMzcxODE0MjQ0MjgwODA5NDQ3MzIzODd8QFBJRC41LjEuMV5DKnx8fHx8Xl5eSUhFTkEmMS4zLjYuMS40LjEuMjEzNjcuMjAxMC4xLjIuMzAwJklTTw1SQ1B8SXwxMF5SRA0=</ParticipantObjectQuery>
+	</ParticipantObjectIdentification>
+</AuditMessage>

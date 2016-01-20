@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuditMessage>
+    <EventIdentification EventOutcomeIndicator="0" EventDateTime="${timeStamp}" EventActionCode="C">
+        <EventID codeSystemName="DCM" originalText="Patient Record" csd-code="110110"/>
+        <EventTypeCode codeSystemName="IHE Transactions" originalText="Patient Identity Feed" csd-code="ITI-8"/>
+    </EventIdentification>
+    <ActiveParticipant NetworkAccessPointTypeCode="2" NetworkAccessPointID="10.242.0.157" UserIsRequestor="true" AlternativeUserID="02752" UserID="PID Source">
+        <RoleIDCode codeSystemName="DCM" originalText="Source" csd-code="110153"/>
+    </ActiveParticipant>
+    <ActiveParticipant UserID="farley.granger@wb.com" UserIsRequestor="true"/>
+    <ActiveParticipant NetworkAccessPointTypeCode="2" NetworkAccessPointID="10.242.0.151" UserIsRequestor="false" AlternativeUserID="pixman" UserID="ECW|OpenPIXPDQ">
+        <RoleIDCode codeSystemName="DCM" originalText="Destination" csd-code="110152"/>
+    </ActiveParticipant>
+    <AuditSourceIdentification code="1" AuditSourceID="ECW" AuditEnterpriseSiteID="ECW"/>
+    <ParticipantObjectIdentification ParticipantObjectTypeCodeRole="1" ParticipantObjectTypeCode="1" 
+      ParticipantObjectID="981139165^^^AlE1&amp;1.3.6.1.4.1.21367.13.20.5120&amp;ISO">
+        <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
+        <ParticipantObjectName>Granger^Farley</ParticipantObjectName>
+        <ParticipantObjectDetail value="MDAwMDI3NTI=" type="MSH-10"/>
+    </ParticipantObjectIdentification>
+</AuditMessage>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="QueryGenerator" type="queryType"/>
+  <xs:complexType name="queryType">
+    <xs:sequence>
+      <xs:element name="QueryUUID" type="QueryUUID" minOccurs="0"/>
+      <xs:element name="ReturnType" type="ReturnType" minOccurs="0"/>
+      <xs:element name="Parameter" type="Parameter" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="QueryUUID">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="ReturnType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="Parameter">
+    <xs:sequence>
+      <xs:element name="Value" type="Value" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:complexType>
+  <xs:simpleType name="Value">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+</xs:schema>
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<div apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('edu.tcu.mi.zk.view_model.xds_b.DocumentConsumerVM')">
+	<grid>
+		<columns>
+			<column width="200px" />
+			<column />
+			<column width="150px" />
+			<column />
+		</columns>
+		<rows>
+			<row>
+				<label value="* 文件註冊中心" style="color:red"/>
+				<combobox model="@bind(vm.companyInfomations)"
+					selectedItem="@bind(vm.query.companyRegistry)">
+					<template name="model">
+						<comboitem label="@load(each.name)" />
+					</template>
+				</combobox>
+				<label value="" />
+				<button hflex="1" label="查詢"
+					onClick="@command('submit')" />
+			</row>
+			<row>
+				<label value="* Query 類型" style="color:red"/>
+				<combobox width="200px" model="@bind(vm.queryTypeList)"
+					selectedItem="@bind(vm.query.queryType)"
+					onChange="@command('SelectQueryType')">
+					<template name="model">
+						<comboitem label="@load(each.key)"
+							value="@load(each.value)" />
+					</template>
+				</combobox>
+				<label value="* Returen Type" style="color:red"/>
+				<listbox selectedItem="@bind(vm.query.returnType)">
+					<listitem label="清單查詢 (ObjectRef)"
+						value="ObjectRef" />
+					<listitem label="詳細內容 (LeafClass)"
+						value="LeafClass" />
+				</listbox>
+			</row>
+		</rows>
+	</grid>
+	<include src="@load(vm.view)" />
+	<grid>
+		<columns>
+			<column>訊息回應 :   <label value="@bind(vm.timestamp)" /> 秒</column>
+		</columns>
+		<rows>
+			<row>
+				<grid model="@bind(vm.ITI_18.list)" mold="paging" autopaging="true" height="200px">
+					<template name="model">
+						<row popup="${each}, position=overlap_end"
+							style="cursor:pointer">
+							<cell colspan="2" align="left">
+								<label hflex="1" value="@load(each)" />
+								<popup id="${each}">
+									<include
+										src="XDS.b/DocumentConsumer_LeafClass.zul" uuid="${each}"
+										registry="${vm.query.companyRegistry}" query="${vm.query}"
+										response="${vm.ITI_18.response}" />
+								</popup>
+							</cell>
+						</row>
+					</template>
+				</grid>
+			</row>
+		</rows>
+	</grid>
+	<grid>
+		<columns>
+			<column width="150px" />
+			<column />
+		</columns>
+		<rows>
+			<row>
+				<label value="Status" />
+				<textbox hflex="1" value="@load(vm.ITI_18.status)" />
+			</row>
+			<row>
+				<label value="CodeContext" />
+				<textbox hflex="1" value="@load(vm.ITI_18.codeContext)" />
+			</row>
+			<row>
+				<label value="ErrorCode" />
+				<textbox hflex="1" value="@load(vm.ITI_18.errorCode)" />
+			</row>
+			<row>
+				<label value="Location" />
+				<textbox rows="4" hflex="1"
+					value="@load(vm.ITI_18.location)" />
+			</row>
+			<row>
+				<label value="Severity" />
+				<textbox hflex="1" value="@load(vm.ITI_18.severity)" />
+			</row>
+		</rows>
+	</grid>
+</div>

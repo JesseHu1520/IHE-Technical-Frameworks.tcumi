@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/POM/4.0.0 http://maven.apache.org/POM/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>edu.tcu.mi.ihe</groupId>
+		<artifactId>IHE-IT-Infrastructure</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>Profile-Patient.Demographics.Query</artifactId>
+	<name>Profile-Patient.Demographics.Query(PDQ)</name>
+	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
+	<packaging>pom</packaging>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<dependencies>
+	</dependencies>
+	
+	
+	<modules>
+		<module>ITI-021-PatientDemographicsQuery</module>
+	</modules>
+</project>

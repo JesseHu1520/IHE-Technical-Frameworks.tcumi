@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/POM/4.0.0 http://maven.apache.org/POM/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>edu.tcu.mi.ihe</groupId>
+		<artifactId>Profile-Consistent.Time</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>ITI-001-MaintainTime</artifactId>
+	<packaging>jar</packaging>
+	<name>ITI-001-MaintainTime</name>
+	<description>MaintainTime</description>
+	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<commons-net.version>2.0</commons-net.version>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>${commons-net.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+		</plugins>     
+	</build>       
+</project>

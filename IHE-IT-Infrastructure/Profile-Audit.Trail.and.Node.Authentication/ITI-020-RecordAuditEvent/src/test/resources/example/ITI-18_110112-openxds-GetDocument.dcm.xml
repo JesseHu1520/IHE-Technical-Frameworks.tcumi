@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AuditMessage>
+    <EventIdentification EventOutcomeIndicator="0" EventDateTime="2014-03-28T21:53:47.048+08:00" EventActionCode="E">
+        <EventID codeSystemName="DCM" originalText="Query" csd-code="110112"/>
+        <EventTypeCode codeSystemName="IHE Transactions" originalText="Registry Stored Query" csd-code="ITI-18"/>
+    </EventIdentification>
+    <ActiveParticipant NetworkAccessPointTypeCode="2" NetworkAccessPointID="203.64.84.247" UserIsRequestor="true" UserID="http://www.w3.org/2005/08/addressing/anonymous">
+        <RoleIDCode codeSystemName="DCM" originalText="Source" csd-code="110153"/>
+    </ActiveParticipant>
+    <ActiveParticipant NetworkAccessPointTypeCode="2" NetworkAccessPointID="203.64.84.247" UserIsRequestor="false" UserID="http://localhost:8011/axis2/services/xdsregistryb">
+        <RoleIDCode codeSystemName="DCM" originalText="Destination" csd-code="110152"/>
+    </ActiveParticipant>
+    <AuditSourceIdentification AuditSourceID="MISYS" AuditEnterpriseSiteID="MISYS"/>
+    <ParticipantObjectIdentification ParticipantObjectTypeCodeRole="24" ParticipantObjectTypeCode="2" ParticipantObjectID="urn:uuid:5c4f972b-d56b-40ac-a5fc-c8ca9b40b9d4">
+        <ParticipantObjectIDTypeCode codeSystemName="IHE Transactions" codeSystem="IHE Transactions" originalText="Registry Stored Query" csd-code="ITI-18"/>
+        <ParticipantObjectQuery>PHF1ZXJ5OkFkaG9jUXVlcnlSZXF1ZXN0IHhtbG5zOnF1ZXJ5PSJ1cm46b2FzaXM6bmFtZXM6dGM6ZWJ4bWwtcmVncmVwOnhzZDpxdWVyeTozLjAiPjxyczpSZXF1ZXN0U2xvdExpc3QgeG1sbnM6cnM9InVybjpvYXNpczpuYW1lczp0YzplYnhtbC1yZWdyZXA6eHNkOnJzOjMuMCIgLz48cXVlcnk6UmVzcG9uc2VPcHRpb24gcmV0dXJuVHlwZT0iTGVhZkNsYXNzIiAvPjxyaW06QWRob2NRdWVyeSB4bWxuczpyaW09InVybjpvYXNpczpuYW1lczp0YzplYnhtbC1yZWdyZXA6eHNkOnJpbTozLjAiIGlkPSJ1cm46dXVpZDo1YzRmOTcyYi1kNTZiLTQwYWMtYTVmYy1jOGNhOWI0MGI5ZDQiPjxyaW06U2xvdCBuYW1lPSIkWERTRG9jdW1lbnRFbnRyeUVudHJ5VVVJRCI+PHJpbTpWYWx1ZUxpc3Q+PHJpbTpWYWx1ZT4oJ3Vybjp1dWlkOmFhYzdjNDkwLWI2NjctNDY4Ny1hNmNlLWE0MGE4ZmI3MjQyNycpPC9yaW06VmFsdWU+PHJpbTpWYWx1ZT4oJ3Vybjp1dWlkOjQ3ZTg5Nzk2LTQ1ZTEtNGQyZC05YjE1LWI2MDFhNjRhYTNkOScpPC9yaW06VmFsdWU+PC9yaW06VmFsdWVMaXN0PjwvcmltOlNsb3Q+PC9yaW06QWRob2NRdWVyeT48L3F1ZXJ5OkFkaG9jUXVlcnlSZXF1ZXN0Pg==</ParticipantObjectQuery>
+    </ParticipantObjectIdentification>
+</AuditMessage>

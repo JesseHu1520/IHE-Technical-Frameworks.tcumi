@@ -1,0 +1,74 @@
+
+
+<script th:inline="javascript" th:fragment="javascript">
+	/*<![CDATA[*/
+	$(function() {	
+		
+	});
+
+	/*]]>*/
+</script>
+
+<div th:fragment="content">
+	<div class="container bs-docs-container">
+		<h2>Dev. Environment - Tomcat (Web Server)</h2>
+		
+		<div class="col-md-9 well" role="main">
+		
+			<div id="top" class="bs-docs-section">
+				<h3>Tomcat 安裝</h3>
+				<p>
+				Tomcat 為網頁運行容器，網頁伺服器，能輕量簡易的安裝與執行。
+				</p>
+			</div>
+			
+			<div id="step01" class="bs-docs-section">
+				<h3>Step 01. 前置作業</h3>
+				<ul>
+					<li>設定 <a th:href="@{/applicationdev/java/}">Java 環境變數</a>)</li>
+					<li>下載： <a href="http://tomcat.apache.org/download-70.cgi">Tomcat 7</a></li>
+					<li>安裝：以 64 位元舉例, 解壓縮 apache-tomcat-6.0.44-windows-x64.zip 即可</li>
+				</ul>
+			</div>
+			
+			<div id="step02" class="bs-docs-section">
+				<h3>Step 02. 啟動</h3>
+				<ul>
+					<li>到目錄 bin/ 執行 startup.bat啟動成功最後會出現, "資訊; Server startup in xxxx ms "</li>
+					<li>請至瀏覽器, 輸入 "http://localhost:8080/" 網址, 若有出現一隻貓的網頁則成功執行 Tomcat Server</li>
+				</ul>
+			</div>
+			
+			<div id="step03" class="bs-docs-section">
+				<h3>Step 03. 發布網站</h3>
+				<ul>
+					<li>將 .war 檔案，複製到 webapps</li>
+					<li>重新啟動 tomcat </li>
+				</ul>
+			</div>
+			
+			<div id="step04" class="bs-docs-section">
+				<h3>
+					Option. 
+					<a href="http://gaduo-chien-blog.logdown.com/posts/2013/07/18/write-a-java-web-page-program-first-step-how-to-set-up-tomcat">
+						其他資訊 
+					</a>
+				</h3>
+			</div>
+		</div>
+		<div class="col-md-3" role="complementary" >
+			<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+				<br/>
+				<br/>
+				<ul class="nav">
+					<li><a href="#top">Tomcat 安裝</a></li>
+					<li><a href="#step01">Step 01. 前置作業</a></li>
+					<li><a href="#step02">Step 02. 啟動</a></li>
+					<li><a href="#step03">Step 03. 發布網站</a></li>
+					<li><a href="#step04">Option 其他資訊</a></li>
+				</ul>
+				<a class="back-to-top" href="#top"> Back to top </a>
+			</nav>
+		</div>
+	</div>
+</div>

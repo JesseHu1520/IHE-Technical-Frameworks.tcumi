@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<div>
+    <grid>
+        <columns>
+            <column width="200px" />
+            <column width="200px" />
+            <column />
+        </columns>
+        <rows>
+            <row spans="1,2">
+                <label value="homeCommunityId (O):" />
+                <textbox hflex="1" value="@bind(vm.query.parameter.homeCommunityId)" />
+            </row>
+            <row>
+                <label value="* DocumentEntry (M)"  style="color:red"/>
+                <radiogroup onCheck="" hflex="1" selectedItem='@bind(vm.query.parameter.type)'>
+                    <radio label="EntryUUID" value="EntryUUID" />
+                    <radio label="UniqueId" value="UniqueId" />
+                </radiogroup>
+                <textbox hflex="1" value="@bind(vm.query.parameter.id)" constraint="no empty" />
+            </row>
+        </rows>
+    </grid>
+</div>
