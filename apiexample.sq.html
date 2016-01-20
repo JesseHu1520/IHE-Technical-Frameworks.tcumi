@@ -1,0 +1,153 @@
+<script th:inline="javascript" th:fragment="javascript">
+	/*<![CDATA[*/
+	$(function() {	
+		$('body').scrollspy({
+		    target: '.bs-docs-sidebar',
+		    offset: 40
+		});
+	});
+
+	/*]]>*/
+</script>
+
+<div th:fragment="content">
+	<div class="container bs-docs-container">
+		<div class="col-md-9 well" role="main">
+			
+			<div id="top" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>ITI-18:查詢註冊資訊 - Registry Stored Query</h3>
+				<h5>範例說明：</h5>
+				<p>
+					提供一個交易模式，將後面 大類的交易細節填寫至 "put some code after/replace here" 之後。<br/>
+					endpoint 為 Registry 位置，可測試於 http://ihexds.nist.gov:12090/tf6/services/xdsregistryb?wsdl。	
+				</p>
+				<script src="https://gist.github.com/Gaduo/e414ea956ac205599cf2.js"></script>
+			</div>
+		
+			<div id="function01" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>01. 找尋文件索引 - Find Documents</h3>
+				<h5>範例說明：</h5>
+				<hr/>	
+			</div>
+			
+			<div id="function02" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>02. 找尋目錄索引 - Find Folders</h3>
+				<h5>範例說明：</h5>
+				<hr />
+			</div>
+			
+			<div id="function03" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>03. 找尋交易記錄索引 - Find SubmissionSets</h3>
+				<h5>範例說明：</h5>
+				<hr/>
+			</div>
+			
+			<div id="function04" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>04. 取得文件索引 - Get Documents</h3>
+				<h5>範例說明：</h5>
+				<hr/>
+			</div>
+			
+			<div id="function05" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>05. 取得目錄索引 - GetFolders</h3>
+				<h5>範例說明：</h5>
+				<hr/>
+			</div>
+			
+			<div id="function06" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>06. 取得交易記錄索引 - Get SubmissionSet</h3>
+				<h5>範例說明：</h5>
+				<hr/>
+			</div>
+			
+			<div id="function07" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>07. 取得實體關係索引 - Get Associations</h3>
+				<h5>範例說明：</h5>
+				<hr/>
+			</div>
+			
+			<div id="function08" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>08. 取得文件相關實體索引 - Get Documents And Associations</h3>
+				<h5>範例說明：</h5>
+				<hr/>
+			</div>
+			
+			<div id="function09" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>09. 取得目錄及其內容索引 - Get Folder And Contents</h3>
+				<h5>範例說明：</h5>
+				<hr/>
+			</div>
+			
+			<div id="function10" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>10. 依據文件取得目錄索引 - Get Folders For Document</h3>
+				<h5>範例說明：</h5>
+				<hr/>
+			</div>
+			
+			<div id="function11" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>11. 取得文件相關實體索引 - Get Related Documents</h3>
+				<h5>範例說明：</h5>
+				<hr/>
+			</div>
+			
+			<div id="function12" class="bs-docs-section">
+				<br/>
+				<br/>
+				<h3>12. 取得交易記錄及其內容索引 - Get SubmissionSet And Contents</h3>
+				<h5>範例說明：</h5>
+				<hr/>
+			</div>
+			
+		</div>
+		<div class="col-md-3" role="complementary" >
+			<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+				<br/>
+				<br/>
+				<ul class="nav">
+					<li><a href="#top">前置初始化資訊</a></li>
+					<li><a href="#function01">01. 找尋文件索引</a></li>
+					<li><a href="#function02">02. 找尋目錄索引</a></li>
+					<li><a href="#function03">03. 找尋交易記錄索引</a></li>
+					<li><a href="#function04">04. 取得文件索引</a></li>
+					<li><a href="#function05">05. 取得目錄索引</a></li>
+					<li><a href="#function06">06. 取得交易記錄索引</a></li>
+					<li><a href="#function07">07. 取得實體關係索引</a></li>
+					<li><a href="#function08">08. 取得文件相關實體索引 </a></li>
+					<li><a href="#function09">09. 取得目錄及其內容索引</a></li>
+					<li><a href="#function10">10. 依據文件取得目錄索引</a></li>
+					<li><a href="#function11">11. 取得文件相關實體索引</a></li>
+					<li><a href="#function12">12. 取得交易記錄及其內容索引</a></li>
+				</ul>
+				<ul class="nav">
+					<li><a href="#">解析索引</a></li>
+				</ul>
+				<a class="back-to-top" href="#top"> Back to top </a>
+			</nav>
+		</div>
+	</div>
+	
+</div>

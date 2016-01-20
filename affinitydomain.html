@@ -17,7 +17,17 @@
 		<link href="resources/tooltipster/3.3.0/css/themes/tooltipster-light.css" rel="stylesheet" type="text/css" /> 
 		<link href="resources/main/css/core.css" rel="stylesheet" type="text/css" ></link>
 		<link href="resources/main/css/docs.min.css" rel="stylesheet" type="text/css" ></link>
-		<!-- InstanceBeginEditable name="EditRegion4" --><!-- InstanceEndEditable -->
+		<!-- InstanceBeginEditable name="EditRegion4" -->
+		<link href="resources/datatables/1.10.10/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+		<link href="resources/datatables/1.1.0/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" /> 		
+		<style type="text/css" >
+			tr.group,
+			tr.group:hover {
+				background-color: #ddd !important;
+			}
+		</style>	
+		
+		<!-- InstanceEndEditable -->
 		
 
 	    <style type="text/css">
@@ -115,22 +125,41 @@
     <br/>
     <div class="after-header">
         <!-- InstanceBeginEditable name="EditRegion1" -->
-			
-
-            <div th:fragment="content">
-                <div class="container bs-docs-container">
-                    <br/>
-                    <br/>
-                    <h3>新世代個人化雲端健康記錄醫療資訊服務系統</h3>
-                    <img alt="" src="resources/main/img/RKeIuPobBBZUR7uG-CFDD9.png" width="1024" />
-                    
-                    <h4>XDS &amp; MHD</h4>
-                    <img alt="" src="resources/main/img/XDS&amp;MHD.png" />
-                    
+        <div>
+            <div class="container bs-docs-container">
+                <div class="row">
+                    <div class="col-md-4">文件型式 (ContentTypeCode)</div>
+                    <div class="col-md-4">類型代碼 (TypeCode)</div>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">類別 (ClassCode)</div>
+                    <div class="col-md-4">格式 (FormatCode)</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">機構種類 (HealthcareFacilityTypeCode)</div>
+                    <div class="col-md-4">臨床領域 (PracticeSettingCode)</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">機密性 (ConfidentialityCode) [M]</div>
+                    <div class="col-md-4">關鍵字 (EventCodeList) [M]</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">資料夾代碼 (FolderCodeList) [M]</div>
+                    <div class="col-md-4"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">MIME類型 (MimeType)</div>
+                    <div class="col-md-4"></div>
+                </div>
+                
+                
+                <hr/>
+                <table id="datatable" cellspacing="0" class="table table-hover"></table>
             </div>
-			
-			<!-- InstanceEndEditable -->
+        </div>
+		
+		
+		<!-- InstanceEndEditable -->
     </div>
     <hr/>
     <!--/.container-->
@@ -161,7 +190,14 @@
     <![endif]-->
     
     <script src="resources/main/js/main.js"></script>
-    <!-- InstanceBeginEditable name="EditRegion3" --><!-- InstanceEndEditable -->
+    <!-- InstanceBeginEditable name="EditRegion3" -->
+			
+	<script src="resources/datatables/1.10.10/js/jquery.dataTables.min.js" type="text/javascript" ></script>
+    <script src="resources/datatables/1.10.10/js/dataTables.bootstrap.min.js" type="text/javascript" ></script>
+    <script src="resources/datatables/1.1.0/js/dataTables.buttons.min.js" type="text/javascript" ></script>
+    <script src="resources/datatables/1.1.0/js/buttons.bootstrap.min.js" type="text/javascript" ></script>
+	
+	<!-- InstanceEndEditable -->
             
             
     <script >
@@ -182,7 +218,75 @@
             //$("#userGuide").tooltipster('show');		
         });
     </script>
-    <!-- InstanceBeginEditable name="EditRegion2" --><!-- InstanceEndEditable -->
+    <!-- InstanceBeginEditable name="EditRegion2" -->
+	
+     <script>
+	   /*<![CDATA[*/
+		var api = "resources/api/AffinityDomain.json";
+		
+		$(function(){
+			var table = $('#datatable').DataTable( {
+				"ajaxSource": api,
+				"paging":         true,
+				"scrollX":        false,
+				"scrollY":        false,
+				"scrollCollapse": false,
+				"fixedColumns":   false,
+				"autoWidth": false,
+				"columns": [{
+					"data": "name",
+					"visible":false
+				}, {
+					"title": "Code",
+					"data": "codes.0.code",
+					"visible":true
+				}, {
+					"title": "Display",
+					"data": "codes.0.display",
+					"visible":true
+				}, {
+					"title": "Coding Scheme",
+					"data": "codes.0.codingScheme",
+					"visible":true
+				}, {
+					"title": "ext",
+					"data": "codes.0.ext",
+					"visible":true
+				}],
+				"drawCallback": function ( settings ) {
+					var api = this.api();
+					var rows = api.rows( {page:'current'} ).nodes();
+					var last=null;
+		 
+					api.column(0, {page:'current'} ).data().each( function ( group, i ) {
+						if ( last !== group ) {
+							$(rows).eq( i ).before(
+								'<tr class="group"><td colspan="4">' + group +'</td></tr>'
+							);
+							last = group;
+						}
+					} );
+				}
+			});
+			 
+			// Order by the grouping
+			$('#datatable tbody').on( 'click', 'tr.group', function () {
+				var currentOrder = table.order()[0];
+				if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+					table.order( [ 2, 'desc' ] ).draw();
+				}
+				else {
+					table.order( [ 2, 'asc' ] ).draw();
+				}
+			} );
+	
+		});
+	   /*]]>*/
+	</script>
+	
+	
+	
+	<!-- InstanceEndEditable -->
 </body>
 
 
