@@ -8,11 +8,9 @@ IHE-Technical-Frameworks.tcumi - Java API for IHE-Technical-Frameworks Clients a
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/edu.tcu.mi.ihe/IHE-Technical-Frameworks.tcumi/badge.svg)](http://search.maven.org/#search|ga|1|edu.tcu.mi.ihe)
 [![Dependency Status](https://www.versioneye.com/user/projects/569f89792c2fab003600005d/badge.svg?style=flat)](https://www.versioneye.com/user/projects/569f89792c2fab003600005d)
 [![License](https://img.shields.io/badge/license-apache%202.0-ff69b4.svg)](http://gaduo.github.io/IHE-Technical-Frameworks.tcumi/license.html)
+[![Gitter](https://badges.gitter.im/Gaduo/IHE-Technical-Frameworks.tcumi.svg)](https://gitter.im/Gaduo/IHE-Technical-Frameworks.tcumi?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Complete project documentation is available here:
 http://gaduo.github.io/IHE-Technical-Frameworks.tcumi/
-
-A demonstration of this project is available here:
-###
 
 This project is Open Source, licensed under the Apache Software License 2.0.
