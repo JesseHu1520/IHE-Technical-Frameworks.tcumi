@@ -1,17 +1,121 @@
-
-
-
-
-<script th:inline="javascript" th:fragment="javascript">
-	/*<![CDATA[*/
-	$(function() {	
+<!DOCTYPE HTML>
+<html lang="zh-tw" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"><!-- InstanceBegin template="/Templates/default.dwt.html" codeOutsideHTMLIsLocked="false" -->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<link href="resources/main/img/favicon.ico" rel="shortcut icon"></link>
+		<title>IHE-IT-Infrastructure-web</title>
+		<link href="resources/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"></link>
+		<link href="resources/octicons/3.3.0/octicons.css" rel="stylesheet" type="text/css" />
+		<link href="resources/bootstrap-submenu/2.0.3/css/bootstrap-submenu.min.css" rel="stylesheet"></link>
 		
-	});
+		<link href="resources/intro.js/2.0/minified/introjs.min.css" rel="stylesheet"></link>
+		<link href="resources/tooltipster/3.3.0/css/tooltipster.css" rel="stylesheet" type="text/css" />
+		<link href="resources/tooltipster/3.3.0/css/themes/tooltipster-light.css" rel="stylesheet" type="text/css" /> 
+		<link href="resources/main/css/core.css" rel="stylesheet" type="text/css" ></link>
+		<link href="resources/main/css/docs.min.css" rel="stylesheet" type="text/css" ></link>
+        
+		<!-- InstanceBeginEditable name="EditRegion4" --><!-- InstanceEndEditable -->
+		
+	    <style type="text/css">
+			.after-header {
+				padding: 0px 0px;
+			}
+			
+			div.growlUI {
+				background: url(check48.png) no-repeat 10px 10px
+			}
+			
+			div.growlUI h1, div.growlUI h2 {
+				color: #fff;
+				padding: 5px 5px 5px 75px;
+				text-align: left
+			}
+			
+			div.growlUI h2 {
+				font-size: medium
+			}
+		</style>
+	</head>
 
-	/*]]>*/
-</script>
 
-<div th:fragment="content">
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    	<!-- Fixed navbar -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://gaduo.github.io/IHE-Technical-Frameworks.tcumi/">Healthcare</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="download#top"><span class="octicon octicon-cloud-download"></span>Download</a></li>
+                    <li>
+                        <a href="https://github.com/Gaduo/IHE-Technical-Frameworks.tcumi" target="_blank">
+                            <span class="octicon octicon-mark-github"></span>Github Project
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="octicon octicon-book"></span>
+                            Documentation
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Application Dev.</li>
+                            <li class="dropdown-header">XDS JAVA API</li>
+                            <li class="dropdown-header">01. XDS Document Source</li>
+                            <li><a href="apiexample.pnr#top"> - ITI-41:Provide And Registry DocumentSet</a></li>
+                            <li class="dropdown-header">02. XDS Document Consumer</li>
+                            <li><a href="apiexample.sq#top"> - ITI-18:Registry Stored Query</a></li>
+                            <li><a href="apiexample.ret#top"> - ITI-43:Retrieve DocumentSet</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">MHD Restful API</li>
+                            <li><a href="#">01. MHD Document Consumenr</a></li>
+                            <li><a href="#">02. MHD Document Source</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">AffinityDomain</li>
+                            <li><a href="affinitydomain#top"> - Codes.xml</a></li>
+                        
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">安裝開發環境</li>
+                            <li><a href="devenvironment.java#top">Step 01. Java 安裝</a></li>
+                            <li><a href="devenvironment.tomcat#top">Step 02. Tomcat 安裝</a></li>
+                            <!-- <li><a href="/DevEnvironment/maven/">Step 03. Apache Maven</a></li> -->
+                            
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Server 架設</li>
+                            <li><a href="devenvironment.openxds#top">01. OpenXDS 建置</a></li>
+                            <!-- li><a href="/DevEnvironment/openpixpdq/">02. OpenPIXPDQ</a></li>
+                            <li><a href="/DevEnvironment/openatna/">03. OpenATNA</a></li -->
+                            
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">IHE Connectathon</li>
+                            <li><a href="iheconnectathon.endpoints">服務端口 Endpoints</a></li>
+                            <li><a href="iheconnectathon.preconnect">前測 Pre-Connectathon</a></li>
+                            <li><a href="iheconnectathon.ihec">IHE-C 聯測 IHE-C Connectathon</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact">Contact</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>        
+    </div>
+    <!-- /.navbar -->
+
+    <br/>
+    <div class="after-header">
+        <!-- InstanceBeginEditable name="EditRegion1" -->
+<div>
 	<div class="container bs-docs-container">
 	
 <h3>No Peer</h3>
@@ -262,3 +366,62 @@
 	
 	</div>
 </div>
+		
+		
+		<!-- InstanceEndEditable -->
+    </div>
+    <hr/>
+    <!--/.container-->
+    
+    <div>
+        <div class="container">
+            &copy; 2014 Gaduo, foxb1249@gmail.com
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="resources/jquery/2.2.0/jquery.min.js"></script>
+    <script src="resources/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+            
+    <script src="resources/intro.js/2.0/minified/intro.min.js"></script>
+    <script src="resources/jquery-blockui/2.70/jquery.blockUI.js"></script>
+    <script src="resources/tooltipster/3.3.0/js/jquery.tooltipster.min.js" type="text/javascript"></script>
+    
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="resources/main/js/main.js"></script>
+    <!-- InstanceBeginEditable name="EditRegion3" --><!-- InstanceEndEditable -->
+            
+            
+    <script >
+        var loading = "resources/main/img/loading.gif";
+		  $(function(){
+            var tooltip = {
+                content : "使用導覽",
+                minWid: 200,
+                theme : "tooltipster-light",
+                updateAnimation: false,
+                contentAsHTML: true,
+                autoClose : true,
+                onlyOne : false,
+                position : "bottom",
+                positionTracker : true
+            };
+            $("#userGuide").tooltipster(tooltip);
+            //$("#userGuide").tooltipster('show');		
+        });
+    </script>
+    <!-- InstanceBeginEditable name="EditRegion2" --><!-- InstanceEndEditable -->
+</body>
+
+
+<!-- InstanceEnd --></html>
