@@ -116,7 +116,7 @@
     <div class="after-header">
         <!-- InstanceBeginEditable name="EditRegion1" -->
 
-<div th:fragment="content">
+<div fragment="content">
 	<div class="container bs-docs-container">
 		<div class="col-md-9 well" role="main">
 			<div id="top" class="bs-docs-section">
@@ -133,17 +133,17 @@
 				<br/>
 				<h3>Step 01. 下載 SQL </h3>
 				<ul>
-					<li><a th:href="@{/resources/openhealthtools/openxds.mysql.sql}" target="_blank">MySQL</a></li>
-					<li><a th:href="@{/resources/openhealthtools/openxds.oracle.sql}" target="_blank">Oracle Database</a></li>
-					<li><a th:href="@{/resources/openhealthtools/openxds.sqlserver2005.sql}" target="_blank">SQLServer2005</a></li>
-					<li><a th:href="@{/resources/openhealthtools/openxds.postgres.sql}" target="_blank">PostgresSQL</a></li>
+					<li><a href="https://raw.githubusercontent.com/Gaduo/openxds/master/openxds-registry-adapter-omar/src/main/resources/create_database_schema_mysql.sql" target="_blank">MySQL</a></li>
+					<li><a href="https://raw.githubusercontent.com/Gaduo/openxds/master/openxds-registry-adapter-omar/src/main/resources/create_database_schema_oracle.sql" target="_blank">Oracle Database</a></li>
+					<li><a href="https://raw.githubusercontent.com/Gaduo/openxds/master/openxds-registry-adapter-omar/src/main/resources/create_database_schema_sqlserver2005.sql" target="_blank">SQLServer2005</a></li>
+					<li><a href="https://raw.githubusercontent.com/Gaduo/openxds/master/openxds-registry-adapter-omar/src/main/resources/create_database_schema_postgres.sql" target="_blank">PostgresSQL</a></li>
 				</ul>
 			</div>
 			
 			<div id="step02" class="bs-docs-section">
 				<br/>
 				<br/>
-				<h3>Step 02. 下載 <a th:href="@{/resources/openhealthtools/openxds.war}" target="_blank">openxds.war</a></h3>
+				<h3>Step 02. 下載 <a href="https://github.com/Gaduo/openxds/releases/download/1.0.1/openxds-web.war" target="_blank">openxds.war</a></h3>
 			</div>
 			
 			<div id="step03" class="bs-docs-section">
@@ -184,8 +184,8 @@
 					<li>勾選  'XDS Registry', 'XDS Repository'</li>
 					<li>最後在最下面，點擊 start 啟動鈕</li>
 				</ol>
-				<a th:href="@{http://i.imgur.com/bxYwaYH.png}" target="_blank">
-					<img class="col-md-12" alt="" th:src="@{http://i.imgur.com/bxYwaYH.png}" />
+				<a href="@{http://i.imgur.com/bxYwaYH.png}" target="_blank">
+					<img class="col-md-12" alt="" src="@{http://i.imgur.com/bxYwaYH.png}" />
 				</a>
 			</div>
 			
