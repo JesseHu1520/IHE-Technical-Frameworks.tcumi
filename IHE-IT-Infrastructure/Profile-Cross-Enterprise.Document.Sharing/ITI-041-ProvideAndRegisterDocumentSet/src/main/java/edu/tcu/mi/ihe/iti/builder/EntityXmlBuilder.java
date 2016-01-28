@@ -1,6 +1,5 @@
 package edu.tcu.mi.ihe.iti.builder;
 
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -12,10 +11,8 @@ import edu.tcu.mi.ihe.constants.EbXML;
 import edu.tcu.mi.ihe.constants.Namespace;
 import edu.tcu.mi.ihe.iti.core.MessageBuilder;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
-import lombok.Getter;
-import lombok.Setter;
 
-public abstract class EntityBuilder extends MessageBuilder {
+public abstract class EntityXmlBuilder extends MessageBuilder {
 	protected String objectType;
 
 	protected abstract String getId();
@@ -84,7 +81,7 @@ public abstract class EntityBuilder extends MessageBuilder {
 	}
 	
 	protected OMElement generateExternalIdentifier(String uuid, String entryUUID, String value, OMElement name) {
-		MetadataBuilder.objectRef.add(uuid);
+		MetadataXmlBuilder.objectRef.add(uuid);
 
 		AxiomUtil axiom = AxiomUtil.getInstance();
 		/* ExternalIdentifier */
@@ -103,7 +100,7 @@ public abstract class EntityBuilder extends MessageBuilder {
 	
 
 	private OMElement generateClassification(String uuid, String entryUUID, String nodeRepresentation, OMElement name, OMElement[] slot) {
-		MetadataBuilder.objectRef.add(uuid);
+		MetadataXmlBuilder.objectRef.add(uuid);
 		
 		AxiomUtil axiom = AxiomUtil.getInstance();
 		/* classification */
@@ -137,7 +134,7 @@ public abstract class EntityBuilder extends MessageBuilder {
 	private HashMap<String, String> extractCode(String name, String code) {
 		HashMap<String, String> valuelist = new HashMap<String, String>();
 		String query = "Codes/CodeType[@name='" + name + "']/Code[@code='" + code + "']";
-		Node node = MetadataBuilder.codes.QueryNode(query);
+		Node node = MetadataXmlBuilder.codes.QueryNode(query);
 		if(node == null){
 			return null;
 		}
@@ -155,5 +152,11 @@ public abstract class EntityBuilder extends MessageBuilder {
 			valuelist.put("codeSystemVersion", "");
 		}
 		return valuelist;
+	}
+
+	@Override
+	public String getMessageFromHL7v2() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

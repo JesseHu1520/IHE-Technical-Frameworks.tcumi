@@ -9,7 +9,7 @@ import edu.tcu.mi.ihe.iti.model.Association;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
 import lombok.Setter;
 
-public class AssociationBuilder extends EntityBuilder {
+public class AssociationXmlBuilder extends EntityXmlBuilder {
 	@Setter
 	private Association association;
 	
@@ -55,11 +55,6 @@ public class AssociationBuilder extends EntityBuilder {
 			return false;		
 		}
 		return true;
-	}
-
-	@Override
-	public String getMessageFromHL7v2() {
-		return null;
 	}
 
 	@Override

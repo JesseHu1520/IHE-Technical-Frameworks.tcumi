@@ -11,11 +11,11 @@ import edu.tcu.mi.ihe.iti.model.SubmissionSet;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
 import lombok.Setter;
 
-public class SubmissionSetBuilder extends EntityBuilder {
+public class SubmissionSetXmlBuilder extends EntityXmlBuilder {
 	@Setter
 	private SubmissionSet submissionSet; 
 
-	public SubmissionSetBuilder(){
+	public SubmissionSetXmlBuilder(){
 		objectType = ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSON_SET_OBJECT;
 	}
 	
@@ -29,7 +29,7 @@ public class SubmissionSetBuilder extends EntityBuilder {
 		OMElement root = axiom.createOMElement(EbXML.RegistryPackage, Namespace.RIM3);
 		root.addAttribute("id", this.getId(), null);
 		root.addAttribute("objectType", objectType, null);
-		MetadataBuilder.objectRef.add(objectType);
+		MetadataXmlBuilder.objectRef.add(objectType);
 		// --submissionTime
 		String submissionTime = generateTimeStamp();
 		if (submissionTime != null) {
@@ -37,7 +37,7 @@ public class SubmissionSetBuilder extends EntityBuilder {
 			root.addChild(slot);
 		}
 		// ---------------------Author
-		AuthorBuilder authorBuilder = new AuthorBuilder();
+		AuthorXmlBuilder authorBuilder = new AuthorXmlBuilder();
 		for(Author author : submissionSet.getAuthors()){
 			authorBuilder.setAuthor(author);
 			OMElement element = authorBuilder.getMessageFromXML();
@@ -57,30 +57,24 @@ public class SubmissionSetBuilder extends EntityBuilder {
 		OMElement externalIdentifier01 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSION_SET_PATIENT_IDENTIFICATION_SCHEME, this.getId(), submissionSet.getPatient().getPatientId(), name);
 		root.addChild(externalIdentifier01);
 		
-		String uniqueId = MetadataBuilder.generateUniqueId();
+		String uniqueId = MetadataXmlBuilder.generateUniqueId();
 		name = generateNameOrDescription(SubmissionSetConstants.UNIQUE_ID, EbXML.Name);
 		OMElement externalIdentifier02 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSION_SET_UNIQUE_IDENTIFICATION_SCHEME, this.getId(), uniqueId, name);
 		root.addChild(externalIdentifier02);
 		
 		name = generateNameOrDescription(SubmissionSetConstants.SOURCE_ID, EbXML.Name);
-		OMElement externalIdentifier03 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSION_SET_SOURCE_IDENTIFICATION_SCHEME, this.getId(), MetadataBuilder.SourceID, name);
+		OMElement externalIdentifier03 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.SUBMISSION_SET_SOURCE_IDENTIFICATION_SCHEME, this.getId(), MetadataXmlBuilder.SourceID, name);
 		root.addChild(externalIdentifier03);
 		return root;
 	}
 
 	@Override
 	protected boolean validate() {
-		if(MetadataBuilder.SourceID == null || MetadataBuilder.SourceID.equals(""))
+		if(MetadataXmlBuilder.SourceID == null || MetadataXmlBuilder.SourceID.equals(""))
 			return false;
 		return true;
 	}
 	
-	@Override
-	public String getMessageFromHL7v2() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	protected String getId() {
 		return submissionSet.getId();

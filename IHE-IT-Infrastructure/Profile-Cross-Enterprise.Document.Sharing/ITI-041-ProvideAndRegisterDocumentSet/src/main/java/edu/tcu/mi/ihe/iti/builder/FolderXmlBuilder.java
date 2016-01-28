@@ -10,11 +10,11 @@ import edu.tcu.mi.ihe.iti.model.Folder;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
 import lombok.Setter;
 
-public class FolderBuilder extends EntityBuilder {
+public class FolderXmlBuilder extends EntityXmlBuilder {
 	@Setter 
 	private Folder folder;
 	
-	public FolderBuilder(){
+	public FolderXmlBuilder(){
 		objectType = ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_OBJECT;
 	}
 	
@@ -25,7 +25,7 @@ public class FolderBuilder extends EntityBuilder {
 		OMElement root = axiom.createOMElement(EbXML.RegistryPackage, Namespace.RIM3);
 		root.addAttribute("id", folder.getId(), null);
 		root.addAttribute("objectType", objectType, null);
-		MetadataBuilder.objectRef.add(objectType);
+		MetadataXmlBuilder.objectRef.add(objectType);
 		
 		// --Folder Time
 		String lastUpdateTime = generateTimeStamp();
@@ -56,7 +56,7 @@ public class FolderBuilder extends EntityBuilder {
 		OMElement externalIdentifier01 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_PATIENT_IDENTIFICATION_SCHEME, folder.getId(), folder.getPatient().getPatientId(), name01);
 		root.addChild(externalIdentifier01);
 		
-		String uniqueId = MetadataBuilder.generateUniqueId();
+		String uniqueId = MetadataXmlBuilder.generateUniqueId();
 		OMElement name02 = generateNameOrDescription(FolderConstants.UNIQUE_ID, EbXML.Name);
 		OMElement externalIdentifier02 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_UNIQUE_IDENTIFICATION_SCHEME, folder.getId(), uniqueId, name02);
 		root.addChild(externalIdentifier02);
@@ -68,12 +68,6 @@ public class FolderBuilder extends EntityBuilder {
 	protected boolean validate() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public String getMessageFromHL7v2() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

@@ -9,17 +9,17 @@ import edu.tcu.mi.ihe.iti.model.Author;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
 import lombok.Setter;
 
-public class AuthorBuilder extends EntityBuilder {
+public class AuthorXmlBuilder extends EntityXmlBuilder {
 	@Setter
 	private Author author;
 	
-	public AuthorBuilder(){
+	public AuthorXmlBuilder(){
 		this.objectType = ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_AUTHOR;
 	}
 	
 	@Override
 	public OMElement getMessageFromXML() {
-		MetadataBuilder.objectRef.add(objectType);
+		MetadataXmlBuilder.objectRef.add(objectType);
 		/* classification */
 		AxiomUtil axiom = AxiomUtil.getInstance();
 		OMElement classification = axiom.createOMElement(EbXML.Classification, Namespace.RIM3);
@@ -60,12 +60,6 @@ public class AuthorBuilder extends EntityBuilder {
 	protected boolean validate() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public String getMessageFromHL7v2() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

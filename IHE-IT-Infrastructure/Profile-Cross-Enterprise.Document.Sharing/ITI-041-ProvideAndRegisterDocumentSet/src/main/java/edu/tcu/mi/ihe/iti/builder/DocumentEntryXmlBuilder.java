@@ -14,14 +14,14 @@ import edu.tcu.mi.ihe.iti.model.DocumentEntry;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
 import lombok.Setter;
 
-public class DocumentEntryBuilder extends EntityBuilder {
+public class DocumentEntryXmlBuilder extends EntityXmlBuilder {
 
 	@Setter
 	private DocumentEntry documentEntry;
 	
 	private Association lifecycle;
 
-	public DocumentEntryBuilder(){
+	public DocumentEntryXmlBuilder(){
 		objectType = ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_OBJECT;
 	}
 
@@ -41,7 +41,7 @@ public class DocumentEntryBuilder extends EntityBuilder {
 //			// Relationship Signs 
 		if(documentEntry.getSignatureDocumentId() != null) 
 			createLifecycle(documentEntry.getSignatureDocumentId(), DocumentRelationshipsConstants.Signs);
-		AssociationBuilder associationBuilder = new AssociationBuilder();
+		AssociationXmlBuilder associationBuilder = new AssociationXmlBuilder();
 		associationBuilder.setAssociation(lifecycle);
 		if(lifecycle != null)
 			return associationBuilder.getMessageFromXML();
@@ -65,7 +65,7 @@ public class DocumentEntryBuilder extends EntityBuilder {
 		OMElement root = axiom.createOMElement(EbXML.ExtrinsicObject, Namespace.RIM3);
 		root.addAttribute("id", this.getId(), null);
 		root.addAttribute("objectType", objectType, null);
-		MetadataBuilder.objectRef.add(objectType);
+		MetadataXmlBuilder.objectRef.add(objectType);
 		if(documentEntry.getMimeType() != null)
 			root.addAttribute("mimeType", documentEntry.getMimeType(), null);// MimeType
 		root.addAttribute("status", Namespace.APPROVED.getNamespace(), null);
@@ -97,7 +97,7 @@ public class DocumentEntryBuilder extends EntityBuilder {
 			root.addChild(slot);
 		}
 		
-		PatientBuilder patientBuilder = new PatientBuilder();
+		PatientXmlBuilder patientBuilder = new PatientXmlBuilder();
 		patientBuilder.setPatient(documentEntry.getPatient());
 		if(documentEntry.getPatient() != null){
 			OMElement pInfo = patientBuilder.getMessageFromXML();
@@ -130,7 +130,7 @@ public class DocumentEntryBuilder extends EntityBuilder {
 			root.addChild(name);
 		}
 		// ---------------------Author
-		AuthorBuilder builder = new AuthorBuilder();
+		AuthorXmlBuilder builder = new AuthorXmlBuilder();
 		for(Author author : documentEntry.getAuthors() ){
 			builder.setAuthor(author);
 			OMElement element = builder.getMessageFromXML();
@@ -195,7 +195,7 @@ public class DocumentEntryBuilder extends EntityBuilder {
 		OMElement externalIdentifier01 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_PATIENT_IDENTIFICATION_SCHEME, getId(), documentEntry.getPatient().getPatientId(), name);
 		root.addChild(externalIdentifier01);
 		// ---UNIQUE_ID
-		String uniqueId = MetadataBuilder.generateUniqueId();
+		String uniqueId = MetadataXmlBuilder.generateUniqueId();
 		name = generateNameOrDescription(DocumentEntryConstants.UNIQUE_ID, EbXML.Name);
 		OMElement externalIdentifier02 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_UNIQUE_IDENTIFICATION_SCHEME, getId(), uniqueId, name);
 		root.addChild(externalIdentifier02);
@@ -256,12 +256,6 @@ public class DocumentEntryBuilder extends EntityBuilder {
 				token[i] = (i+1) + "|" + content.substring(i * block);
 		}
 		return token;
-	}
-
-	@Override
-	public String getMessageFromHL7v2() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

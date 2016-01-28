@@ -5,7 +5,7 @@ import org.apache.axiom.om.OMElement;
 import edu.tcu.mi.ihe.iti.model.Patient;
 import lombok.Setter;
 
-public class PatientBuilder extends EntityBuilder {
+public class PatientXmlBuilder extends EntityXmlBuilder {
 	@Setter
 	private Patient patient;
 	
@@ -26,12 +26,6 @@ public class PatientBuilder extends EntityBuilder {
 	protected boolean validate() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public String getMessageFromHL7v2() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

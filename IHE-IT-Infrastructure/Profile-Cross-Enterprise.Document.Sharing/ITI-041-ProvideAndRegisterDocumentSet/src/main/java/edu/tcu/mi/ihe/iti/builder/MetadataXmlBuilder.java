@@ -13,6 +13,7 @@ import org.springframework.core.io.ClassPathResource;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 
 import edu.tcu.mi.ihe.constants.DocumentRelationshipsConstants;
@@ -28,7 +29,7 @@ import edu.tcu.mi.ihe.utility.AxiomUtil;
 import edu.tcu.mi.ihe.utility.xml.XMLPath;
 import lombok.Getter;
 
-public class MetadataBuilder extends MessageBuilder {
+public class MetadataXmlBuilder extends MessageBuilder {
 
 	public static Set<String> objectRef;
 	public static XMLPath codes;
@@ -48,18 +49,18 @@ public class MetadataBuilder extends MessageBuilder {
 	@Expose @Getter
 	private List<Folder> folders;
 	
-	public MetadataBuilder(){
+	public MetadataXmlBuilder(){
 		documents = Lists.newArrayList();
 		folders = Lists.newArrayList();
 
-		MetadataBuilder.objectRef = Sets.newTreeSet();
+		MetadataXmlBuilder.objectRef = Sets.newTreeSet();
 		try {
 			InetAddress localHost = InetAddress.getLocalHost();
-			MetadataBuilder.IP = localHost.getHostAddress();
+			MetadataXmlBuilder.IP = localHost.getHostAddress();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		MetadataBuilder.count = 0;
+		MetadataXmlBuilder.count = 0;
 		
 		Properties prop = new Properties();
 		try {
@@ -69,16 +70,16 @@ public class MetadataBuilder extends MessageBuilder {
 			e.printStackTrace();
 		}
 		String sourceId = prop.getProperty("source.id");
-		MetadataBuilder.SourceID = sourceId;
+		MetadataXmlBuilder.SourceID = sourceId;
 		
 		
-		MetadataBuilder.bootTimestamp = this.generateTimeStamp();
+		MetadataXmlBuilder.bootTimestamp = this.generateTimeStamp();
 		
 		ClassPathResource cResource = new ClassPathResource("codes.xml");
 		ClassPathResource wResource = new ClassPathResource("web.xml");
 		try {
-			MetadataBuilder.codes = new XMLPath(cResource.getInputStream());
-			MetadataBuilder.web = new XMLPath(wResource.getInputStream());
+			MetadataXmlBuilder.codes = new XMLPath(cResource.getInputStream());
+			MetadataXmlBuilder.web = new XMLPath(wResource.getInputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -153,8 +154,8 @@ public class MetadataBuilder extends MessageBuilder {
 		OMElement registryObjectList = axiom.createOMElement(EbXML.RegistryObjectList, Namespace.RIM3);
 		submitObjectsRequest.addChild(registryObjectList);
 		
-		AssociationBuilder associationBuilder = new AssociationBuilder();
-		DocumentEntryBuilder documentEntryBuilder = new DocumentEntryBuilder();
+		AssociationXmlBuilder associationBuilder = new AssociationXmlBuilder();
+		DocumentEntryXmlBuilder documentEntryBuilder = new DocumentEntryXmlBuilder();
 		String ssId = submissionSet.getId();
 		for(DocumentEntry document : documents){
 			documentEntryBuilder.setDocumentEntry(document);
@@ -198,7 +199,7 @@ public class MetadataBuilder extends MessageBuilder {
 			logger.info("------ Document ------");
 		}
 		// ------ Folder ------
-		FolderBuilder folderBuilder = new FolderBuilder();
+		FolderXmlBuilder folderBuilder = new FolderXmlBuilder();
 		for(Folder folder: folders){
 			folderBuilder.setFolder(folder);
 			String fId = folder.getId();
@@ -317,7 +318,7 @@ public class MetadataBuilder extends MessageBuilder {
 			logger.info("------ Folder ------");
 		}
 
-		SubmissionSetBuilder submissionSetBuilder = new SubmissionSetBuilder();
+		SubmissionSetXmlBuilder submissionSetBuilder = new SubmissionSetXmlBuilder();
 		submissionSetBuilder.setSubmissionSet(submissionSet);
 		// ------ SubmissionSet ------
 		OMElement ssElement = submissionSetBuilder.getMessageFromXML();
@@ -340,12 +341,12 @@ public class MetadataBuilder extends MessageBuilder {
 	}
 
 	public static String generateUniqueId() {
-		MetadataBuilder.count++;
-		return 	MetadataBuilder.SourceID + "." + 
-				MetadataBuilder.IP + "." + 
-				MetadataBuilder.bootTimestamp + "." + 
+		MetadataXmlBuilder.count++;
+		return 	MetadataXmlBuilder.SourceID + "." + 
+				MetadataXmlBuilder.IP + "." + 
+				MetadataXmlBuilder.bootTimestamp + "." + 
 				Thread.currentThread().getId() + "." + 
-				MetadataBuilder.count;
+				MetadataXmlBuilder.count;
 	}
 
 	@Override
@@ -356,7 +357,8 @@ public class MetadataBuilder extends MessageBuilder {
 
 	@Override
 	public String toString(){
-		return new Gson().toJson(this);
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		return gson.toJson(this);
 	}
 	
 }
