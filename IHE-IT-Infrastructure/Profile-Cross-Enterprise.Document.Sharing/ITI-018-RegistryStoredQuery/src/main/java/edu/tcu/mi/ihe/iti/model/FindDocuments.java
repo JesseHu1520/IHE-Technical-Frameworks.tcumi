@@ -1,118 +1,129 @@
-package edu.tcu.mi.ihe.iti.builder;
+package edu.tcu.mi.ihe.iti.model;
 
 import com.google.common.collect.Lists;
+import com.google.gson.Gson;
 
 import edu.tcu.mi.ihe.constants.Namespace;
 import edu.tcu.mi.ihe.constants.RegistryStoredQueryUUIDs;
 import edu.tcu.mi.ihe.constants.StoredQueryConstants;
 
-public class FindDocumentsBuilder extends QueryBuilder {
+public class FindDocuments extends QueryModel {
 	
-	public FindDocumentsBuilder(){
+	public FindDocuments(){
 		super(RegistryStoredQueryUUIDs.FIND_DOCUMENTS_UUID);
 	}
 
-	public FindDocumentsBuilder andPatientId(String val){
+	public FindDocuments andPatientId(String val){
 		this.parameter.put(StoredQueryConstants.DE_PATIENT_ID, val);
 		return this;
 	}
-	public FindDocumentsBuilder andClassCode(String ... val){
+	public FindDocuments andClassCode(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_CLASS_CODE, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andClassCodeScheme(String ... val){
+	public FindDocuments andClassCodeScheme(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_CLASS_CODE_SCHEME, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andSettingCode(String ... val){
+	public FindDocuments andPracticeSettingCode(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_PRAC_SETTING_CODE, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andSettingScheme(String ... val){
+	public FindDocuments andPracticeSettingScheme(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_PRAC_SETTING_CODE_SCHEME, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andCreationTimeFrom(String val){
+	public FindDocuments andCreationTimeFrom(String val){
 		this.parameter.put(StoredQueryConstants.DE_CREATION_TIME_FROM, val);
 		return this;
 	}
-	public FindDocumentsBuilder andCreationTimeTo(String val){
+	public FindDocuments andCreationTimeTo(String val){
 		this.parameter.put(StoredQueryConstants.DE_CREATION_TIME_TO, val);
 		return this;
 	}
-	public FindDocumentsBuilder andServiceStartTimeFrom(String val){
+	public FindDocuments andServiceStartTimeFrom(String val){
 		this.parameter.put(StoredQueryConstants.DE_SERVICE_START_TIME_FROM, val);
 		return this;
 	}
-	public FindDocumentsBuilder andServiceStartTimeTo(String val){
+	public FindDocuments andServiceStartTimeTo(String val){
 		this.parameter.put(StoredQueryConstants.DE_SERVICE_START_TIME_TO, val);
 		return this;
 	}
-	public FindDocumentsBuilder andServiceStopTimeFrom(String val){
+	public FindDocuments andServiceStopTimeFrom(String val){
 		this.parameter.put(StoredQueryConstants.DE_SERVICE_STOP_TIME_FROM, val);
 		return this;
 	}
-	public FindDocumentsBuilder andServiceStopTimeTo(String val){
+	public FindDocuments andServiceStopTimeTo(String val){
 		this.parameter.put(StoredQueryConstants.DE_SERVICE_STOP_TIME_TO, val);
 		return this;
 	}
-	public FindDocumentsBuilder andHealthcareFacilityTypeCode(String ... val){
+	public FindDocuments andHealthcareFacilityTypeCode(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_HC_FACILITY_CODE, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andHealthcareFacilityTypeCodeScheme(String ... val){
+	public FindDocuments andHealthcareFacilityTypeCodeScheme(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_HC_FACILITY_CODE_SCHEME, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andEventCodeList(String ... val){
+	public FindDocuments andEventCodeList(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_EVENT_CODE, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andEventCodeListScheme(String ... val){
+	public FindDocuments andEventCodeListScheme(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_EVENT_CODE_SCHEME, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andConfidentialityCode(String ... val){
+	public FindDocuments andConfidentialityCode(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_CONF_CODE, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andConfidentialityCodeScheme(String ... val){
+	public FindDocuments andConfidentialityCodeScheme(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_CONF_CODE_SCHEME, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andFormatCode(String ... val){
+	public FindDocuments andFormatCode(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_FORMAT_CODE, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocumentsBuilder andStatusByApproved(){
+	public FindDocuments andAuthorPerson(String ... val){
+		this.parameters.put(StoredQueryConstants.DE_AUTHOR_PERSON, Lists.newArrayList(val));
+		return this;
+	}
+	public FindDocuments andStatusByApproved(){
 		String key = StoredQueryConstants.DE_STATUS;
 		String value = Namespace.APPROVED.getNamespace();
-		andStatus(key, value);
+		andConstantsValue(key, value);
 		return this;
 	}
-	public FindDocumentsBuilder andStatusByDeprecated(){
+	public FindDocuments andStatusByDeprecated(){
 		String key = StoredQueryConstants.DE_STATUS;
 		String value = Namespace.DEPRECATED.getNamespace();
-		andStatus(key, value);
+		andConstantsValue(key, value);
 		return this;
 	}
-	public FindDocumentsBuilder andStatusBySubmitted(){
+	public FindDocuments andStatusBySubmitted(){
 		String key = StoredQueryConstants.DE_STATUS;
 		String value = Namespace.SUBMITTED.getNamespace();
-		andStatus(key, value);
+		andConstantsValue(key, value);
 		return this;
 	}
 
 	@Override
-	protected boolean validate() {
-		if(!parameter.containsKey(StoredQueryConstants.DE_PATIENT_ID)) return false;
-		if(!parameters.containsKey(StoredQueryConstants.DE_STATUS)) return false;
+	public boolean validate() {
+		if(!parameter.containsKey(StoredQueryConstants.DE_PATIENT_ID)){
+			logger.error("Not found message of " + StoredQueryConstants.DE_PATIENT_ID);
+			return false;
+		}
+		if(!parameters.containsKey(StoredQueryConstants.DE_STATUS)){
+			logger.error("Not found message of " + StoredQueryConstants.DE_STATUS);
+			return false;
+		}
 		return true;
 	}
 
 	@Override
-	public String getMessageFromHL7v2() {
-		return null;
+	public String toString(){
+		return new Gson().toJson(this);
 	}
 	
 }

@@ -1,34 +1,28 @@
-package edu.tcu.mi.ihe.iti.builder;
+package edu.tcu.mi.ihe.iti.model;
 
 import com.google.common.collect.Lists;
 
 import edu.tcu.mi.ihe.constants.RegistryStoredQueryUUIDs;
 import edu.tcu.mi.ihe.constants.StoredQueryConstants;
 
-public class GetAssociationsBuilder extends QueryBuilder {
+public class GetAssociations extends QueryModel {
 	
-	public GetAssociationsBuilder(){
+	public GetAssociations(){
 		super(RegistryStoredQueryUUIDs.GET_ASSOCIATIONS_UUID);
 	}
 	
-	public GetAssociationsBuilder andUuid(String ... val){
+	public GetAssociations andUuid(String ... val){
 		this.parameters.put(StoredQueryConstants.UUID, Lists.newArrayList(val));
 		return this;
 	}
 	
-	public GetAssociationsBuilder andHomeCommunityId(String val){
+	public GetAssociations andHomeCommunityId(String val){
 		this.parameter.put(StoredQueryConstants.HOME_COMMUNITY_ID, val);
 		return this;
 	}
 
 	@Override
-	public String getMessageFromHL7v2() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected boolean validate() {
+	public boolean validate() {
 		return this.parameters.containsKey(StoredQueryConstants.UUID);
 	}
 	
