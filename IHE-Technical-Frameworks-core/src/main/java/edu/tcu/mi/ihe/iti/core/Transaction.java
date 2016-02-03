@@ -33,13 +33,18 @@ public abstract class Transaction {
 	
 	public String transaction(MessageBuilder builder, NonBlockCallBack callback){
 		this.messageBuilder = builder;
-		return transaction(builder.getMessageFromXML(), builder.getEndpoint(), callback);
+		return transaction(messageBuilder.getMessageFromXML(), messageBuilder.getEndpoint(), callback);
 	}
 	
 	public String transaction(OMElement request, String endpoint, NonBlockCallBack callback){
-		String response = webservice(request, endpoint, callback);
-		auditLog();
-		return response;
+		try {
+			String response = webservice(request, endpoint, callback);
+//			auditLog();
+			return response;
+		} catch (java.lang.NullPointerException e){
+			e.printStackTrace();
+		}
+		return "";
 	}
 	
 	protected void gc() {
@@ -47,13 +52,6 @@ public abstract class Transaction {
 		long memory = r.freeMemory();
 		logger.debug("Free Memory : " + memory);
 		r.gc();
-	}
-
-	protected String createTime() {
-		java.util.Date date = new java.util.Date();
-		String value = new Timestamp(date.getTime()).toString();
-		value = value.replaceAll("\\D+", "").substring(0, 14);
-		return value;
 	}
 }
 

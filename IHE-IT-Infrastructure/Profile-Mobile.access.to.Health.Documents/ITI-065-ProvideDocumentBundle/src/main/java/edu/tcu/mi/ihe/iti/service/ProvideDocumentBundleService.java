@@ -25,12 +25,6 @@ public class ProvideDocumentBundleService extends RestTransaction {
 	}
 
 	@Override
-	public String webservice(MessageBuilder builder, NonBlockCallBack callback) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String webservice(OMElement request, String endpoint, NonBlockCallBack callback) {
 		// TODO Auto-generated method stub
 		return null;

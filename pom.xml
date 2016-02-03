@@ -3,7 +3,7 @@
         <modelVersion>4.0.0</modelVersion>
         <groupId>edu.tcu.mi.ihe</groupId>
         <artifactId>IHE-Technical-Frameworks</artifactId>
-        <version>0.2.0-SNAPSHOT</version>
+        <version>0.3.0-SNAPSHOT</version>
         <packaging>pom</packaging>
         <name>IHE-Technical-Frameworks</name>
         <description>
@@ -80,10 +80,14 @@
         </dependencies>
         <modules>
             <module>IHE-Technical-Frameworks-core</module>
-            <module>IHE-Technical-Frameworks-configuration</module>
             <module>IHE-Technical-Frameworks-utility</module>
             <module>IHE-Technical-Frameworks-actors</module>
             <module>IHE-Technical-Frameworks-web</module>
+			<module>IHE-IT-Infrastructure</module>
+			<module>IHE-Pharmacy</module>
+			<module>IHE-Radiology</module>
+			<module>IHE-Patient-Care-Coordination</module>
+			<module>IHE-Patient-Care-Devices</module>
         </modules>
         <distributionManagement>
             <snapshotRepository>
@@ -120,11 +124,6 @@
                 <dependency>
                     <groupId>edu.tcu.mi.ihe</groupId>
                     <artifactId>IHE-Technical-Frameworks-core</artifactId>
-                    <version>${project.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>edu.tcu.mi.ihe</groupId>
-                    <artifactId>IHE-Technical-Frameworks-configuration</artifactId>
                     <version>${project.version}</version>
                 </dependency>
                 <dependency>

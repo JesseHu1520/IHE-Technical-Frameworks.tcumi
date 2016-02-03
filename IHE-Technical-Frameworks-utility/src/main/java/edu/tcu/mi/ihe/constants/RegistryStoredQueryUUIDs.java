@@ -15,6 +15,7 @@ public interface RegistryStoredQueryUUIDs {
 	public static final String FIND_DOCUMENTS_UUID = "urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d";
 	public static final String FIND_SUBMISSIONSETS_UUID = "urn:uuid:f26abbcb-ac74-4422-8a30-edb644bbc1a9";
 	public static final String FIND_FOLDERS_UUID = "urn:uuid:958f3006-baad-4929-a4de-ff1114824431";
+	public static final String FIND_DOCUMENTS_BY_REFERENCE_ID = "urn:uuid:12941a89-e02e-4be5-967cce4bfc8fe492";
 
 	public static final String GET_ALL_UUID = "urn:uuid:10b545ea-725c-446d-9b95-8aeb444eddf3";
 	public static final String GET_DOCUMENTS_UUID = "urn:uuid:5c4f972b-d56b-40ac-a5fc-c8ca9b40b9d4";
@@ -30,4 +31,4 @@ public interface RegistryStoredQueryUUIDs {
 	public static final String GET_FOLDERS_FOR_DOCUMENT_UUID = "urn:uuid:10cae35a-c7f9-4cf5-b61e-fc3278ffb578";
 	
 	public static final String GET_RELATED_DOCUMENTS_UUID = "urn:uuid:d90e5407-b356-4d91-a89f-873917b4b0e6";
-}
+	}

@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.google.gson.Gson;
 
+import edu.tcu.mi.ihe.constants.Namespace;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
 import lombok.Getter;
 
@@ -20,7 +21,7 @@ public class RegistryResponseType {
 	protected String status;
 	
 	@Getter 
-	@XmlElement(name = "RegistryErrorList")
+	@XmlElement(name = "RegistryErrorList", namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0")
 	protected RegistryErrorListType registryErrorList;
 
 	@Override
@@ -30,7 +31,7 @@ public class RegistryResponseType {
 	
 	public static void main(String[] arg) {
 		AxiomUtil axiom = AxiomUtil.getInstance();
-		RegistryResponseType res = axiom.fromXML("<rs:RegistryResponse xmlns:rs=\"urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0\" status=\"urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success\"/>", RegistryResponseType.class);
+		RegistryResponseType res = axiom.fromXML("<rs:RegistryResponse xmlns:rs=\"" + Namespace.RS3.getNamespace() + "\" status=\"" + Namespace.SUCCESS.getNamespace() + "\"/>", RegistryResponseType.class);
 		System.out.println(res.getStatus());
 	}
 }

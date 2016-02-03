@@ -54,5 +54,11 @@ public abstract class SoapTransaction extends Transaction {
 			swa = false;
 		}
 	}
+	
+	protected String getEndpoint(String endpoint, MessageBuilder builder){
+		if(builder.getEndpoint() != null) return builder.getEndpoint();
+		if(endpoint == null) return "";
+		return endpoint;
+	}
 }
 

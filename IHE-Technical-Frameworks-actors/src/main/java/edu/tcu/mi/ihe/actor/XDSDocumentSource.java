@@ -4,7 +4,8 @@ import org.apache.axiom.om.OMElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import edu.tcu.mi.ihe.iti.builder.MetadataBuilder;
+import edu.tcu.mi.ihe.iti.builder.MetadataXmlBuilder;
+import edu.tcu.mi.ihe.iti.model.Metadata;
 import edu.tcu.mi.ihe.iti.service.ProvideAndRegisterDocumentSetService;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
@@ -16,11 +17,10 @@ public class XDSDocumentSource extends Actor {
 	private ProvideAndRegisterDocumentSetService provideAndRegisterDocumentSet;
 
 	public void init(){
-		if(this.provideAndRegisterDocumentSet == null) 
-			this.provideAndRegisterDocumentSet = new ProvideAndRegisterDocumentSetService();
+		if(this.provideAndRegisterDocumentSet == null) this.provideAndRegisterDocumentSet = new ProvideAndRegisterDocumentSetService();
 	}
 	
-	public OMElement provideAndRegisterDocumentSet(MetadataBuilder builder){
+	public OMElement provideAndRegisterDocumentSet(MetadataXmlBuilder builder){
 		init();
 		
 		if(builder == null) return null;
@@ -28,8 +28,13 @@ public class XDSDocumentSource extends Actor {
 		String response = provideAndRegisterDocumentSet.transaction(builder);
 		return axiom.fromString(response);
 	}
+	
+	public OMElement provideAndRegisterDocumentSet(Metadata metadata, NonBlockCallBack callback){
+		System.out.println(metadata.toString());
+		return provideAndRegisterDocumentSet(new MetadataXmlBuilder(metadata), callback);
+	}
 
-	public OMElement provideAndRegisterDocumentSet(MetadataBuilder builder, NonBlockCallBack callback) {
+	public OMElement provideAndRegisterDocumentSet(MetadataXmlBuilder builder, NonBlockCallBack callback) {
 		init();
 		
 		if(builder == null) return null;

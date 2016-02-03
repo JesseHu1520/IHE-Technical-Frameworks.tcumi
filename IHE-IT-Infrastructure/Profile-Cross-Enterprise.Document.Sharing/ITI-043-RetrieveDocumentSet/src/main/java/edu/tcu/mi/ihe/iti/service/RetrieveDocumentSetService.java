@@ -32,8 +32,7 @@ public class RetrieveDocumentSetService extends SoapTransaction {
 	@Override
 	public String webservice(MessageBuilder builder) {
 		this.builder = (RetrieveBuilder) builder;
-		if(endpoint == null)
-			endpoint = builder.getEndpoint();
+		if(endpoint == null) endpoint = builder.getEndpoint();
 		
 		Soap soap = new Soap(endpoint, ACTION);
 		soap.setMtomXop(true);
@@ -43,9 +42,11 @@ public class RetrieveDocumentSetService extends SoapTransaction {
 	}
 
 	@Override
-	public String webservice(OMElement request, String endpoint, NonBlockCallBack callback) {
-		if(this.request == null) this.request = request;
-		
+	public String webservice(OMElement request, String _endpoint, NonBlockCallBack callback) {
+		this.request = request;
+		if(this.endpoint == null) this.endpoint = _endpoint;
+
+		logger.info("\nendpoint: " + this.endpoint);
 		ServiceConsumer soap = new ServiceConsumer(endpoint, ACTION, callback);
 		soap.setMtomXop(true);
 		this.response = soap.send(this.request);

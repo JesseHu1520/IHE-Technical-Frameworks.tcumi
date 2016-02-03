@@ -22,8 +22,7 @@ public abstract class MessageBuilder {
 	private String endpoint;
 	
 	protected String generateTimeStamp() {
-		java.util.Date date = new java.util.Date();
-		String value = new Timestamp(date.getTime()).toString();
+		String value = new Timestamp(System.currentTimeMillis()).toString();
 		value = value.replaceAll("\\D+", "").substring(0, 14);
 		return value;
 	}

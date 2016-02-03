@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>edu.tcu.mi.ihe</groupId>
 		<artifactId>IHE-Technical-Frameworks</artifactId>
-		<version>0.2.0-SNAPSHOT</version>
+		<version>0.3.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>IHE-Technical-Frameworks-actors</artifactId>
@@ -22,18 +22,40 @@
 	<dependencies>
 		<dependency>
 			<groupId>edu.tcu.mi.ihe</groupId>
-			<artifactId>IHE-Technical-Frameworks-configuration</artifactId>
-			<exclusions>
-				<exclusion>
-		            <groupId>org.apache.axis2</groupId>
-		            <artifactId>scripting</artifactId>
-				</exclusion>
-				<exclusion>
-		            <groupId>org.apache.axis2</groupId>
-		            <artifactId>addressing</artifactId>
-				</exclusion>
-			</exclusions>
+			<artifactId>IHE-Technical-Frameworks-utility</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>ITI-041-ProvideAndRegisterDocumentSet</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>ITI-018-RegistryStoredQuery</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>ITI-043-RetrieveDocumentSet</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>ITI-008-PatientIdentityFeed</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>ITI-009-PIXQuery</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.tcu.mi.ihe</groupId>
+			<artifactId>ITI-001-MaintainTime</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		
 	</dependencies>
 
 	<build>

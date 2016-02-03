@@ -12,12 +12,12 @@ import java.util.List;
 import org.zkoss.zul.DefaultTreeModel;
 import org.zkoss.zul.TreeNode;
 
-import edu.tcu.mi.ihe.iti.builder.DocumentEntry;
-import edu.tcu.mi.ihe.iti.builder.Folder;
-import edu.tcu.mi.ihe.iti.builder.MetadataBuilder;
-import edu.tcu.mi.ihe.iti.builder.Patient;
-import edu.tcu.mi.ihe.iti.builder.SubmissionSet;
-import edu.tcu.mi.ihe.iti.builder.SubmissionSet.Author;
+import edu.tcu.mi.ihe.iti.model.Author;
+import edu.tcu.mi.ihe.iti.model.DocumentEntry;
+import edu.tcu.mi.ihe.iti.model.Folder;
+import edu.tcu.mi.ihe.iti.model.Metadata;
+import edu.tcu.mi.ihe.iti.model.Patient;
+import edu.tcu.mi.ihe.iti.model.SubmissionSet;
 import edu.tcu.mi.zk.model.attachment.AttachmentEntry;
 import edu.tcu.mi.zk.model.attachment.AttachmentEntryTreeNode;
 import edu.tcu.mi.zk.model.code.Code;
@@ -29,7 +29,7 @@ import lombok.Setter;
  */
 public class MetadataGenerator {
 	@Getter
-	private MetadataBuilder builder;
+	private Metadata metadata;
 	@Getter @Setter
 	private String pid5, pid3, pid8 = "M", pid11, pid13;
 	@Getter @Setter
@@ -79,33 +79,32 @@ public class MetadataGenerator {
 	}
 
 	public void build() {
-		builder = new MetadataBuilder();
-		builder.setEndpoint(companyRepository.getRepositoryEndpoint());
+		metadata = new Metadata();
 		
-		SubmissionSet submissionSet = builder.getSubmissionSet();
+		SubmissionSet submissionSet = metadata.getSubmissionSet();
 		submissionSet.setContentTypeCode(contentTypeCode.getCode());
 		patient();
 		author();
 
 		for(AttachmentEntry doc : documentList){
-			DocumentEntry document = builder.addDocument();
+			DocumentEntry document = metadata.addDocument();
 			buildDocument(document, doc);
 			int opt = Integer.valueOf(operations);
 			switch (opt) {
 			case 11971:
-				document = builder.addDocumentToFolder(existingFolder);
+				document = metadata.addDocumentToFolder(existingFolder);
 				break;
 			case 11974:
-				document.replaceByDocumentId(existingDocument);
+				document.setReplaceDocumentId(existingDocument);
 				break;
 			case 11975:
-				document.transformByDocumentId(existingDocument);
+				document.setTransformDocumentId(existingDocument);
 				break;
 			case 11976:
-				document.transformAndReplaceByDocumentId(existingDocument);
+				document.setTransformAndReplaceDocumentId(existingDocument);
 				break;
 			case 11977:
-				document.appendByDocumentId(existingDocument);
+				document.setAppendDocumentId(existingDocument);
 				break;
 			}
 		}
@@ -113,7 +112,7 @@ public class MetadataGenerator {
 		if ((!operations.equals("11971") || !operations.equals("11973")) && !flist.isEmpty()) {
 			setOperations("11969");// 11970
 			for(TreeNode<AttachmentEntry> fItem:flist){
-				Folder folder = builder.addFolder();
+				Folder folder = metadata.addFolder();
 				
 				AttachmentEntry ff = fItem.getData();
 				folder.setTitle(ff.getTitle());
@@ -132,7 +131,7 @@ public class MetadataGenerator {
 		int opt = Integer.valueOf(operations);
 		switch (opt) {
 		case 11973:
-			builder.moveDocumentToFolder(existingDocument, existingFolder);
+			metadata.moveDocumentToFolder(existingDocument, existingFolder);
 			break;
 		}
 	}
@@ -140,17 +139,17 @@ public class MetadataGenerator {
 	private void patient() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		
-		Patient patient = builder.getPatient();
-		patient.setPatientId(getPid3());
-		patient.setPatientName(getPid5());
-		patient.setPatientBirthday(dateFormat.format(getPid7()));
-		patient.setPatientGender(getPid8());
-		patient.setPatientAddress(getPid11());
-		patient.setPatientPhoneNumber(getPid13());
+		Patient patient = metadata.getPatient();
+		patient.setId(getPid3());
+		patient.setName(getPid5());
+		patient.setBirthday(dateFormat.format(getPid7()));
+		patient.setGender(getPid8());
+		patient.setAddress(getPid11());
+		patient.setPhoneNumber(getPid13());
 	}
 
 	private void author() {
-		SubmissionSet submissionSet = builder.getSubmissionSet();
+		SubmissionSet submissionSet = metadata.getSubmissionSet();
 		Author author = submissionSet.addAuthor();
 		author.addAuthorPerson(authorPerson);
 		author.addAuthorInstitution(authorInstitution);
@@ -176,7 +175,7 @@ public class MetadataGenerator {
 
         //TODO: DocumentAuthors should be redesigned by implement requirements
         // default assign same author to all documents
-		DocumentEntry.Author author = document.addAuthor();
+		Author author = document.addAuthor();
 		author.addAuthorPerson(authorPerson);
 		author.addAuthorInstitution(authorInstitution);
 		author.addAuthorRole(authorRole);

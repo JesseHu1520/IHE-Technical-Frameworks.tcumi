@@ -23,7 +23,7 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.zul.Filedownload;
 
 import edu.tcu.mi.ihe.actor.XDSDocumentConsumer;
-import edu.tcu.mi.ihe.iti.builder.QueryBuilder;
+import edu.tcu.mi.ihe.iti.builder.QueryXmlBuilder;
 import edu.tcu.mi.ihe.security.CertificateDetails;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
 import edu.tcu.mi.ihe.ws.leafclass.MetadataParser;
@@ -88,7 +88,7 @@ public class DocumentConsumer_LeafClassVM extends ViewModel {
 		if (isBuild && resubmit) { // 再做一次 Query
 
 			consumer = new XDSDocumentConsumer();
-			QueryBuilder builder = null;
+			QueryXmlBuilder builder = null;
 			NonBlockCallBack callback = new NonBlockCallBack();
 			consumer.registryStoredQuery(builder, callback);
 			

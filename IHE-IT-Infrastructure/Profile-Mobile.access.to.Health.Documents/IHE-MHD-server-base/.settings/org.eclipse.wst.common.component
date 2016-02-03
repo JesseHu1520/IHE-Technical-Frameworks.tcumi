@@ -4,6 +4,24 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="IHE-Technical-Frameworks-actors-0.3.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/IHE-Technical-Frameworks-actors/IHE-Technical-Frameworks-actors">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="IHE-Technical-Frameworks-utility-0.3.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/IHE-Technical-Frameworks-utility/IHE-Technical-Frameworks-utility">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ITI-041-ProvideAndRegisterDocumentSet-0.3.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ITI-041-ProvideAndRegisterDocumentSet/ITI-041-ProvideAndRegisterDocumentSet">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="IHE-Technical-Frameworks-core-0.3.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/IHE-Technical-Frameworks-core/IHE-Technical-Frameworks-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ITI-018-RegistryStoredQuery-0.3.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ITI-018-RegistryStoredQuery/ITI-018-RegistryStoredQuery">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ITI-043-RetrieveDocumentSet-0.3.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ITI-043-RetrieveDocumentSet/ITI-043-RetrieveDocumentSet">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="IHE-IT-Infrastructure-web"/>
         <property name="java-output-path" value="/IHE-IT-Infrastructure-web/target/classes"/>
     </wb-module>

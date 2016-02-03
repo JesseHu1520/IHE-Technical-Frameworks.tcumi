@@ -29,16 +29,20 @@ public class PatientIdentityFeedTest {
 	@Autowired
 	private PIXSource pixSource;
 
+	/**
+	 * Admit/visit notification
+	 * @throws ParseException
+	 */
 	@Test
 	public void testADT_A01() throws ParseException{
 		MessageHeader msh = new MessageHeader();
 		msh.setSendingApplication("foxb1249");
 		msh.setSendingFacility("Gaduo");
-		msh.setReceivingApplication("MESA_XREF");
-		msh.setReceivingFacility("XYZ_HOSPITAL");
+		msh.setReceivingApplication("PAT_IDENTITY_X_REF_MGR_MISYS_TLS");
+		msh.setReceivingFacility("ALLSCRIPTS");
 		msh.setMessageControlID("Gaduo-090528110022806");
 		PatientIdentification pid = new PatientIdentification();
-		pid.setPid03("20140519^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO");
+		pid.setPid03("bb74071cffbc41d^^^&1.3.6.1.4.1.21367.2010.1.2.300&ISO");
 		pid.setPid05("Wang^Dai-Wei^^^");
 		pid.setPid07("19661109");
 		pid.setPid08("F");
@@ -48,16 +52,20 @@ public class PatientIdentityFeedTest {
 		System.out.println(response);
 	}
 	
+	/**
+	 * Register a patient
+	 * @throws ParseException
+	 */
 	@Test
 	public void testADT_A04() throws ParseException{
 		MessageHeader msh = new MessageHeader();
 		msh.setSendingApplication("foxb1249");
 		msh.setSendingFacility("Gaduo");
-		msh.setReceivingApplication("MESA_XREF");
-		msh.setReceivingFacility("XYZ_HOSPITAL");
+		msh.setReceivingApplication("PAT_IDENTITY_X_REF_MGR_MISYS_TLS");
+		msh.setReceivingFacility("ALLSCRIPTS");
 		msh.setMessageControlID("Gaduo-090528110022806");
 		PatientIdentification pid = new PatientIdentification();
-		pid.setPid03("2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO");
+		pid.setPid03("bb74071cffbc41d^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO");
 		pid.setPid05("Wang^Dai-Wei^^^");
 		pid.setPid07("19661109");
 		pid.setPid08("F");
@@ -67,13 +75,17 @@ public class PatientIdentityFeedTest {
 		System.out.println(response);
 	}
 	
+	/**
+	 *  Pre-admit a patient
+	 * @throws ParseException
+	 */
 	@Test
 	public void testADT_A05() throws ParseException{
 		MessageHeader msh = new MessageHeader();
 		msh.setSendingApplication("foxb1249");
 		msh.setSendingFacility("Gaduo");
-		msh.setReceivingApplication("MESA_XREF");
-		msh.setReceivingFacility("XYZ_HOSPITAL");
+		msh.setReceivingApplication("PAT_IDENTITY_X_REF_MGR_MISYS_TLS");
+		msh.setReceivingFacility("ALLSCRIPTS");
 		msh.setMessageControlID("Gaduo-090528110022806");
 		PatientIdentification pid = new PatientIdentification();
 		pid.setPid03("2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO");
@@ -86,13 +98,17 @@ public class PatientIdentityFeedTest {
 		System.out.println(response);
 	}
 	
+	/**
+	 * Update patient information
+	 * @throws ParseException
+	 */
 	@Test
 	public void testADT_A08() throws ParseException{
 		MessageHeader msh = new MessageHeader();
 		msh.setSendingApplication("foxb1249");
 		msh.setSendingFacility("Gaduo");
-		msh.setReceivingApplication("MESA_XREF");
-		msh.setReceivingFacility("XYZ_HOSPITAL");
+		msh.setReceivingApplication("PAT_IDENTITY_X_REF_MGR_MISYS_TLS");
+		msh.setReceivingFacility("ALLSCRIPTS");
 		msh.setMessageControlID("Gaduo-090528110022806");
 		PatientIdentification pid = new PatientIdentification();
 		pid.setPid03("2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO");
@@ -105,13 +121,17 @@ public class PatientIdentityFeedTest {
 		System.out.println(response);
 	}
 	
+	/**
+	 * Merge patient - patient identifier list
+	 * @throws ParseException
+	 */
 	@Test
 	public void testADT_A40() throws ParseException{
 		MessageHeader msh = new MessageHeader();
 		msh.setSendingApplication("foxb1249");
 		msh.setSendingFacility("Gaduo");
-		msh.setReceivingApplication("MESA_XREF");
-		msh.setReceivingFacility("XYZ_HOSPITAL");
+		msh.setReceivingApplication("PAT_IDENTITY_X_REF_MGR_MISYS_TLS");
+		msh.setReceivingFacility("ALLSCRIPTS");
 		msh.setMessageControlID("Gaduo-090528110022806");
 		PatientIdentification pid = new PatientIdentification();
 		pid.setPid03("2013031143^^^IHENA&1.3.6.1.4.1.21367.2010.1.2.300&ISO");

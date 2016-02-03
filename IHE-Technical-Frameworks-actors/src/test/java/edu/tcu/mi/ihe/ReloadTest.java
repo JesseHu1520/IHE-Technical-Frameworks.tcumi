@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.apache.axiom.om.OMElement;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ public class ReloadTest {
 	@Autowired
 	private XDSDocumentSource source;
 
-	@Test
+//	@Test
 	public void test() throws IOException {
 		ClassPathResource resource = new ClassPathResource("iti-41-test01.xml");
 		AxiomUtil axiom = AxiomUtil.getInstance();
@@ -38,5 +37,4 @@ public class ReloadTest {
 		OMElement response = source.provideAndRegisterDocumentSet(metadata, endpoint, callback );
 		System.out.println(response);
 	}
-
 }

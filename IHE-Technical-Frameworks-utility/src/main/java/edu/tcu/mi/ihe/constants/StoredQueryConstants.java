@@ -23,6 +23,10 @@ public interface StoredQueryConstants {
 	public static final String DE_STATUS = "$XDSDocumentEntryStatus";
 	public static final String DE_ENTRY_UUID = "$XDSDocumentEntryEntryUUID";
 	public static final String DE_UNIQUE_ID = "$XDSDocumentEntryUniqueId";
+	public static final String DE_REFERENCE_ID_LIST = "$XDSDocumentEntryReferenceIdList";
+	public static final String DE_TYPE_CODE = "$XDSDocumentEntryTypeCode";
+	public static final String DE_AUTHOR_PERSON = "$XDSDocumentEntryAuthorPerson";
+	public static final String DE_TYPE = "$XDSDocumentEntryType";
 	
 	// submissionsets
 	public static final String SS_PATIENT_ID = "$XDSSubmissionSetPatientId";

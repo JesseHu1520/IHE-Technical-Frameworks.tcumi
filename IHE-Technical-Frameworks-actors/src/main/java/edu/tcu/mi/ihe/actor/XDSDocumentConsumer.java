@@ -13,15 +13,15 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 import edu.tcu.mi.ihe.constants.Namespace;
-import edu.tcu.mi.ihe.iti.builder.QueryBuilder;
+import edu.tcu.mi.ihe.iti.builder.QueryXmlBuilder;
 import edu.tcu.mi.ihe.iti.builder.RetrieveBuilder;
 import edu.tcu.mi.ihe.iti.ebxml.ihe.DocumentResponseType;
 import edu.tcu.mi.ihe.iti.ebxml.ihe.RetrieveDocumentSetResponseType;
 import edu.tcu.mi.ihe.iti.ebxml.query.AdhocQueryResponseType;
 import edu.tcu.mi.ihe.iti.ebxml.rim.ExtrinsicObjectType;
 import edu.tcu.mi.ihe.iti.ebxml.rim.RegistryObjectListType;
-import edu.tcu.mi.ihe.iti.ebxml.rim.SlotType;
 import edu.tcu.mi.ihe.iti.ebxml.rim.finder.SlotFinder;
+import edu.tcu.mi.ihe.iti.model.QueryModel;
 import edu.tcu.mi.ihe.iti.service.RegistryStoredQueryService;
 import edu.tcu.mi.ihe.iti.service.RetrieveDocumentSetService;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
@@ -29,19 +29,23 @@ import edu.tcu.mi.ihe.utility.AxiomUtil;
 
 @Component
 public class XDSDocumentConsumer extends Actor {
-	
 	@Autowired
 	private RegistryStoredQueryService registryStoredQuery;
-	
 	@Autowired
 	private RetrieveDocumentSetService retrieveDocumentSet;
 
-	public XDSDocumentConsumer(){
+
+	public void init(){
 		if(registryStoredQuery == null) this.registryStoredQuery = new RegistryStoredQueryService();
 		if(retrieveDocumentSet == null) this.retrieveDocumentSet = new RetrieveDocumentSetService();
 	}
 	
-	public OMElement registryStoredQuery(QueryBuilder builder, NonBlockCallBack callback){
+	public OMElement registryStoredQuery(QueryModel query, NonBlockCallBack callback){
+		return registryStoredQuery(new QueryXmlBuilder(query), callback);
+	}
+	
+	public OMElement registryStoredQuery(QueryXmlBuilder builder, NonBlockCallBack callback){
+		init();
 		if(builder == null) return null;
 		if(callback == null) callback = new NonBlockCallBack();
 		String stirng = registryStoredQuery.transaction(builder, callback);
@@ -50,6 +54,8 @@ public class XDSDocumentConsumer extends Actor {
 	}
 	
 	public OMElement retrieveDocumentSet(RetrieveBuilder builder, NonBlockCallBack callback) {
+		init();
+		
 		if(builder == null) return null;
 		if(callback == null) callback = new NonBlockCallBack();
 		String stirng = retrieveDocumentSet.transaction(builder, callback);
@@ -57,7 +63,9 @@ public class XDSDocumentConsumer extends Actor {
 		return axiom.fromString(stirng);
 	}
 	
-	public List<DocumentResponseType> registryStoredQueryAndRetrieveDocumentSet(QueryBuilder builder, NonBlockCallBack callback){
+	public List<DocumentResponseType> registryStoredQueryAndRetrieveDocumentSet(QueryXmlBuilder builder, NonBlockCallBack callback){
+		init();
+		
 		List<DocumentResponseType> documents = Lists.newArrayList();
 		
 		OMElement response = registryStoredQuery(builder, callback);

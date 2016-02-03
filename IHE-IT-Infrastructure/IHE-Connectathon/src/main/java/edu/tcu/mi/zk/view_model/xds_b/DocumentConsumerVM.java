@@ -12,7 +12,7 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 
 import edu.tcu.mi.ihe.actor.XDSDocumentConsumer;
-import edu.tcu.mi.ihe.iti.builder.QueryBuilder;
+import edu.tcu.mi.ihe.iti.builder.QueryXmlBuilder;
 import edu.tcu.mi.ihe.security.CertificateDetails;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
 import edu.tcu.mi.ihe.ws.response.Response_ITI_18;
@@ -141,7 +141,7 @@ public class DocumentConsumerVM extends ViewModel {
 			ITI_18.clean();
 			
 			consumer = new XDSDocumentConsumer();
-			QueryBuilder builder = null;
+			QueryXmlBuilder builder = null;
 			NonBlockCallBack callback = new NonBlockCallBack();
 			OMElement response = consumer.registryStoredQuery(builder, callback);
 			

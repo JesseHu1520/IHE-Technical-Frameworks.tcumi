@@ -18,7 +18,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.BasicConfigurator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.test.context.ContextConfiguration;
 import org.zkoss.bind.BindContext;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -30,7 +29,7 @@ import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.event.UploadEvent;
 
 import edu.tcu.mi.ihe.actor.XDSDocumentSource;
-import edu.tcu.mi.ihe.configuration.XDSConfiguration;
+import edu.tcu.mi.ihe.iti.builder.MetadataXmlBuilder;
 import edu.tcu.mi.ihe.security.CertificateDetails;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
 import edu.tcu.mi.ihe.utility.xml.XMLPath;
@@ -50,7 +49,6 @@ import lombok.Setter;
 /**
  * @author Gaduo
  */
-@ContextConfiguration(classes = XDSConfiguration.class)
 public class DocumentSourceVM extends ViewModel {
 	@Autowired
 	private XDSDocumentSource source;
@@ -160,7 +158,9 @@ public class DocumentSourceVM extends ViewModel {
 		source = new XDSDocumentSource();
 		
 		NonBlockCallBack callback = new NonBlockCallBack();
-		OMElement responese = source.provideAndRegisterDocumentSet(metadata.getBuilder(), callback);
+		MetadataXmlBuilder metadataBuilder = new MetadataXmlBuilder(metadata.getMetadata());
+		metadataBuilder.setEndpoint(metadata.getCompanyRepository().getRepositoryEndpoint());
+		OMElement responese = source.provideAndRegisterDocumentSet(metadataBuilder, callback);
 		System.out.println(responese.toString());
 
 		ITI_41.parser(callback.getContext());

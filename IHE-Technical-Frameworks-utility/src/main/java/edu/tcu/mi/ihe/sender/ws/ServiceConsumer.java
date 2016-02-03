@@ -45,6 +45,7 @@ public class ServiceConsumer extends Soap {
 	}
 	
 	public OMElement send(OMElement data) {
+		if(data == null) return null;
 		try {
 			sender.setOptions(getOptions(getAction(), isMtomXop(), getEndpoint()));
 			sender.engageModule(Constants.MODULE_ADDRESSING);
