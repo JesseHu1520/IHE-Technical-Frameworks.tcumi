@@ -3,6 +3,7 @@ package edu.tcu.mi.ihe.iti.model;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.gson.annotations.Expose;
@@ -11,15 +12,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class Folder extends BaseModel {
-	@Getter @Setter
+	@JsonIgnore @Getter @Setter
 	private Patient patient; 
 	@Expose @Getter @Setter
 	private String title;
 	@Expose @Getter @Setter
 	private String description;
-	@Expose @Getter 
+	@Expose @Getter @Setter
 	private Set<String> folderCodeList;
-	@Expose @Getter 
+	@Expose @Getter @Setter
 	private List<DocumentEntry> documents;
 	@Expose @Getter @Setter
 	private boolean existing;

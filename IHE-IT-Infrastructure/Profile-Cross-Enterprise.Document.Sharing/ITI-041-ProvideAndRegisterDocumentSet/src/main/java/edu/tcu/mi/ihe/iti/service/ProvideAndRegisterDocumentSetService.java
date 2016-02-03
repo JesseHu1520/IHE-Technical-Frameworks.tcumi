@@ -5,10 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import edu.tcu.mi.ihe.constants.Namespace;
 import edu.tcu.mi.ihe.constants.atna.EventOutcomeIndicator;
-import edu.tcu.mi.ihe.iti.builder.MetadataBuilder;
+import edu.tcu.mi.ihe.iti.builder.MetadataXmlBuilder;
 import edu.tcu.mi.ihe.iti.core.MessageBuilder;
 import edu.tcu.mi.ihe.iti.core.SoapTransaction;
+import edu.tcu.mi.ihe.iti.model.Metadata;
+import edu.tcu.mi.ihe.iti.model.Patient;
+import edu.tcu.mi.ihe.iti.model.SubmissionSet;
 import edu.tcu.mi.ihe.iti.syslog.SysLoggerITI_41_110106;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
 import edu.tcu.mi.ihe.sender.ws.ServiceConsumer;
@@ -28,7 +32,7 @@ public class ProvideAndRegisterDocumentSetService extends SoapTransaction {
 
 	@Override
 	public String webservice(MessageBuilder builder) {
-		if(endpoint == null) endpoint = builder.getEndpoint();
+		endpoint = getEndpoint(endpoint, builder);
 		
 		Soap soap = new Soap(endpoint, ACTION);
 		soap.setMtomXop(true);
@@ -40,9 +44,9 @@ public class ProvideAndRegisterDocumentSetService extends SoapTransaction {
 
 	@Override
 	public String webservice(OMElement request, String _endpoint, NonBlockCallBack callback) {
-		if(this.request == null) this.request = request;
+		this.request = request;
 		if(this.endpoint == null) this.endpoint = _endpoint;
-		
+
 		logger.info("\nendpoint: " + this.endpoint);
 		ServiceConsumer soap = new ServiceConsumer(this.endpoint, ACTION, callback);
 		soap.setMtomXop(true);
@@ -58,14 +62,17 @@ public class ProvideAndRegisterDocumentSetService extends SoapTransaction {
 			eventOutcomeIndicator = EventOutcomeIndicator.MajorFailure;
 		} else if (assertEquals(
 				response,
-				"<rs:RegistryResponse xmlns:rs=\"urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0\" status=\"urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success\"/>")) {
+				"<rs:RegistryResponse xmlns:rs=\"" + Namespace.RS3.getNamespace() + "\" status=\"" + Namespace.SUCCESS.getNamespace() + "\"/>")) {
 			eventOutcomeIndicator = EventOutcomeIndicator.Success;
 		} else {
 			eventOutcomeIndicator = EventOutcomeIndicator.SeriousFaailure;
 		}
 		
-		String patientId =((MetadataBuilder)messageBuilder).getPatient().getPatientId();
-		String XDSSubmissionSetUniqueId = ((MetadataBuilder)messageBuilder).getSubmissionSet().getId();
+		Metadata metadata = ((MetadataXmlBuilder)messageBuilder).getMetadata();
+		Patient patient = metadata.getPatient();
+		SubmissionSet submissionSet = metadata.getSubmissionSet();
+		String patientId = patient.getId();
+		String XDSSubmissionSetUniqueId = submissionSet.getId();
 		
 		SysLoggerITI_41_110106 logger = new SysLoggerITI_41_110106();
 		logger.setEndpoint(endpoint);

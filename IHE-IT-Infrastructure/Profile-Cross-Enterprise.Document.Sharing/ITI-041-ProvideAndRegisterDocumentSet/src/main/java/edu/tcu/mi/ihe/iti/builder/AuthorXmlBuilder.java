@@ -13,7 +13,8 @@ public class AuthorXmlBuilder extends EntityXmlBuilder {
 	@Setter
 	private Author author;
 	
-	public AuthorXmlBuilder(){
+	public AuthorXmlBuilder(String sourceId, String ip) {
+		super(sourceId, ip);
 		this.objectType = ProvideAndRegistryDocumentSet_B_UUIDs.DOC_ENTRY_AUTHOR;
 	}
 	

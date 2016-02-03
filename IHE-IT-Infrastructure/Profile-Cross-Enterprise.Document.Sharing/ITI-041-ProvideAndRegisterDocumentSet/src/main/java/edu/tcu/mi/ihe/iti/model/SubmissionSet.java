@@ -2,6 +2,7 @@ package edu.tcu.mi.ihe.iti.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Lists;
 import com.google.gson.annotations.Expose;
 
@@ -9,10 +10,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class SubmissionSet extends BaseModel {
-	@Getter @Setter
+	@JsonIgnore @Getter @Setter 
 	private Patient patient; 
 
-	@Expose @Getter
+	@Expose @Getter @Setter
 	private List<Author> authors;
 
 	@Expose @Getter @Setter

@@ -14,12 +14,25 @@ import edu.tcu.mi.ihe.utility.AxiomUtil;
 
 public abstract class EntityXmlBuilder extends MessageBuilder {
 	protected String objectType;
+	protected String sourceId;
+	protected String ip;
 
 	protected abstract String getId();
+	
+	public EntityXmlBuilder(String sourceId, String ip){
+		this.sourceId = sourceId;
+		this.ip = ip;
+	}
 	
 	protected String generateUUID() {
 		UUID uid = UUID.randomUUID();
 		return "urn:uuid:" + uid.toString();
+	}
+
+	protected String generateUniqueId() {
+		double random = Math.random();
+		String id = sourceId + "." +  ip + "." + Thread.currentThread().getId() + "." + generateTimeStamp() + "." + (int)(random*100);
+		return id;
 	}
 	
 	protected OMElement generateNameOrDescription(String text, EbXML NameOrDescription) {
@@ -95,6 +108,7 @@ public abstract class EntityXmlBuilder extends MessageBuilder {
 			externalIdentifier.addChild(name);
 		}
 		/* ExternalIdentifier */
+		logger.debug("\n" + name + "\n" + externalIdentifier);
 		return externalIdentifier;
 	}
 	
@@ -116,6 +130,7 @@ public abstract class EntityXmlBuilder extends MessageBuilder {
 			classification.addChild(name);
 		}
 		/* classification */
+		logger.debug("\n" + name + "\n" + classification);
 		return classification;
 	}
 
@@ -154,6 +169,7 @@ public abstract class EntityXmlBuilder extends MessageBuilder {
 		return valuelist;
 	}
 
+	@Deprecated
 	@Override
 	public String getMessageFromHL7v2() {
 		// TODO Auto-generated method stub

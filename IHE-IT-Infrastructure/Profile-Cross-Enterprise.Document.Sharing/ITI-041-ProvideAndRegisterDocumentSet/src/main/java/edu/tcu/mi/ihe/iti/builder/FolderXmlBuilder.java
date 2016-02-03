@@ -7,6 +7,7 @@ import edu.tcu.mi.ihe.constants.FolderConstants;
 import edu.tcu.mi.ihe.constants.Namespace;
 import edu.tcu.mi.ihe.constants.ProvideAndRegistryDocumentSet_B_UUIDs;
 import edu.tcu.mi.ihe.iti.model.Folder;
+import edu.tcu.mi.ihe.iti.model.Patient;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
 import lombok.Setter;
 
@@ -14,7 +15,8 @@ public class FolderXmlBuilder extends EntityXmlBuilder {
 	@Setter 
 	private Folder folder;
 	
-	public FolderXmlBuilder(){
+	public FolderXmlBuilder(String sourceId, String ip) {
+		super(sourceId, ip);
 		objectType = ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_OBJECT;
 	}
 	
@@ -52,11 +54,12 @@ public class FolderXmlBuilder extends EntityXmlBuilder {
 		}
 		// ---------------------ExternalIdentifier
 		// --Folder SourcePatienId
+		Patient patient = folder.getPatient();
 		OMElement name01 = generateNameOrDescription(FolderConstants.PATIENT_ID, EbXML.Name);
-		OMElement externalIdentifier01 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_PATIENT_IDENTIFICATION_SCHEME, folder.getId(), folder.getPatient().getPatientId(), name01);
+		OMElement externalIdentifier01 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_PATIENT_IDENTIFICATION_SCHEME, folder.getId(), patient.getId(), name01);
 		root.addChild(externalIdentifier01);
 		
-		String uniqueId = MetadataXmlBuilder.generateUniqueId();
+		String uniqueId = generateUniqueId();
 		OMElement name02 = generateNameOrDescription(FolderConstants.UNIQUE_ID, EbXML.Name);
 		OMElement externalIdentifier02 = generateExternalIdentifier(ProvideAndRegistryDocumentSet_B_UUIDs.FOLDER_UNIQUE_IDENTIFICATION_SCHEME, folder.getId(), uniqueId, name02);
 		root.addChild(externalIdentifier02);
@@ -66,8 +69,7 @@ public class FolderXmlBuilder extends EntityXmlBuilder {
 
 	@Override
 	protected boolean validate() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

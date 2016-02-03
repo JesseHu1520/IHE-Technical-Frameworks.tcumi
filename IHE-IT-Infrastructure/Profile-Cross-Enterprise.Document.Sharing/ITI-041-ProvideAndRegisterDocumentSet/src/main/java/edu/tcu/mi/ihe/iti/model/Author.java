@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class Author extends BaseModel {
-	private String entryUuid;
 	@Getter @Setter
 	private String parentId;
 	@Expose @Getter

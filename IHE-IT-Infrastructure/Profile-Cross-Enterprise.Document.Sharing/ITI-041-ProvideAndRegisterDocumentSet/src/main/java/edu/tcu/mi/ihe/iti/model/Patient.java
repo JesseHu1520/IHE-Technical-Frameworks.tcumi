@@ -7,15 +7,15 @@ import lombok.Setter;
 
 public class Patient extends BaseModel {
 	@Expose @Getter @Setter
-	private String patientId;
+	private String id;
 	@Expose @Getter @Setter
-	private String patientName; // name pid05
+	private String name; // name pid05
 	@Expose @Getter @Setter
-	private String patientBirthday; // birthday pid07
+	private String birthday; // birthday pid07
 	@Expose @Getter @Setter
-	private String patientGender; // gender pid08
+	private String gender; // gender pid08
 	@Expose @Getter @Setter
-	private String patientAddress; // address pid11
+	private String address; // address pid11
 	@Expose @Getter @Setter
-	private String patientPhoneNumber; // address pid13
+	private String phoneNumber; // phoneNumber pid13
 }

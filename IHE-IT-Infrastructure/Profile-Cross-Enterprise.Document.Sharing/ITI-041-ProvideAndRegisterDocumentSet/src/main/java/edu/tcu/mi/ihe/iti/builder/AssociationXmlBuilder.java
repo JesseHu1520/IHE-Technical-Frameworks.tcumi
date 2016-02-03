@@ -10,6 +10,10 @@ import edu.tcu.mi.ihe.utility.AxiomUtil;
 import lombok.Setter;
 
 public class AssociationXmlBuilder extends EntityXmlBuilder {
+	public AssociationXmlBuilder(String sourceId, String ip) {
+		super(sourceId, ip);
+	}
+
 	@Setter
 	private Association association;
 	

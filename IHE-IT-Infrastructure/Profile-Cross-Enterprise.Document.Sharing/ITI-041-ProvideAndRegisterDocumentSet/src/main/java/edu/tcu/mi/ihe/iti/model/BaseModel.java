@@ -2,8 +2,6 @@ package edu.tcu.mi.ihe.iti.model;
 
 import java.util.UUID;
 
-import com.google.gson.annotations.Expose;
-
 import lombok.Getter;
 
 public class BaseModel {

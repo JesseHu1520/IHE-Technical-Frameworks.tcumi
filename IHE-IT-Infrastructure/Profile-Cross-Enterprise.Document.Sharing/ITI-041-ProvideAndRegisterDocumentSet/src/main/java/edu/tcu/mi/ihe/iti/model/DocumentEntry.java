@@ -18,23 +18,19 @@ import org.apache.axiom.om.OMFactory;
 import org.apache.axiom.om.OMText;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.gson.annotations.Expose;
 
-import edu.tcu.mi.ihe.constants.DocumentEntryConstants;
-import edu.tcu.mi.ihe.iti.builder.MetadataBuilder;
 import edu.tcu.mi.ihe.sender.ws.Soap;
 import edu.tcu.mi.ihe.sender.ws.SoapWithAttachment;
 import lombok.Getter;
 import lombok.Setter;
 
 public class DocumentEntry extends BaseModel {
-	@Getter @Setter
+	@JsonIgnore @Getter @Setter
 	private Patient patient; 
 	
 	@Expose @Getter @Setter
@@ -43,7 +39,7 @@ public class DocumentEntry extends BaseModel {
 	private String description;
 	@Expose @Getter @Setter
 	private String creationTime;
-	@Expose @Setter
+	@Expose 		@Setter
 	private String mimeType;
 	@Expose @Getter 
 	private String content;
@@ -57,11 +53,11 @@ public class DocumentEntry extends BaseModel {
 	private String practiceSettingCode;
 	@Expose @Getter @Setter
 	private String typeCode;
-	@Expose @Getter
+	@Expose @Getter @Setter
 	private Set<String> confidentialityCode;
 	@Expose @Getter @Setter
 	private Set<String> eventCodeList;
-	@Expose @Getter
+	@Expose @Getter @Setter
 	private List<Author> authors;
 
 	@Expose @Getter @Setter
@@ -76,11 +72,14 @@ public class DocumentEntry extends BaseModel {
 	private String transformAndReplaceDocumentId;
 	@Expose @Getter @Setter
 	private String signatureDocumentId;
-	
+
+	@JsonIgnore
 	@Setter @Getter
 	private Soap soap;
+	@JsonIgnore
 	@Getter
 	private long size;
+	@JsonIgnore
 	@Getter
 	private String hash;
 	
@@ -88,6 +87,7 @@ public class DocumentEntry extends BaseModel {
 		authors = Lists.newArrayList();
 		confidentialityCode = Sets.newTreeSet();
 		eventCodeList = Sets.newTreeSet();
+		content = "content";
 	}
 
 	public DocumentEntry(String id) {
@@ -112,24 +112,32 @@ public class DocumentEntry extends BaseModel {
 		this.eventCodeList.add(e);
 	}
 	
-	public String getMimeType(){
-		if(mimeType == null) mimeType = extractMimeType(title);
-		return mimeType;
-	}
 	
 	/**
 	 * 
 	 * @param content
+	 * Content 可以是 Base64 字串.
+	 * Content can be a base64 String.
+	 */
+	public void setContent(String content) {
+		byte[] input = Base64.decodeBase64(content.getBytes());
+		setContentByte(input);
+	}
+	
+	/**
+	 * 
+	 * @param contentBase64
 	 * Content 可以是檔案.
 	 * Content can be a File.
 	 */
-	public void setContent(File file) {
+	@JsonIgnore
+	public void setContentFile(File file) {
 		FileInputStream fis;
 		try {
 			this.setTitle(file.getName());
 			this.setDescription(file.getName());
 			fis = new FileInputStream(file);
-			setContent(fis);
+			setContentInputStream(fis);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -139,34 +147,20 @@ public class DocumentEntry extends BaseModel {
 	
 	/**
 	 * 
-	 * @param content
+	 * @param contentBase64
 	 * Content 可以是 FileInputStream.
 	 * Content can be a FileInputStream.
 	 */
-	public void setContent(InputStream fis) {
+	@JsonIgnore
+	public void setContentInputStream(InputStream fis) {
 		try {
 			byte[] input = IOUtils.toByteArray(fis);
-			setContent(input);
+			setContentByte(input);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	
-	/**
-	 * 
-	 * @param base64
-	 * Content 可以是 Base64 字串.
-	 * Content can be a base64 String.
-	 */
-	public void setContent(String base64) {
-		byte[] input = Base64.decodeBase64(base64.getBytes());
-		setContent(input);
-		/**
-		 * To validate creationTime, title, description
-		 */
 	}
 	
 	/**
@@ -175,9 +169,8 @@ public class DocumentEntry extends BaseModel {
 	 * Content 可以是 byte 陣列.
 	 * Content can be a byte array.
 	 */
-	public void setContent(byte[] input){
-		if(mimeType == null)
-			mimeType = extractMimeType(title);
+	@JsonIgnore
+	public void setContentByte(byte[] input){
 		size = extractSize(input);
 		hash = extractHash(input);
 		
@@ -237,33 +230,6 @@ public class DocumentEntry extends BaseModel {
 		return new String(buf);
 	}
 	
-	private String extractMimeType(String uri) {
-		if(uri == null) return null;
-		String type = null;
-		int dotPos = uri.lastIndexOf(".");
-		String extension = uri.substring(dotPos + 1).toLowerCase();
-		Node node = MetadataBuilder.codes.QueryNode("Codes/CodeType[@name='mimeType']/Code[@ext='" + extension + "']");
-		if (node != null) {
-			if (node != null) {
-				NamedNodeMap attrs = node.getAttributes();
-				if (attrs != null) {
-					type = attrs.getNamedItem("code").getNodeValue();
-					return type;
-				}
-			}
-		}
-		node = MetadataBuilder.web.QueryNode("web-app/mime-mapping/extension[text()='" + extension + "']");
-		if (node != null) {
-			node = node.getParentNode();
-			NodeList nodes = node.getChildNodes();
-			for (int i = 0; i < nodes.getLength(); i++) {
-				node = nodes.item(i);
-				if (node.getNodeName().equalsIgnoreCase(DocumentEntryConstants.MIME_TYPE)) {
-					return node.getTextContent();
-				}
-			}
-		}
-		return null;
-	}
+	
 
 }

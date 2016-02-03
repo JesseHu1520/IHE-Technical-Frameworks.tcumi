@@ -9,13 +9,15 @@ import java.util.Set;
 
 import org.apache.axiom.om.OMElement;
 import org.springframework.core.io.ClassPathResource;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.annotations.Expose;
 
+import edu.tcu.mi.ihe.constants.DocumentEntryConstants;
 import edu.tcu.mi.ihe.constants.DocumentRelationshipsConstants;
 import edu.tcu.mi.ihe.constants.EbXML;
 import edu.tcu.mi.ihe.constants.Namespace;
@@ -23,7 +25,7 @@ import edu.tcu.mi.ihe.iti.core.MessageBuilder;
 import edu.tcu.mi.ihe.iti.model.Association;
 import edu.tcu.mi.ihe.iti.model.DocumentEntry;
 import edu.tcu.mi.ihe.iti.model.Folder;
-import edu.tcu.mi.ihe.iti.model.Patient;
+import edu.tcu.mi.ihe.iti.model.Metadata;
 import edu.tcu.mi.ihe.iti.model.SubmissionSet;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
 import edu.tcu.mi.ihe.utility.xml.XMLPath;
@@ -35,32 +37,23 @@ public class MetadataXmlBuilder extends MessageBuilder {
 	public static XMLPath codes;
 	public static XMLPath web;
 	
-	public static String SourceID  = "1";
-	private static String bootTimestamp = "1";
-	private static String IP  = "1";
-	private static int count = 0;
-
-	@Expose
-	private Patient patient; 
-	@Expose
-	private SubmissionSet submissionSet;
-	@Expose @Getter
-	private List<DocumentEntry> documents;
-	@Expose @Getter
-	private List<Folder> folders;
+	private final String SOURCE_ID;
+	private final String IP;
 	
-	public MetadataXmlBuilder(){
-		documents = Lists.newArrayList();
-		folders = Lists.newArrayList();
-
+	@Getter
+	private Metadata metadata;
+	
+	public MetadataXmlBuilder(Metadata metadata){
+		this.metadata = metadata;
 		MetadataXmlBuilder.objectRef = Sets.newTreeSet();
+		InetAddress localHost = null;
 		try {
-			InetAddress localHost = InetAddress.getLocalHost();
-			MetadataXmlBuilder.IP = localHost.getHostAddress();
+			localHost = InetAddress.getLocalHost();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		MetadataXmlBuilder.count = 0;
+		if(localHost != null) IP = localHost.getHostAddress();
+		else IP = "127.0.0.1";
 		
 		Properties prop = new Properties();
 		try {
@@ -69,11 +62,7 @@ public class MetadataXmlBuilder extends MessageBuilder {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		String sourceId = prop.getProperty("source.id");
-		MetadataXmlBuilder.SourceID = sourceId;
-		
-		
-		MetadataXmlBuilder.bootTimestamp = this.generateTimeStamp();
+		SOURCE_ID = prop.getProperty("source.id");
 		
 		ClassPathResource cResource = new ClassPathResource("codes.xml");
 		ClassPathResource wResource = new ClassPathResource("web.xml");
@@ -85,63 +74,6 @@ public class MetadataXmlBuilder extends MessageBuilder {
 		}
 	}
 	
-	public Patient getPatient(){
-		if(patient == null) 
-			patient = new Patient();
-		return patient;
-	}
-	
-	public SubmissionSet getSubmissionSet(){
-		if(submissionSet == null)
-			submissionSet = new SubmissionSet();
-		submissionSet.setPatient(this.getPatient());
-		return submissionSet;
-	}
-	
-	public DocumentEntry addDocument(){
-		DocumentEntry document = new DocumentEntry();
-		document.setPatient(this.getPatient());
-		if(documents == null)  documents = Lists.newArrayList();
-		documents.add(document);
-		return document;
-	}
-	
-	public Folder addFolder(){
-		Folder folder = new Folder();
-		folder.setPatient(this.getPatient());
-		if(folders == null)  folders = Lists.newArrayList();
-		folders.add(folder);
-		return folder;
-	}
-
-	public DocumentEntry addDocumentToFolder(String folderId) {
-		Folder folder = new Folder(folderId);
-		folder.setExisting(true);
-		folder.setPatient(this.getPatient());
-		if(folders == null)  folders = Lists.newArrayList();
-		folders.add(folder);
-		return folder.addDocument();
-	}
-
-	public void moveDocumentToFolder(String docId, String folderId) {
-		Folder folder = new Folder(folderId);
-		folder.setExisting(true);
-		folder.addDocument(docId);
-		
-		if(folders == null)  folders = Lists.newArrayList();
-		folders.add(folder);
-	}
-
-	public Folder moveDocumentToFolder(String docId) {
-		Folder folder = new Folder();
-		folder.setPatient(this.getPatient());
-		folder.addDocument(docId);
-		
-		if(folders == null)  folders = Lists.newArrayList();
-		folders.add(folder);
-		return folder;
-	}
-
 	@Override
 	public OMElement getMessageFromXML() {
 		AxiomUtil axiom = AxiomUtil.getInstance();
@@ -154,11 +86,13 @@ public class MetadataXmlBuilder extends MessageBuilder {
 		OMElement registryObjectList = axiom.createOMElement(EbXML.RegistryObjectList, Namespace.RIM3);
 		submitObjectsRequest.addChild(registryObjectList);
 		
-		AssociationXmlBuilder associationBuilder = new AssociationXmlBuilder();
-		DocumentEntryXmlBuilder documentEntryBuilder = new DocumentEntryXmlBuilder();
-		String ssId = submissionSet.getId();
-		for(DocumentEntry document : documents){
+		AssociationXmlBuilder associationBuilder = new AssociationXmlBuilder(SOURCE_ID, IP);
+		DocumentEntryXmlBuilder documentEntryBuilder = new DocumentEntryXmlBuilder(SOURCE_ID, IP);
+		String ssId = metadata.getSubmissionSet().getId();
+		for(DocumentEntry document : metadata.getDocuments()){
+			document.setPatient(metadata.getPatient());
 			documentEntryBuilder.setDocumentEntry(document);
+			
 			String deId = document.getId();
 			OMElement deElement = documentEntryBuilder.getMessageFromXML();
 
@@ -167,7 +101,11 @@ public class MetadataXmlBuilder extends MessageBuilder {
 			hm04.setSourceObject(ssId);
 			hm04.setTargetObject(deId);
 			hm04.setAssociation(DocumentRelationshipsConstants.HAS_MEMBER);
-			hm04.setNote("Original");
+			if(!document.isExisting()){
+				hm04.setNote("Original");
+			} else {
+				hm04.setNote("Reference");
+			}
 			associationBuilder.setAssociation(hm04);
 			OMElement hm04Element = associationBuilder.getMessageFromXML();
 			logger.info("------ HasMember (4) SubmissionSet HasMemeber DocumentEntry ------");
@@ -187,21 +125,25 @@ public class MetadataXmlBuilder extends MessageBuilder {
 				registryObjectList.addChild(rElement);
 			}
 			// ------ Document ------
-			OMElement dElement = documentEntryBuilder.generateDocument();
-			if(dElement != null)
-				provideAndRegisterDocumentSetRequest.addChild(dElement);
-
-//			System.out.println(deElement);
-//			System.out.println(hm04Element);
-//			System.out.println(rElement);
-//			System.out.println(registryObjectList);
-//			System.out.println(provideAndRegisterDocumentSetRequest);
+			if(!document.isExisting()){
+				OMElement dElement = documentEntryBuilder.generateDocument();
+				logger.debug("\n" + dElement);
+				if(dElement != null)
+					provideAndRegisterDocumentSetRequest.addChild(dElement);
+			}
+			logger.debug("\n" + deElement);
+			logger.debug("\n" + hm04Element);
+			logger.debug("\n" + rElement);
+			logger.debug("\n" + registryObjectList);
+			logger.debug("\n" + provideAndRegisterDocumentSetRequest);
 			logger.info("------ Document ------");
 		}
 		// ------ Folder ------
-		FolderXmlBuilder folderBuilder = new FolderXmlBuilder();
-		for(Folder folder: folders){
+		FolderXmlBuilder folderBuilder = new FolderXmlBuilder(SOURCE_ID, IP);
+		for(Folder folder: metadata.getFolders()){
+			folder.setPatient(metadata.getPatient());
 			folderBuilder.setFolder(folder);
+			
 			String fId = folder.getId();
 			// has a new folder
 			if(!folder.isExisting()){
@@ -222,16 +164,18 @@ public class MetadataXmlBuilder extends MessageBuilder {
 				if(hm01Element != null)
 					registryObjectList.addChild(hm01Element);
 
-//				System.out.println(element);
-//				System.out.println(fCElement);
-//				System.out.println(hm01Element);
-//				System.out.println(registryObjectList);
+				logger.debug("\n" + element);
+				logger.debug("\n" + fCElement);
+				logger.debug("\n" + hm01Element);
+				logger.debug("\n" + registryObjectList);
 			}
 			
 			// ------ DocumentEntry ------
 			List<DocumentEntry> documents02 = folder.getDocuments();
 			for(DocumentEntry document:documents02){
+				document.setPatient(metadata.getPatient());
 				documentEntryBuilder.setDocumentEntry(document);
+				
 				String deId = document.getId();
 				OMElement deElement = documentEntryBuilder.getMessageFromXML();
 				
@@ -282,19 +226,21 @@ public class MetadataXmlBuilder extends MessageBuilder {
 
 				associationBuilder.setAssociation(hm03);
 				OMElement hm03Element = associationBuilder.getMessageFromXML();
-				if(!document.isExisting()){
 					// ------ HasMember (4) SubmissionSet HasMemeber DocumentEntry ------
 					Association hm04 = new Association();
 					hm04.setSourceObject(ssId);
 					hm04.setTargetObject(deId);
 					hm04.setAssociation(DocumentRelationshipsConstants.HAS_MEMBER);
-					hm04.setNote("Original");
+					if(!document.isExisting()){
+						hm04.setNote("Original");
+					} else {
+						hm04.setNote("Reference");
+					}
 					associationBuilder.setAssociation(hm04);
 					OMElement hm04Element = associationBuilder.getMessageFromXML();
 					if(hm04Element != null)
 						registryObjectList.addChild(hm04Element);
 					logger.info("------ HasMember (4) SubmissionSet HasMemeber DocumentEntry ------");
-				}
 				if(deElement != null)
 					registryObjectList.addChild(deElement);
 				if(hm02Element != null)
@@ -303,23 +249,28 @@ public class MetadataXmlBuilder extends MessageBuilder {
 					registryObjectList.addChild(hm03Element);
 				
 				// ------ Document ------
-				OMElement dElement = documentEntryBuilder.generateDocument();
-				if(dElement != null)
-					provideAndRegisterDocumentSetRequest.addChild(dElement);
+				if(!document.isExisting()){
+					OMElement dElement = documentEntryBuilder.generateDocument();
+					logger.debug("\n" + dElement);
+					if(dElement != null)
+						provideAndRegisterDocumentSetRequest.addChild(dElement);
+				}
 				logger.info("------ Document in Folder------");
 
-//				System.out.println(deElement);
-//				System.out.println(hm02Element);
-//				System.out.println(hm03Element);
-//				System.out.println(dElement);
-//				System.out.println(registryObjectList);
-//				System.out.println(provideAndRegisterDocumentSetRequest);
+				logger.debug("\n" + deElement);
+				logger.debug("\n" + hm02Element);
+				logger.debug("\n" + hm03Element);
+				logger.debug("\n" + registryObjectList);
+				logger.debug("\n" + provideAndRegisterDocumentSetRequest);
 			}
 			logger.info("------ Folder ------");
 		}
-
-		SubmissionSetXmlBuilder submissionSetBuilder = new SubmissionSetXmlBuilder();
+		SubmissionSet submissionSet = metadata.getSubmissionSet();
+		submissionSet.setPatient(metadata.getPatient());
+		
+		SubmissionSetXmlBuilder submissionSetBuilder = new SubmissionSetXmlBuilder(SOURCE_ID, IP);
 		submissionSetBuilder.setSubmissionSet(submissionSet);
+		
 		// ------ SubmissionSet ------
 		OMElement ssElement = submissionSetBuilder.getMessageFromXML();
 		registryObjectList.addChild(ssElement);
@@ -327,28 +278,19 @@ public class MetadataXmlBuilder extends MessageBuilder {
 		registryObjectList.addChild(ssCElement);
 		logger.info("------ SubmissionSet ------");
 		
-//		System.out.println(ssElement);
-//		System.out.println(ssCElement);
-//		System.out.println(registryObjectList);
+		logger.debug("\n" + ssElement);
+		logger.debug("\n" + ssCElement);
+		logger.debug("\n" + registryObjectList);
 		
 		return provideAndRegisterDocumentSetRequest;
 	}
-
-
+	
 	@Override
 	protected boolean validate() {
-		return patient != null && submissionSet != null;
+		return metadata.getPatient() != null && metadata.getSubmissionSet() != null;
 	}
 
-	public static String generateUniqueId() {
-		MetadataXmlBuilder.count++;
-		return 	MetadataXmlBuilder.SourceID + "." + 
-				MetadataXmlBuilder.IP + "." + 
-				MetadataXmlBuilder.bootTimestamp + "." + 
-				Thread.currentThread().getId() + "." + 
-				MetadataXmlBuilder.count;
-	}
-
+	@Deprecated
 	@Override
 	public String getMessageFromHL7v2() {
 		// TODO Auto-generated method stub
