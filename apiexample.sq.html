@@ -17,6 +17,7 @@
 		<link href="resources/tooltipster/3.3.0/css/themes/tooltipster-light.css" rel="stylesheet" type="text/css" /> 
 		<link href="resources/main/css/core.css" rel="stylesheet" type="text/css" ></link>
 		<link href="resources/main/css/docs.min.css" rel="stylesheet" type="text/css" ></link>
+		<link href="resources/bootstrap3-dialog/1.34.9/css/bootstrap-dialog.min.css"></script>
         
 		<!-- InstanceBeginEditable name="EditRegion4" --><!-- InstanceEndEditable -->
 		
@@ -38,6 +39,10 @@
 			div.growlUI h2 {
 				font-size: medium
 			}
+			
+			.modal-dialog {
+                width: 800px;
+            }
 		</style>
 	</head>
 
@@ -116,148 +121,175 @@
     <div class="after-header">
         <!-- InstanceBeginEditable name="EditRegion1" -->
         
-        <div>
-            <div class="container bs-docs-container">
-                <div class="col-md-9 well" role="main">
-                    
-                    <div id="top" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>ITI-18:查詢註冊資訊 - Registry Stored Query</h3>
-                        <h5>範例說明：</h5>
-                        <p>
-                            提供一個交易模式，將後面 大類的交易細節填寫至 "put some code after/replace here" 之後。<br/>
-                            endpoint 為 Registry 位置，可測試於 http://ihexds.nist.gov:12090/tf6/services/xdsregistryb?wsdl。	
-                        </p>
-                        <script src="https://gist.github.com/Gaduo/e414ea956ac205599cf2.js"></script>
-                    </div>
-                
-                    <div id="function01" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>01. 找尋文件索引 - Find Documents</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>	
-                    </div>
-                    
-                    <div id="function02" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>02. 找尋目錄索引 - Find Folders</h3>
-                        <h5>範例說明：</h5>
-                        <hr />
-                    </div>
-                    
-                    <div id="function03" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>03. 找尋交易記錄索引 - Find SubmissionSets</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>
-                    </div>
-                    
-                    <div id="function04" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>04. 取得文件索引 - Get Documents</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>
-                    </div>
-                    
-                    <div id="function05" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>05. 取得目錄索引 - GetFolders</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>
-                    </div>
-                    
-                    <div id="function06" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>06. 取得交易記錄索引 - Get SubmissionSet</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>
-                    </div>
-                    
-                    <div id="function07" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>07. 取得實體關係索引 - Get Associations</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>
-                    </div>
-                    
-                    <div id="function08" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>08. 取得文件相關實體索引 - Get Documents And Associations</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>
-                    </div>
-                    
-                    <div id="function09" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>09. 取得目錄及其內容索引 - Get Folder And Contents</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>
-                    </div>
-                    
-                    <div id="function10" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>10. 依據文件取得目錄索引 - Get Folders For Document</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>
-                    </div>
-                    
-                    <div id="function11" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>11. 取得文件相關實體索引 - Get Related Documents</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>
-                    </div>
-                    
-                    <div id="function12" class="bs-docs-section">
-                        <br/>
-                        <br/>
-                        <h3>12. 取得交易記錄及其內容索引 - Get SubmissionSet And Contents</h3>
-                        <h5>範例說明：</h5>
-                        <hr/>
-                    </div>
-                    
-                </div>
-                <div class="col-md-3" role="complementary" >
-                    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
-                        <br/>
-                        <br/>
-                        <ul class="nav">
-                            <li><a href="#top">前置初始化資訊</a></li>
-                            <li><a href="#function01">01. 找尋文件索引</a></li>
-                            <li><a href="#function02">02. 找尋目錄索引</a></li>
-                            <li><a href="#function03">03. 找尋交易記錄索引</a></li>
-                            <li><a href="#function04">04. 取得文件索引</a></li>
-                            <li><a href="#function05">05. 取得目錄索引</a></li>
-                            <li><a href="#function06">06. 取得交易記錄索引</a></li>
-                            <li><a href="#function07">07. 取得實體關係索引</a></li>
-                            <li><a href="#function08">08. 取得文件相關實體索引 </a></li>
-                            <li><a href="#function09">09. 取得目錄及其內容索引</a></li>
-                            <li><a href="#function10">10. 依據文件取得目錄索引</a></li>
-                            <li><a href="#function11">11. 取得文件相關實體索引</a></li>
-                            <li><a href="#function12">12. 取得交易記錄及其內容索引</a></li>
-                        </ul>
-                        <ul class="nav">
-                            <li><a href="#">解析索引</a></li>
-                        </ul>
-                        <a class="back-to-top" href="#top"> Back to top </a>
-                    </nav>
-                </div>
-            </div>
-            
-        </div>
+		<div class="container bs-docs-container">
+			<div class="col-md-9 well" role="main">
+				
+				<div id="top" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>ITI-18:查詢註冊資訊 - Registry Stored Query</h3>
+					<h5>範例說明：</h5>
+					<p>
+						提供一個交易模式，將後面 大類的交易細節填寫至 "put some code after/replace here" 之後。<br/>
+						endpoint 為 Registry 位置，可測試於 http://ihexds.nist.gov:12090/tf6/services/xdsregistryb?wsdl。	
+					</p>
+					<script src="https://gist.github.com/Gaduo/e414ea956ac205599cf2.js"></script>
+				</div>
+			
+				<div id="function01" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>01. 找尋文件索引 - Find Documents</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/aa28412538af6661dc23.js"></script>					
+					<hr/>	
+				</div>
+				
+				<div id="function02" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>02. 找尋目錄索引 - Find Folders</h3>
+					<h5>範例說明：</h5>			
+					<script src="https://gist.github.com/Gaduo/771c22bd7dff828e35b8.js"></script>
+					<hr/>
+				</div>
+				
+				<div id="function03" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>03. 找尋交易記錄索引 - Find SubmissionSets</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/d1ab063d597c1bf8df42.js"></script>
+					<hr/>
+				</div>
+				
+				<div id="function04" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>04. 取得文件索引 - Get Documents</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/ddbddb47f4c0144c0c62.js"></script>
+					<hr/>
+				</div>
+				
+				<div id="function05" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>05. 取得目錄索引 - Get Folders</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/93c2e7b94f0c57962d46.js"></script>
+					<hr/>
+				</div>
+				
+				<div id="function06" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>06. 取得交易記錄索引 - Get SubmissionSets</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/a7ff73b5e3751612de4d.js"></script>
+					<hr/>
+				</div>
+				
+				<div id="function07" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>07. 取得實體關係索引 - Get Associations</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/e22fadd09f162f51ff4d.js"></script>
+					<hr/>
+				</div>
+				
+				<div id="function08" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>08. 取得文件相關實體索引 - Get Documents And Associations</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/0269e7c2bf7c88d81e3e.js"></script>
+					<hr/>
+				</div>
+				
+				<div id="function09" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>09. 取得目錄及其內容索引 - Get Folder And Contents</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/68df4c07630505b346f1.js"></script>
+					<hr/>
+				</div>
+				
+				<div id="function10" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>10. 依據文件取得目錄索引 - Get Folders For Document</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/c425676b17ef499c3f1d.js"></script>
+					<hr/>
+				</div>
+				
+				<div id="function11" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>11. 取得文件相關實體索引 - Get Related Documents</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/79d0a2b76f95ca8e9676.js"></script>
+					<hr/>
+				</div>
+				
+				<div id="function12" class="bs-docs-section">
+					<br/>
+					<br/>
+					<h3>12. 取得交易記錄及其內容索引 - Get SubmissionSet And Contents</h3>
+					<h5>範例說明：</h5>
+					<script src="https://gist.github.com/Gaduo/8b97c11eb120d7043921.js"></script>
+					<hr/>
+				</div>
+				
+			</div>
+			<div class="col-md-3" role="complementary" >
+				<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+					<br/>
+					<br/>
+					<ul class="nav">
+						<li><a href="#top">前置初始化資訊</a></li>
+						<li><a href="#function01">01. 找尋文件索引</a></li>
+						<li><a href="#function02">02. 找尋目錄索引</a></li>
+						<li><a href="#function03">03. 找尋交易記錄索引</a></li>
+						<li><a href="#function04">04. 取得文件索引</a></li>
+						<li><a href="#function05">05. 取得目錄索引</a></li>
+						<li><a href="#function06">06. 取得交易記錄索引</a></li>
+						<li><a href="#function07">07. 取得實體關係索引</a></li>
+						<li><a href="#function08">08. 取得文件相關實體索引 </a></li>
+						<li><a href="#function09">09. 取得目錄及其內容索引</a></li>
+						<li><a href="#function10">10. 依據文件取得目錄索引</a></li>
+						<li><a href="#function11">11. 取得文件相關實體索引</a></li>
+						<li><a href="#function12">12. 取得交易記錄及其內容索引</a></li>
+					</ul>
+					<ul class="nav">
+						<li><a href="#">解析索引</a></li>
+					</ul>
+					<a class="back-to-top" href="#top"> Back to top </a>
+				</nav>
+			</div>
+		</div>
+		<div class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title">Modal title</h4>
+					</div>
+					<div class="modal-body">
+						<p>One fine body…</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 		
+					
 		
 		
 		
@@ -277,6 +309,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="resources/jquery/2.2.0/jquery.min.js"></script>
     <script src="resources/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="resources/bootstrap/3.0.0/js/modal.js"></script>
+    <script src="resources/bootstrap3-dialog/1.34.9/js/bootstrap-dialog.min.js"></script>
             
     <script src="resources/intro.js/2.0/minified/intro.min.js"></script>
     <script src="resources/jquery-blockui/2.70/jquery.blockUI.js"></script>
@@ -323,6 +357,36 @@
                 target: '.bs-docs-sidebar',
                 offset: 40
             });
+			
+			var content = '<ul class="list-group">' + 
+				'<li class="list-group-item">FindDocumentsBuilder andPatientId(String val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andClassCode(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andClassCodeScheme(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andSettingCode(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andSettingScheme(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andCreationTimeFrom(String val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andCreationTimeTo(String val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andServiceStartTimeFrom(String val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andServiceStartTimeTo(String val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andServiceStopTimeFrom(String val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andServiceStopTimeTo(String val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andHealthcareFacilityTypeCode(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andHealthcareFacilityTypeCodeScheme(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andEventCodeList(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andEventCodeListScheme(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andConfidentialityCode(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andConfidentialityCodeScheme(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andFormatCode(String ... val)</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andStatusByApproved()</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andStatusByDeprecated()</li>' + 
+				'<li class="list-group-item">FindDocumentsBuilder andStatusBySubmitted()</li>' + 	
+			'</ul>';
+			// https://nakupanda.github.io/bootstrap3-dialog/#examples
+			/*BootstrapDialog.show({
+				title: 'Find Documents',
+				message: content
+			});*/
+			
         });
     
         /*]]>*/
