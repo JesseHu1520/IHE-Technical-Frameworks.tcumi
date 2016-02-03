@@ -1,6 +1,7 @@
 package edu.tcu.mi.ihe.iti.model;
 
 import com.google.common.collect.Lists;
+import com.google.gson.Gson;
 
 import edu.tcu.mi.ihe.constants.Namespace;
 import edu.tcu.mi.ihe.constants.RegistryStoredQueryUUIDs;
@@ -9,11 +10,11 @@ import edu.tcu.mi.ihe.constants.StoredQueryConstants;
 public class FindSubmissionSets extends QueryModel {
 	
 	public FindSubmissionSets(){
-		super(RegistryStoredQueryUUIDs.FIND_DOCUMENTS_UUID);
+		super(RegistryStoredQueryUUIDs.FIND_SUBMISSIONSETS_UUID);
 	}
 
 	public FindSubmissionSets andPatientId(String val){
-		this.parameters.put(StoredQueryConstants.SS_PATIENT_ID, Lists.newArrayList(val));
+		this.parameter.put(StoredQueryConstants.SS_PATIENT_ID, val);
 		return this;
 	}
 	public FindSubmissionSets andSourceId(String ... val){
@@ -57,10 +58,14 @@ public class FindSubmissionSets extends QueryModel {
 
 	@Override
 	public boolean validate() {
-		if(parameters.get(StoredQueryConstants.SS_PATIENT_ID) == null) return false;
+		if(parameter.get(StoredQueryConstants.SS_PATIENT_ID) == null) return false;
 		if(parameters.get(StoredQueryConstants.SS_STATUS) == null) return false;
 		return true;
 	}
 
+	@Override
+	public String toString(){
+		return new Gson().toJson(this);
+	}
 	
 }

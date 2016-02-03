@@ -1,6 +1,7 @@
 package edu.tcu.mi.ihe.iti.model;
 
-import edu.tcu.mi.ihe.constants.DocumentRelationshipsConstants;
+import com.google.gson.Gson;
+
 import edu.tcu.mi.ihe.constants.RegistryStoredQueryUUIDs;
 import edu.tcu.mi.ihe.constants.StoredQueryConstants;
 
@@ -21,44 +22,17 @@ public class GetFoldersForDocument extends QueryModel {
 		this.parameter.put(StoredQueryConstants.HOME_COMMUNITY_ID, val);
 		return this;
 	}
-
-	
-	public GetFoldersForDocument andAssociationTypesByHasMember(){
-		String key = StoredQueryConstants.ASSOCIATION_TYPES;
-		String value = DocumentRelationshipsConstants.HAS_MEMBER;
-		this.andConstantsValue(key, value);
-		return this;
-	}
-	public GetFoldersForDocument andAssociationTypesBySigns(){
-		String key = StoredQueryConstants.ASSOCIATION_TYPES;
-		String value = DocumentRelationshipsConstants.Signs;
-		this.andConstantsValue(key, value);
-		return this;
-	}
-	
-	public GetFoldersForDocument andAssociationTypesByReplace(){
-		String key = StoredQueryConstants.ASSOCIATION_TYPES;
-		String value = DocumentRelationshipsConstants.RPLC;
-		this.andConstantsValue(key, value);
-		return this;
-	}
-	
-	public GetFoldersForDocument andAssociationTypesByAppend(){
-		String key = StoredQueryConstants.ASSOCIATION_TYPES;
-		String value = DocumentRelationshipsConstants.APND;
-		this.andConstantsValue(key, value);
-		return this;
-	}
-	
-	public GetFoldersForDocument andAssociationTypesByTransform(){
-		String key = StoredQueryConstants.ASSOCIATION_TYPES;
-		String value = DocumentRelationshipsConstants.XFRM;
-		this.andConstantsValue(key, value);
-		return this;
-	}
 	
 	@Override
 	public boolean validate() {
+		if(	!this.parameter.containsKey(StoredQueryConstants.DE_ENTRY_UUID) && 
+				!this.parameter.containsKey(StoredQueryConstants.DE_UNIQUE_ID))
+			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString(){
+		return new Gson().toJson(this);
 	}
 }

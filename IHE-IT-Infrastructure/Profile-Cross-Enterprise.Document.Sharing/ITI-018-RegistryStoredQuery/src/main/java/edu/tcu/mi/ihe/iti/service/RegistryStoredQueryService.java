@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import edu.tcu.mi.ihe.constants.Namespace;
 import edu.tcu.mi.ihe.constants.atna.EventOutcomeIndicator;
-import edu.tcu.mi.ihe.iti.builder.QueryBuilder;
+import edu.tcu.mi.ihe.iti.builder.QueryXmlBuilder;
 import edu.tcu.mi.ihe.iti.core.MessageBuilder;
 import edu.tcu.mi.ihe.iti.core.SoapTransaction;
+import edu.tcu.mi.ihe.iti.model.QueryModel;
 import edu.tcu.mi.ihe.iti.syslog.SysLoggerITI_18_110112;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
 import edu.tcu.mi.ihe.sender.ws.ServiceConsumer;
@@ -31,20 +33,24 @@ public class RegistryStoredQueryService extends SoapTransaction {
 
 	@Override
 	public String webservice(MessageBuilder builder) {
-		if(endpoint == null)
-			endpoint = builder.getEndpoint();
+		endpoint = getEndpoint(endpoint, builder);
 		
 		Soap soap = new Soap(endpoint, ACTION);
-		uuid = ((QueryBuilder)builder).getUuid();
 		request = builder.getMessageFromXML();
 		response = soap.send(request);
+		if(response == null) return "";
+		
+		QueryModel query = ((QueryXmlBuilder)builder).getQuery();
+		uuid = query.getUuid();
 		return response.toString();
 	}
 
 	@Override
-	public String webservice(OMElement request, String endpoint, NonBlockCallBack callback) {
-		if(this.request == null) this.request = request;
-		
+	public String webservice(OMElement request, String _endpoint, NonBlockCallBack callback) {
+		this.request = request;
+		if(this.endpoint == null) this.endpoint = _endpoint;
+
+		logger.info("\nendpoint: " + this.endpoint);
 		ServiceConsumer soap = new ServiceConsumer(endpoint, ACTION, callback);
 		soap.setMtomXop(false);
 		this.response = soap.send(this.request);
@@ -60,7 +66,7 @@ public class RegistryStoredQueryService extends SoapTransaction {
 			eventOutcomeIndicator = EventOutcomeIndicator.MajorFailure;
 		} else if (assertEquals(
 				response,
-				"<rs:RegistryResponse xmlns:rs=\"urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0\" status=\"urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success\"/>")) {
+				"<rs:RegistryResponse xmlns:rs=\"" + Namespace.RS3.getNamespace() + "\" status=\"" + Namespace.SUCCESS.getNamespace() + "\"/>")) {
 			eventOutcomeIndicator = EventOutcomeIndicator.Success;
 		} else {
 			eventOutcomeIndicator = EventOutcomeIndicator.SeriousFaailure;

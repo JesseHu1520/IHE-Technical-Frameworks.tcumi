@@ -1,6 +1,7 @@
 package edu.tcu.mi.ihe.iti.model;
 
 import com.google.common.collect.Lists;
+import com.google.gson.Gson;
 
 import edu.tcu.mi.ihe.constants.Namespace;
 import edu.tcu.mi.ihe.constants.RegistryStoredQueryUUIDs;
@@ -99,5 +100,9 @@ public class FindDocumentsByReferenceId extends QueryModel{
 		if(!parameters.containsKey(StoredQueryConstants.DE_STATUS)) return false;
 		return true;
 	}
-
+	
+	@Override
+	public String toString(){
+		return new Gson().toJson(this);
+	}
 }
