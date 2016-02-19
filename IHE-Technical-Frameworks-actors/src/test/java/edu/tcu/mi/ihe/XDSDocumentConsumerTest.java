@@ -16,6 +16,7 @@ import edu.tcu.mi.ihe.configuration.XDSConfiguration;
 import edu.tcu.mi.ihe.iti.builder.RetrieveBuilder;
 import edu.tcu.mi.ihe.iti.ebxml.ihe.DocumentResponseType;
 import edu.tcu.mi.ihe.iti.ebxml.ihe.RetrieveDocumentSetResponseType;
+import edu.tcu.mi.ihe.iti.model.RetrieveModel;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
 
@@ -29,11 +30,12 @@ public class XDSDocumentConsumerTest {
 
 	@Test
 	public void retrieveDocumentSet() {
-		RetrieveBuilder builder = new RetrieveBuilder();
-		builder.setRepositoryUniqueId("1.3.6.1.4.1.21367.2010.1.2.1125.103");
+		RetrieveModel model = new RetrieveModel();
+		model.setRepositoryUniqueId("1.3.6.1.4.1.21367.2010.1.2.1125.103");
 //		builder.setHomeCommunityId(homeCommunityId);
-		builder.addDocumentId("203.64.84.247.20160117145203.1.1");
-		
+		model.addDocumentId("203.64.84.247.20160117145203.1.1");
+
+		RetrieveBuilder builder = new RetrieveBuilder(model);
 		OMElement response = consumer.retrieveDocumentSet(builder, new NonBlockCallBack());
 		System.out.println(response);
 		
