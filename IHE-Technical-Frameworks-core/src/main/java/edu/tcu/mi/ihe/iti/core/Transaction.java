@@ -38,6 +38,7 @@ public abstract class Transaction {
 	
 	public String transaction(OMElement request, String endpoint, NonBlockCallBack callback){
 		try {
+			System.out.println(endpoint);
 			String response = webservice(request, endpoint, callback);
 //			auditLog();
 			return response;
