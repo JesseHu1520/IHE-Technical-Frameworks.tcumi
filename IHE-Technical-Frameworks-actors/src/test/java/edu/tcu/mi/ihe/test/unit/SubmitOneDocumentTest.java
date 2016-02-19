@@ -38,6 +38,8 @@ public class SubmitOneDocumentTest extends ProvideAndRegisterDocumentSetTest {
 			e.printStackTrace();
 		}
 		
+		
+		System.out.println(metadata.toString());
 	}
 
 	

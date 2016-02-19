@@ -1,19 +1,15 @@
 package edu.tcu.mi.ihe.test;
 
-import java.io.IOException;
-
 import org.apache.axiom.om.OMElement;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.springframework.core.io.ClassPathResource;
 
 import com.google.gson.GsonBuilder;
 
 import edu.tcu.mi.ihe.constants.Namespace;
 import edu.tcu.mi.ihe.iti.ebxml.rs.RegistryResponseType;
 import edu.tcu.mi.ihe.iti.model.Author;
-import edu.tcu.mi.ihe.iti.model.DocumentEntry;
 import edu.tcu.mi.ihe.iti.model.Metadata;
 import edu.tcu.mi.ihe.iti.model.Patient;
 import edu.tcu.mi.ihe.iti.model.SubmissionSet;
