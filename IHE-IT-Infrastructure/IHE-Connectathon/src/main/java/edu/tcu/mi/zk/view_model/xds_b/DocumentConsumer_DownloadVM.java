@@ -15,6 +15,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 
 import edu.tcu.mi.ihe.actor.XDSDocumentConsumer;
 import edu.tcu.mi.ihe.iti.builder.RetrieveBuilder;
+import edu.tcu.mi.ihe.iti.model.RetrieveModel;
 import edu.tcu.mi.ihe.security.CertificateDetails;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
 import edu.tcu.mi.ihe.ws.response.Response_ITI_43;
@@ -73,14 +74,14 @@ public class DocumentConsumer_DownloadVM extends ViewModel {
 		
 		consumer = new XDSDocumentConsumer();
 		NonBlockCallBack callback = new NonBlockCallBack();
-		RetrieveBuilder builder = new RetrieveBuilder();
-
-		builder.setEndpoint(companyRepository.getRepositoryEndpoint());
-		builder.setRepositoryUniqueId(companyRepository.getRepositoryUniqueId());
+		RetrieveModel model = new RetrieveModel();
+		model.setRepositoryUniqueId(companyRepository.getRepositoryUniqueId());
 		for(RetrieveResult retrieveResult:retrieveResultList){
-			builder.addDocumentId(retrieveResult.getDocumentUniqueId());
+			model.addDocumentId(retrieveResult.getDocumentUniqueId());
 		}
-		
+
+		RetrieveBuilder builder = new RetrieveBuilder(model);
+		builder.setEndpoint(companyRepository.getRepositoryEndpoint());
 		consumer.retrieveDocumentSet(builder, callback);
 		ITI_43 = new Response_ITI_43();
 		ITI_43.parser(callback.getContext());

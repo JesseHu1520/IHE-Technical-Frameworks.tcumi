@@ -21,7 +21,9 @@ public class FindDocumentsTest extends RegsitryStoredQueryTest {
 		((FindDocuments)query) 
 				.andPatientId(this.patientId)
 				.andStatusByApproved()
-				.andReturnLeafClass();
+				.andReturnObjectRef();
+		
+		System.out.println(query);
 	}
 
 	@Override

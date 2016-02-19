@@ -22,6 +22,7 @@ import edu.tcu.mi.ihe.iti.ebxml.rim.ExtrinsicObjectType;
 import edu.tcu.mi.ihe.iti.ebxml.rim.RegistryObjectListType;
 import edu.tcu.mi.ihe.iti.ebxml.rim.finder.SlotFinder;
 import edu.tcu.mi.ihe.iti.model.QueryModel;
+import edu.tcu.mi.ihe.iti.model.RetrieveModel;
 import edu.tcu.mi.ihe.iti.service.RegistryStoredQueryService;
 import edu.tcu.mi.ihe.iti.service.RetrieveDocumentSetService;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
@@ -51,6 +52,10 @@ public class XDSDocumentConsumer extends Actor {
 		String stirng = registryStoredQuery.transaction(builder, callback);
 		AxiomUtil axiom = AxiomUtil.getInstance();
 		return axiom.fromString(stirng);
+	}
+	
+	public OMElement retrieveDocumentSet(RetrieveModel retrieveModel, NonBlockCallBack callback) {
+		return retrieveDocumentSet(new RetrieveBuilder(retrieveModel), callback);
 	}
 	
 	public OMElement retrieveDocumentSet(RetrieveBuilder builder, NonBlockCallBack callback) {
@@ -91,11 +96,12 @@ public class XDSDocumentConsumer extends Actor {
 			
 			Set<String> repositoryUniqueIds = map.keySet();
 			for(String repositoryUniqueId : repositoryUniqueIds){
-				RetrieveBuilder retrieveBuilder = new RetrieveBuilder();
-				retrieveBuilder.setRepositoryUniqueId(repositoryUniqueId);
+				RetrieveModel model = new RetrieveModel();
+				model.setRepositoryUniqueId(repositoryUniqueId);
 				List<String> docIds = map.get(repositoryUniqueId);
-				retrieveBuilder.setDocumentIds(Sets.newTreeSet(docIds));
+				model.setDocumentIds(Sets.newTreeSet(docIds));
 				// TODO query repository endpoint
+				RetrieveBuilder retrieveBuilder = new RetrieveBuilder(model);
 				retrieveBuilder.setEndpoint("");
 				OMElement _response = retrieveDocumentSet(retrieveBuilder , callback);
 		        RetrieveDocumentSetResponseType retrieveDocumentSetResponse = axiom.fromXML(_response, RetrieveDocumentSetResponseType.class);

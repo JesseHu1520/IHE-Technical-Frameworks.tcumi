@@ -9,24 +9,30 @@ import org.apache.log4j.Logger;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 
+import edu.tcu.mi.ihe.constants.StoredQueryConstants;
 import edu.tcu.mi.ihe.iti.core.MessageBuilder;
 import lombok.Getter;
+import lombok.Setter;
 
-public abstract class QueryModel {
+public class QueryModel implements QueryMessageValidator {
 	public static Logger logger = Logger.getLogger(MessageBuilder.class);
 	
-	@Expose @Getter
+	@Expose @Getter @Setter
 	private String uuid;
-	@Expose @Getter
+	@Expose @Getter @Setter
 	private String returnType;
 
-	@Expose @Getter
+	@Expose @Getter @Setter
 	protected Map<String, String> parameter;
-	@Expose @Getter
+	@Expose @Getter @Setter
 	protected Map<String, List<String>> parameters;
 
+	public QueryModel(){
+	}
+	
 	public QueryModel(String uuid){
 		this.uuid = uuid;
 		parameter = Maps.newHashMap();
@@ -34,12 +40,12 @@ public abstract class QueryModel {
 	}
 
 	public QueryModel andReturnObjectRef() {
-		returnType = "ObjectRef";
+		returnType = StoredQueryConstants.OBJECTREF;
 		return this;
 	}
 
 	public QueryModel andReturnLeafClass() {
-		returnType = "LeafClass";
+		returnType = StoredQueryConstants.LEAFCLASS;
 		return this;
 	}
 	
@@ -53,6 +59,15 @@ public abstract class QueryModel {
 			this.parameters.put(key, Lists.newArrayList(value));
 		}
 	}
+
+
+	@Override
+	public String toString(){
+		return new Gson().toJson(this);
+	}
 	
-	public abstract boolean validate();
+	@Override
+	public boolean validate() {
+		return true;
+	}
 }

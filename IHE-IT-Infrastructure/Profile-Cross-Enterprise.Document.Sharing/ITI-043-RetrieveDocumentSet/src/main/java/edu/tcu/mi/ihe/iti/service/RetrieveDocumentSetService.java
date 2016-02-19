@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import edu.tcu.mi.ihe.iti.builder.RetrieveBuilder;
 import edu.tcu.mi.ihe.iti.core.MessageBuilder;
 import edu.tcu.mi.ihe.iti.core.SoapTransaction;
+import edu.tcu.mi.ihe.iti.model.RetrieveModel;
 import edu.tcu.mi.ihe.iti.syslog.SysLoggerITI_43_110106;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
 import edu.tcu.mi.ihe.sender.ws.ServiceConsumer;
@@ -58,9 +59,10 @@ public class RetrieveDocumentSetService extends SoapTransaction {
 	public void auditLog() {
 		SysLoggerITI_43_110106 logger = new SysLoggerITI_43_110106();
 		logger.setEndpoint(endpoint);
-		Set<String> ids = builder.getDocumentIds();
-		String repositoryUniqueId = builder.getRepositoryUniqueId();
-		String homeCommunityId = builder.getHomeCommunityId();
+		RetrieveModel model = builder.getRetrieveModel();
+		Set<String> ids = model.getDocumentIds();
+		String repositoryUniqueId = model.getRepositoryUniqueId();
+		String homeCommunityId = model.getHomeCommunityId();
 		for(String id:ids){
 			logger.addDocument(id, repositoryUniqueId, homeCommunityId);
 		}
