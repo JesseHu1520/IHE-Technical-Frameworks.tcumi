@@ -40,10 +40,12 @@
 					<groupId>javax.servlet</groupId>
 					<artifactId>servlet-api</artifactId>
 				</exclusion>
+				<!-- 
 				<exclusion>
 		            <groupId>org.apache.axis2</groupId>
 		            <artifactId>addressing</artifactId>
 				</exclusion>
+				 -->
 			</exclusions>
 		</dependency>
 

@@ -48,6 +48,7 @@ public class RetrieveBuilder extends MessageBuilder {
 
 	@Override
 	protected boolean validate() {
+		if(retrieveModel == null) return false;
 		if(retrieveModel.getDocumentIds().isEmpty()) return false;
 		if(retrieveModel.getRepositoryUniqueId() == null || retrieveModel.getRepositoryUniqueId().length() == 0) return false;
 		return true;

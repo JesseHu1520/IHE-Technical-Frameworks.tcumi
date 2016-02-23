@@ -47,6 +47,7 @@ public class XDSDocumentConsumer extends Actor {
 	
 	public OMElement registryStoredQuery(QueryXmlBuilder builder, NonBlockCallBack callback){
 		init();
+		
 		if(builder == null) return null;
 		if(callback == null) callback = new NonBlockCallBack();
 		String stirng = registryStoredQuery.transaction(builder, callback);

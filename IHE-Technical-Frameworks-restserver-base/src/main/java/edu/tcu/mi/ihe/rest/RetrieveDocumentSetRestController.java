@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.tcu.mi.ihe.actor.XDSDocumentConsumer;
-import edu.tcu.mi.ihe.iti.ebxml.query.AdhocQueryResponseType;
+import edu.tcu.mi.ihe.iti.ebxml.ihe.RetrieveDocumentSetResponseType;
 import edu.tcu.mi.ihe.iti.model.RetrieveModel;
 import edu.tcu.mi.ihe.sender.ws.NonBlockCallBack;
 import edu.tcu.mi.ihe.utility.AxiomUtil;
@@ -30,12 +30,12 @@ public class RetrieveDocumentSetRestController extends GenericRestController {
     public ResponseEntity<?> list(@RequestBody RetrieveModel retrieveModel, Principal principal){
 
     	System.out.println(retrieveModel);
-    	
+
 		OMElement response = documentConsumer.retrieveDocumentSet(retrieveModel, new NonBlockCallBack());
 		if(response != null){
 			AxiomUtil axiom = AxiomUtil.getInstance();
-			AdhocQueryResponseType adhocQueryResponse = axiom.fromXML(response, AdhocQueryResponseType.class);
-			return new ResponseEntity<>(adhocQueryResponse.toString(), headers, HttpStatus.OK);
+			RetrieveDocumentSetResponseType retrieveDocumentSetResponse = axiom.fromXML(response, RetrieveDocumentSetResponseType.class);
+			return new ResponseEntity<>(retrieveDocumentSetResponse.toString(), headers, HttpStatus.OK);
 		} 
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
