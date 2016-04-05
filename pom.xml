@@ -84,10 +84,6 @@
             <module>IHE-Technical-Frameworks-actors</module>
             <module>IHE-Technical-Frameworks-web</module>
 			<module>IHE-IT-Infrastructure</module>
-			<module>IHE-Pharmacy</module>
-			<module>IHE-Radiology</module>
-			<module>IHE-Patient-Care-Coordination</module>
-			<module>IHE-Patient-Care-Devices</module>
         </modules>
         <distributionManagement>
             <snapshotRepository>

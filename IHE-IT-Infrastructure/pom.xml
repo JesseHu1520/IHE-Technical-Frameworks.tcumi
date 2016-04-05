@@ -29,10 +29,7 @@
 		<module>Profile-Consistent.Time</module>
 		<module>Profile-Cross-Enterprise.Document.Sharing</module>
 		<module>Profile-Patient.Identifier.Cross-Referencing</module>
-		<!-- <module>Profile-Patient.Demographics.Query</module> -->
 		<module>Profile-Audit.Trail.and.Node.Authentication</module>
-		<!-- <module>Profile-Cross-Community.Access</module> -->
-		<module>Profile-Mobile.access.to.Health.Documents</module>
 		<module>IHE-Connectathon</module>
 	</modules>
 
