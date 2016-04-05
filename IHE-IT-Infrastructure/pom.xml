@@ -31,6 +31,7 @@
 		<module>Profile-Patient.Identifier.Cross-Referencing</module>
 		<module>Profile-Audit.Trail.and.Node.Authentication</module>
 		<module>IHE-Connectathon</module>
+		<module>Profile-Cross-Community.Access</module>
 	</modules>
 
 
