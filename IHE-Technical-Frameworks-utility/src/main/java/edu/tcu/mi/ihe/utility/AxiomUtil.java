@@ -26,17 +26,18 @@ import edu.tcu.mi.ihe.constants.EbXML;
 import edu.tcu.mi.ihe.constants.Namespace;
 
 public class AxiomUtil {
-	private static AxiomUtil instance = null; 
+	private static AxiomUtil instance = null;
+
 	private AxiomUtil() {
-		
+
 	}
-	public synchronized static AxiomUtil getInstance(){
-		if(instance == null) {
+
+	public synchronized static AxiomUtil getInstance() {
+		if (instance == null) {
 			instance = new AxiomUtil();
 		}
 		return instance;
 	}
-	
 
 	@SuppressWarnings("unchecked")
 	public Iterator<OMElement> getChildrenWithName(OMElement request, Namespace namespace, String tag) {
@@ -82,11 +83,11 @@ public class AxiomUtil {
 		if (namespace != null) {
 			omNamespace = factory.createOMNamespace(namespace.getNamespace(), namespace.getPrefix());
 		}
-		if(omNamespace != null)
+		if (omNamespace != null)
 			element = createOMElement(ebxml.getTag(), omNamespace);
 		return element;
 	}
-	
+
 	public OMElement createOMElement(String tag, OMNamespace namespace) {
 		OMElement element;
 		OMFactory factory = OMAbstractFactory.getOMFactory();
@@ -116,16 +117,16 @@ public class AxiomUtil {
 		OMNamespace Namespace = factory.createOMNamespace(namespace, prefix);
 		return Namespace;
 	}
-	  
-    public OMElement createOMElement(String tag, String value) { 
-        OMFactory factory = OMAbstractFactory.getOMFactory(); 
-        OMElement element = factory.createOMElement(tag, null); 
-        if (value != null) { 
-            element.setText(value); 
-        } 
-        return element; 
-    } 
-    
+
+	public OMElement createOMElement(String tag, String value) {
+		OMFactory factory = OMAbstractFactory.getOMFactory();
+		OMElement element = factory.createOMElement(tag, null);
+		if (value != null) {
+			element.setText(value);
+		}
+		return element;
+	}
+
 	public String getValueOfType(String type, OMElement request) {
 		String value;
 		QName qname = new QName(type);
@@ -133,14 +134,14 @@ public class AxiomUtil {
 		value = (e != null) ? e.getText().trim() : null;
 		return value;
 	}
-	
+
 	public OMElement fromResources(String resources) {
 		Class<AxiomUtil> clazz = AxiomUtil.class;
 		ClassLoader loader = clazz.getClassLoader();
 		InputStream is = loader.getResourceAsStream(resources);
 		return fromResources(is);
 	}
-	
+
 	public OMElement fromResources(InputStream is) {
 		OMElement element = null;
 		try {
@@ -150,18 +151,19 @@ public class AxiomUtil {
 		}
 		return element;
 	}
-	
+
 	public OMElement fromString(String entity) {
-		InputStream is = IOUtils.toInputStream(entity);		
+		InputStream is = IOUtils.toInputStream(entity);
 		return fromResources(is);
 	}
+
 	public <T> T fromXML(OMElement entity, Class<T> classOfT) {
 		return fromXML(entity.toString(), classOfT);
 	}
-	
+
 	public <T> T fromXML(String entity, Class<T> classOfT) {
 		try {
-			InputStream is = IOUtils.toInputStream(entity);	
+			InputStream is = IOUtils.toInputStream(entity);
 			JAXBContext jaxbContext = JAXBContext.newInstance(classOfT);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			return (T) jaxbUnmarshaller.unmarshal(is);
@@ -170,7 +172,7 @@ public class AxiomUtil {
 		}
 		return null;
 	}
-	
+
 	public File resourcesToFile(String resources) {
 		Class<AxiomUtil> clazz = AxiomUtil.class;
 		ClassLoader loader = clazz.getClassLoader();
