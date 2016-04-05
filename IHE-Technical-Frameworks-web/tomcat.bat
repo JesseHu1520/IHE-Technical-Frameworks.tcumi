@@ -1,1 +1,0 @@
-call mvn clean tomcat7:run -o > tomcat7.log

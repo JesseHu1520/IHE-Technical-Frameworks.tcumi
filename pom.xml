@@ -82,7 +82,6 @@
             <module>IHE-Technical-Frameworks-core</module>
             <module>IHE-Technical-Frameworks-utility</module>
             <module>IHE-Technical-Frameworks-actors</module>
-            <module>IHE-Technical-Frameworks-web</module>
 			<module>IHE-IT-Infrastructure</module>
         </modules>
         <distributionManagement>
