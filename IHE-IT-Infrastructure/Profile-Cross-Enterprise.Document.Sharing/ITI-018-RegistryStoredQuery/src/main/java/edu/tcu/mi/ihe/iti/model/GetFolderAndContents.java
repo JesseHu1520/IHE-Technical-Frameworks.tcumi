@@ -24,7 +24,7 @@ public class GetFolderAndContents extends QueryModel {
 		this.parameters.put(StoredQueryConstants.DE_FORMAT_CODE, Lists.newArrayList(val));
 		return this;
 	}
-	public GetFolderAndContents andDocumentEntryCinfCode(String ... val){
+	public GetFolderAndContents andDocumentEntryConfidentialityCode(String ... val){
 		this.parameters.put(StoredQueryConstants.DE_CONF_CODE, Lists.newArrayList(val));
 		return this;
 	}
@@ -35,8 +35,8 @@ public class GetFolderAndContents extends QueryModel {
 
 	@Override
 	public boolean validate() {
-		if(	!this.parameter.containsKey(StoredQueryConstants.DE_ENTRY_UUID) && 
-				!this.parameter.containsKey(StoredQueryConstants.DE_UNIQUE_ID))
+		if(	!this.parameter.containsKey(StoredQueryConstants.FOL_ENTRY_UUID) && 
+				!this.parameter.containsKey(StoredQueryConstants.FOL_UNIQUE_ID))
 			return false;
 		return true;
 	}
