@@ -1,10 +1,10 @@
-body {
+﻿body {
     padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
     padding-bottom: 40px;
     background-color: #f5f5f5;
 }
 body, h1, h2, h3, h4, p, div {
-    font-family: Consolas, 微軟正黑體;
+    font-family: Consolas, 微軟正黑體
 }
 
 .form-narrow {	
@@ -19,4 +19,10 @@ body, h1, h2, h3, h4, p, div {
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
             box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+html {
+	font-family: "微軟正黑體", "consolas", sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%
 }
