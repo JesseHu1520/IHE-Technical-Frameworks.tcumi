@@ -30,7 +30,6 @@
 		<module>Profile-Cross-Enterprise.Document.Sharing</module>
 		<module>Profile-Patient.Identifier.Cross-Referencing</module>
 		<module>Profile-Audit.Trail.and.Node.Authentication</module>
-		<module>IHE-Connectathon</module>
 	</modules>
 
 
