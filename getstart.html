@@ -129,25 +129,26 @@
 
 		<h3>2. 說明</h3>
 		<p>
-			請 import <span class="label label-info">addressing-1.6.2</span> 以及 <span class="label label-info">IHE-Technical-Frameworks-actors</span> 至 java 專案，並可在 main function 內填入以下範例。
+			請 import <span class="label label-info">addressing-1.6.2</span> 以及 <span class="label label-info">IHE-Technical-Frameworks-actors</span> 至 java 專案，並可在 main function 內填入以下範例程式碼。
 		</p>
 
 		<h3>3. 基本範例</h3>
 		<p>
-			此範例展示三個交易，對於一份文件上傳後，進一步查詢並調閱之功能。
+			以下範例展示三個交易：上傳、查詢、調閱。
 			<ul>
-				<li><span class="label label-default">00. config</span> 為 endpoint 以及 patient id 設定。</li>
-				<li><span class="label label-primary">01.pnr</span> 為 Provide And Register DocumentSet 交易，Doc Src 上傳文件/目錄等功能。</li>
-				<li><span class="label label-primary">02.sq</span> 為 Registry Stored Query 交易，Doc Consumer 查詢索引功能。使用 GetDocument 操作，利用 documentId 查詢文件之索引。</li>
+				<li><span class="label label-default">00.config</span> 為 endpoint 以及 patient id 設定。</li>
+				<li><span class="label label-primary">01.pnr</span> 為 Provide And Register DocumentSet 交易，Doc Src <strong><u>上傳</u></strong>文件/目錄等功能。</li>
+				<li><span class="label label-primary">02.sq</span> 為 Registry Stored Query 交易，Doc Consumer <strong><u>查詢</u></strong>索引功能。使用 GetDocument 操作，利用 documentId 查詢文件之索引。</li>
 
 				<li><span class="label label-default">03.parse</span> 為解析索引，擷取出 Repository Id 以及文件的 UniqueId。</li>
-				<li><span class="label label-primary">04.ret</span> 為 Retrieve DocumentSet Response 交易，Doc Consumer 調閱文件功能。依據上述擷取的資訊調閱文件具體的內容。</li>
+				<li><span class="label label-primary">04.ret</span> 為 Retrieve DocumentSet 交易，Doc Consumer <strong><u>調閱</u></strong>文件功能。依據上述擷取的資訊調閱文件具體的內容。</li>
 			</ul>
 		</p>
 
 
 		<h3>開始囉，不用再讓電腦跟世界說 hello 了</h3>
-		<script src="https://gist.github.com/Gaduo/7896b69fcd15f6ec32815ec7bc85a341.js"></script>
+		<link href="https://gist.github.com/stylesheets/gist/embed.css"/>
+		<script src="https://gist.github.com/Gaduo/7896b69fcd15f6ec32815ec7bc85a341.js"></script>		
 	</div>
 </div>		
 		
