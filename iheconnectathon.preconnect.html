@@ -71,6 +71,10 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">00. Certification</li>
+                            <li><a href="certification#top">憑證設定</a></li>
+                            
                             <li class="dropdown-header">01. XDS Document Source</li>
                             <li><a href="apiexample.pnr#top"> - ITI-41:Provide And Registry DocumentSet</a></li>
                             <li class="dropdown-header">02. XDS Document Consumer</li>
@@ -120,21 +124,68 @@
 
         <div>
             <div class="container bs-docs-container">
-            <h3>Test Server</h3>
-            <a href="http://transport-testing.nist.gov/ttt/">http://transport-testing.nist.gov/ttt/</a>
-            <h3>Test Client - Public Enpoint</h3> 
-			<h4>NIST Repository</h4>
-			<a href="http://ihexds.nist.gov:12090/tf6/services/xdsrepositoryb?wsdl">http://ihexds.nist.gov:12090/tf6/services/xdsrepositoryb?wsdl</a>
-			<h4>NIST Registry</h4>
-			<a href="http://ihexds.nist.gov:12090/tf6/services/xdsregistryb?wsdl">http://ihexds.nist.gov:12090/tf6/services/xdsregistryb?wsdl</a>
+
+                <h4>XDS Patient ID Allocation Service</h4>
+                <blockquote>
+                    <p>
+                        申請 NIST 測試用的病歷號。
+                    </p>
+                </blockquote>
+                <a href="http://ihexds.nist.gov/xdstools/pidallocate">http://ihexds.nist.gov/xdstools/pidallocate</a>
+
+                <h4>Cross Document Sharing Log Reader</h4>
+                <blockquote>
+                    <p>
+                        可以檢視測試成功或者失敗的記錄。
+                    </p>
+                </blockquote>
+                <a href="http://ihexds.nist.gov/LogReader/">http://ihexds.nist.gov/LogReader/</a>
+
+				<h3>Client 端測試 - Public Enpoint</h3>
+				<table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Endpoint</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NIST Repository</td>
+                            <td><a href="http://ihexds.nist.gov:12090/tf6/services/xdsrepositoryb?wsdl">http://ihexds.nist.gov:12090/tf6/services/xdsrepositoryb?wsdl</a></td>
+                        </tr>
+                        <tr>
+                            <td>NIST Registry</td>
+                            <td><a href="http://ihexds.nist.gov:12090/tf6/services/xdsregistryb?wsdl">http://ihexds.nist.gov:12090/tf6/services/xdsregistryb?wsdl</a></td>
+                        </tr>
+                        <tr>
+                            <td>NIST Repository (TLS)</td>
+                            <td><a href="https://ihexds.nist.gov:12091/tf6/services/xdsrepositoryb?wsdl">https://ihexds.nist.gov:12091/tf6/services/xdsrepositoryb?wsdl</a></td>
+                        </tr>
+                        <tr>
+                            <td>NIST Registry (TLS)</td>
+                            <td><a href="https://ihexds.nist.gov:12091/tf6/services/xdsregistryb?wsdl">https://ihexds.nist.gov:12091/tf6/services/xdsregistryb?wsdl</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+				<hr/><!-- -------------------------------------------------------------------------------->
+
+				<h4>Public Registry Server Configuration</h4>
+				<a href="http://ihewiki.wustl.edu/wiki/index.php/XDS_Main_Page#Public_Registry_Server_Configuration">http://ihewiki.wustl.edu/wiki/index.php/XDS_Main_Page</a>
+
+                <hr/><!-- -------------------------------------------------------------------------------->
+
+                <h3>Server 端測試</h3>
+                <a href="http://transport-testing.nist.gov/ttt/">http://transport-testing.nist.gov/ttt/</a>
             </div>
         </div>
-		
+
 		<!-- InstanceEndEditable -->
     </div>
     <hr/>
     <!--/.container-->
-    
+
     <div>
         <div class="container">
             &copy; 2014 Gaduo, foxb1249@gmail.com

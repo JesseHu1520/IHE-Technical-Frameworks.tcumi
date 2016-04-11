@@ -119,11 +119,30 @@
 
     <br/>
     <div class="after-header">
-        <!-- InstanceBeginEditable name="EditRegion1" -->EditRegion1<!-- InstanceEndEditable -->
+        <!-- InstanceBeginEditable name="EditRegion1" -->
+
+        <div>
+            <div class="container bs-docs-container">
+                <h3>Nist Public Registry 憑證下載：</h3>
+                <ul>
+                    <li>下載：<a href="http://ihexds.nist.gov/XdsDocs/xdstoolkitgui/NA2016.zip">NA2016.zip</a><br/></li>
+                    <li>參考來源：<a href="http://ihexds.nist.gov/downloads.html">nist Downloads</a></li>
+                </ul>
+
+                <h3>憑證設定範例</h3>
+                <h5>範例說明：</h5>
+                <p>
+                    在建立 SOAP Webservice 連線之前，填入以下程式碼設定憑證，便可在之後透過 https 連線。
+                </p>
+                <script src="https://gist.github.com/Gaduo/cbeff4b8631a05ba100abaa888268da3.js"></script>
+            </div>
+
+        </div>
+		<!-- InstanceEndEditable -->
     </div>
     <hr/>
     <!--/.container-->
-    
+
     <div>
         <div class="container">
             &copy; 2014 Gaduo, foxb1249@gmail.com
@@ -150,7 +169,7 @@
     <![endif]-->
     
     <script src="resources/main/js/main.js"></script>
-    <!-- InstanceBeginEditable name="EditRegion3" -->EditRegion3<!-- InstanceEndEditable -->
+    <!-- InstanceBeginEditable name="EditRegion3" --><!-- InstanceEndEditable -->
             
             
     <script >
@@ -171,7 +190,21 @@
             //$("#userGuide").tooltipster('show');		
         });
     </script>
-    <!-- InstanceBeginEditable name="EditRegion2" -->EditRegion2<!-- InstanceEndEditable -->
+    <!-- InstanceBeginEditable name="EditRegion2" -->
+	
+	<script>
+		/*<![CDATA[*/
+		$(function() {	
+			$('body').scrollspy({
+				target: '.bs-docs-sidebar',
+				offset: 40
+			});
+		});	
+		/*]]>*/
+	</script>
+	
+	
+	<!-- InstanceEndEditable -->
 </body>
 
 
