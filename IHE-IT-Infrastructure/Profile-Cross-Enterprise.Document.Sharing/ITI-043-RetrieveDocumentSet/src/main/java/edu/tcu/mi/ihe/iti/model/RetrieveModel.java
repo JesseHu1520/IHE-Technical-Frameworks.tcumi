@@ -18,6 +18,9 @@ public class RetrieveModel {
 	@Expose @Getter  @Setter
 	private Set<String> documentIds;
 	
+	@Expose @Getter @Setter
+	private String endpoint;
+	
 	public void addDocumentId(String documentId){
 		if(documentIds == null)  documentIds = Sets.newTreeSet();
 		documentIds.add(documentId);

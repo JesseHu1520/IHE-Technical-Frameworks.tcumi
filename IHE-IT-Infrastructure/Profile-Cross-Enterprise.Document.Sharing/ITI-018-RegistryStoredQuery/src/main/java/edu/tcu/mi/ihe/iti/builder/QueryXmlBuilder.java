@@ -17,6 +17,7 @@ public class QueryXmlBuilder extends MessageBuilder {
 	
 	public QueryXmlBuilder(QueryModel query){
 		this.query = query;
+		this.setEndpoint(query.getEndpoint());
 	}
 	
 	

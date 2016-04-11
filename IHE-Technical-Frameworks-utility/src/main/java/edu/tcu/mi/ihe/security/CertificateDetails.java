@@ -4,7 +4,6 @@
 package edu.tcu.mi.ihe.security;
 
 import java.io.InputStream;
-import java.net.URL;
 
 import org.apache.log4j.Logger;
 
@@ -26,7 +25,8 @@ public class CertificateDetails {
 		}
 		return instance;
 	}
-	
+
+	@Deprecated
 	public void setCertificate() {
 		Class<CertificateDetails> clazz = CertificateDetails.class;
 		ClassLoader loader = clazz.getClassLoader();
@@ -43,6 +43,7 @@ public class CertificateDetails {
 		System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol");
 	}
 
+	@Deprecated
 	public void setSSLCertificate() {
 		ClassLoader loader = getClass().getClassLoader();
 		String certificate = "";
@@ -59,26 +60,19 @@ public class CertificateDetails {
 	private InputStream keyStoreLocation;
 	private InputStream trustStoreLocation;
 
-	public void setCertificate(String KeyStore, String KeyPass, String TrustStore, String TrustPass) {
-		this.keyStore = KeyStore;
-		this.keyPass = KeyPass;
-		this.trustStore = TrustStore;
-		this.trustPass = TrustPass;
+	public void setCertificate(String keyStore, String keyPass, String trustStore, String trustPass) {
+		this.keyStore = keyStore;
+		this.keyPass = keyPass;
+		this.trustStore = trustStore;
+		this.trustPass = trustPass;
 		
 		try {
-			ClassLoader loader = getClass().getClassLoader();
-			String certificate = "";
-			URL kURL = loader.getResource("certificate/" + KeyStore);
-			certificate = kURL.toString().replace("file:/", "");
-			System.setProperty("javax.net.ssl.keyStore", certificate);
-			System.setProperty("javax.net.ssl.keyStorePassword", KeyPass);
+			System.setProperty("javax.net.ssl.keyStore", keyStore);
+			System.setProperty("javax.net.ssl.keyStorePassword", keyPass);
 			System.setProperty("javax.net.ssl.keyStoreType", "JKS");
 			
-			
-			URL tURL =  loader.getResource("certificate/" + TrustStore);
-			certificate = tURL.toString().replace("file:/", "");
-			System.setProperty("javax.net.ssl.trustStore", certificate);
-			System.setProperty("javax.net.ssl.trustStorePassword", TrustPass);
+			System.setProperty("javax.net.ssl.trustStore", trustStore);
+			System.setProperty("javax.net.ssl.trustStorePassword", trustPass);
 			System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol");
 		} catch (NullPointerException e) {
 			e.printStackTrace();

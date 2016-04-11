@@ -15,6 +15,7 @@ public class RetrieveBuilder extends MessageBuilder {
 	
 	public RetrieveBuilder(RetrieveModel retrieveModel){
 		this.retrieveModel = retrieveModel;
+		this.setEndpoint(retrieveModel.getEndpoint());
 	}
 	
 	@Override

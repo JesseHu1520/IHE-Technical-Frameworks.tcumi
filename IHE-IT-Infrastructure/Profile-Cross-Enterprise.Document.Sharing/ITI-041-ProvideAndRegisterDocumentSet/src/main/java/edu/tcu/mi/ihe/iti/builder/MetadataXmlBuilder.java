@@ -9,15 +9,11 @@ import java.util.Set;
 
 import org.apache.axiom.om.OMElement;
 import org.springframework.core.io.ClassPathResource;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import edu.tcu.mi.ihe.constants.DocumentEntryConstants;
 import edu.tcu.mi.ihe.constants.DocumentRelationshipsConstants;
 import edu.tcu.mi.ihe.constants.EbXML;
 import edu.tcu.mi.ihe.constants.Namespace;
@@ -45,6 +41,7 @@ public class MetadataXmlBuilder extends MessageBuilder {
 	
 	public MetadataXmlBuilder(Metadata metadata){
 		this.metadata = metadata;
+		this.setEndpoint(metadata.getEndpoint());
 		MetadataXmlBuilder.objectRef = Sets.newTreeSet();
 		InetAddress localHost = null;
 		try {
