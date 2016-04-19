@@ -5,7 +5,7 @@
 
 	<groupId>edu.tcu.mi.ihe</groupId>
 	<artifactId>IHE-Technical-Frameworks-restserver-base</artifactId>
-	<version>0.3.0</version>
+	<version>0.4.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>IHE-Technical-Frameworks-restserver-base</name>
@@ -21,7 +21,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
-		<tcu.tf.version>0.3.0</tcu.tf.version>
+		<tcu.tf.version>0.4.1-SNAPSHOT</tcu.tf.version>
 	</properties>
 
 	<dependencies>
