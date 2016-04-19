@@ -1,7 +1,0 @@
-<QueryGenerator>
-	<RegistryUrl>
-		http://192.168.0.103:8010/axis2/services/xdsregistryb?wsdl
-	</RegistryUrl>
-	<QueryUUID>urn:uuid:5c4f972b-d56b-40ac-a5fc-c8ca9b40b9d4</QueryUUID>
-	<ReturnType>LeafClass</ReturnType>
-</QueryGenerator>
