@@ -17,11 +17,11 @@ public class FindFolders extends QueryModel {
 		this.parameter.put(StoredQueryConstants.FOL_PATIENT_ID, val);
 		return this;
 	}
-	public FindFolders andLasUpdateTimeFrom(String val){
+	public FindFolders andLasUpdateTimeFrom(Long val){
 		this.parameter.put(StoredQueryConstants.FOL_LAST_UPDATE_TIME_FROM, val);
 		return this;
 	}
-	public FindFolders andLasUpdateTimeTo(String val){
+	public FindFolders andLasUpdateTimeTo(Long val){
 		this.parameter.put(StoredQueryConstants.FOL_LAST_UPDATE_TIME_TO, val);
 		return this;
 	}

@@ -26,7 +26,7 @@ public class QueryModel implements QueryMessageValidator {
 	private String returnType;
 
 	@Expose @Getter @Setter
-	protected Map<String, String> parameter;
+	protected Map<String, Object> parameter;
 	@Expose @Getter @Setter
 	protected Map<String, List<String>> parameters;
 	

@@ -21,7 +21,7 @@ public class QueryXmlBuilder extends MessageBuilder {
 	}
 	
 	
-	private OMElement createSlot(String name, String _value) {
+	private OMElement createSlot(String name, Object _value) {
 		AxiomUtil axiom = AxiomUtil.getInstance();
 		OMElement slot = axiom.createOMElement(EbXML.Slot, Namespace.RIM3);
 		slot.addAttribute("name", name, null);
@@ -29,7 +29,12 @@ public class QueryXmlBuilder extends MessageBuilder {
 
 		slot.addChild(valueList);
 		OMElement value = axiom.createOMElement(EbXML.Value, Namespace.RIM3);
-		value.setText("\'" + _value + "\'");
+		if(_value instanceof String) {
+			value.setText("\'" + _value + "\'");
+		} 
+		if(_value instanceof Long)  {
+			value.setText("" + _value);
+		}
 		valueList.addChild(value);
 		slot.addChild(valueList);
 		return slot;
@@ -69,7 +74,7 @@ public class QueryXmlBuilder extends MessageBuilder {
 		adhocQuery.addAttribute("id", query.getUuid(), null);
 		
 		for(String key : query.getParameter().keySet()){
-			String val = query.getParameter().get(key);
+			Object val = query.getParameter().get(key);
 			OMElement slot = createSlot(key, val);
 			adhocQuery.addChild(slot);
 		}

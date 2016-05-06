@@ -33,27 +33,27 @@ public class FindDocuments extends QueryModel {
 		this.parameters.put(StoredQueryConstants.DE_PRAC_SETTING_CODE_SCHEME, Lists.newArrayList(val));
 		return this;
 	}
-	public FindDocuments andCreationTimeFrom(String val){
+	public FindDocuments andCreationTimeFrom(Long val){
 		this.parameter.put(StoredQueryConstants.DE_CREATION_TIME_FROM, val);
 		return this;
 	}
-	public FindDocuments andCreationTimeTo(String val){
+	public FindDocuments andCreationTimeTo(Long val){
 		this.parameter.put(StoredQueryConstants.DE_CREATION_TIME_TO, val);
 		return this;
 	}
-	public FindDocuments andServiceStartTimeFrom(String val){
+	public FindDocuments andServiceStartTimeFrom(Long val){
 		this.parameter.put(StoredQueryConstants.DE_SERVICE_START_TIME_FROM, val);
 		return this;
 	}
-	public FindDocuments andServiceStartTimeTo(String val){
+	public FindDocuments andServiceStartTimeTo(Long val){
 		this.parameter.put(StoredQueryConstants.DE_SERVICE_START_TIME_TO, val);
 		return this;
 	}
-	public FindDocuments andServiceStopTimeFrom(String val){
+	public FindDocuments andServiceStopTimeFrom(Long val){
 		this.parameter.put(StoredQueryConstants.DE_SERVICE_STOP_TIME_FROM, val);
 		return this;
 	}
-	public FindDocuments andServiceStopTimeTo(String val){
+	public FindDocuments andServiceStopTimeTo(Long val){
 		this.parameter.put(StoredQueryConstants.DE_SERVICE_STOP_TIME_TO, val);
 		return this;
 	}

@@ -21,12 +21,12 @@ public class FindSubmissionSets extends QueryModel {
 		this.parameters.put(StoredQueryConstants.SS_SOURCE_ID, Lists.newArrayList(val));
 		return this;
 	}
-	public FindSubmissionSets andSubmissionTimeFrom(String val){
-		this.parameters.put(StoredQueryConstants.SS_SUBMISSION_TIME_FROM, Lists.newArrayList(val));
+	public FindSubmissionSets andSubmissionTimeFrom(Long val){
+		this.parameter.put(StoredQueryConstants.SS_SUBMISSION_TIME_FROM, Lists.newArrayList(val));
 		return this;
 	}
-	public FindSubmissionSets andSubmissionTimeTo(String val){
-		this.parameters.put(StoredQueryConstants.SS_SUBMISSION_TIME_TO, Lists.newArrayList(val));
+	public FindSubmissionSets andSubmissionTimeTo(Long val){
+		this.parameter.put(StoredQueryConstants.SS_SUBMISSION_TIME_TO, Lists.newArrayList(val));
 		return this;
 	}
 	public FindSubmissionSets andAuthorPerson(String val){
