@@ -1,1 +1,0 @@
-curl https://api.github.com/repos/Gaduo/IHE-IT-Infrastructure/releases

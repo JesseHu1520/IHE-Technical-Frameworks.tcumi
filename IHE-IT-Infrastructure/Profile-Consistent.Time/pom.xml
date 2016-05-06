@@ -13,11 +13,9 @@
 	<artifactId>Profile-Consistent.Time</artifactId>
 	<packaging>pom</packaging>
 	<name>Profile-Consistent.Time(CT)</name>
-	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<log4j.version>1.2.17</log4j.version>
 	</properties>
 	
 	<dependencies>

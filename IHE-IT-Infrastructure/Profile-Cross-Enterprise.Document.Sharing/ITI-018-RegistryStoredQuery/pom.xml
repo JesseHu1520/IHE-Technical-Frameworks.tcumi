@@ -15,7 +15,6 @@
 	
 	<name>ITI-018-RegistryStoredQuery</name>
 	<description>RegistryStoredQuery</description>
-	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

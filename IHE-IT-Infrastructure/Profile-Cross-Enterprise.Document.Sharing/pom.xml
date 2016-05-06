@@ -9,8 +9,6 @@
 	</parent>
 	<artifactId>Profile-Cross-Enterprise.Document.Sharing</artifactId>
 	<name>Profile-Cross-Enterprise Document Sharing(XDS)</name>
-	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise
-	</url>
 	<description>Cross-Enterprise Document Sharing</description>
 	<packaging>pom</packaging>
 	<modules>

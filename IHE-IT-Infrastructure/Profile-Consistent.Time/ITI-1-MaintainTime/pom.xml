@@ -10,7 +10,6 @@
 	<packaging>jar</packaging>
 	<name>ITI-001-MaintainTime</name>
 	<description>MaintainTime</description>
-	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

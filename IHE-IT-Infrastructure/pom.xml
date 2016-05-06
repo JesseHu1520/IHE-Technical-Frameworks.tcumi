@@ -10,7 +10,6 @@
 	<description>
 		Integrating The Healthcare Enterprise IT Infrastructure
 	</description>
-	<url>https://github.com/Gaduo/IHE-IT-Infrastructure</url>
 
 	<parent>
 		<groupId>edu.tcu.mi.ihe</groupId>
@@ -21,7 +20,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
-		<hapi.version>2.1</hapi.version>
 		<axiom.version>1.2.14</axiom.version>
 	</properties>
 
@@ -31,18 +29,6 @@
 		<module>Profile-Patient.Identifier.Cross-Referencing</module>
 		<module>Profile-Audit.Trail.and.Node.Authentication</module>
 	</modules>
-
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<name>Sonatype Nexus snapshot repository</name>
-			<url>http://203.64.84.174:8081/nexus/content/repositories/snapshots
-			</url>
-		</snapshotRepository>
-	</distributionManagement>
-
-
 
 	<build>
 		<plugins>

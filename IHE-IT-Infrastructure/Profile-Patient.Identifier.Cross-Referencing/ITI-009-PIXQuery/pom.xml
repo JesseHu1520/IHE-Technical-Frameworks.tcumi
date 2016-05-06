@@ -18,7 +18,6 @@
 		This section corresponds to Transaction ITI-9 of the IHE IT Infrastructure Technical Framework.
 		Transaction ITI-9 is used by the Patient Identifier Cross-reference Consumer and Patient Identifier Cross-reference Manager actors.
 	</description>
-	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

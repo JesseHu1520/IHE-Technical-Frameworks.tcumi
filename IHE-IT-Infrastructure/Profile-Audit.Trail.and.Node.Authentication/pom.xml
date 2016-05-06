@@ -13,7 +13,6 @@
 
 	<artifactId>Profile-Audit.Trail.and.Node.Authentication</artifactId>
 	<name>Profile-Audit.Trail.and.Node.Authentication(ATNA)</name>
-	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
 	<packaging>pom</packaging>
 	
 	<properties>

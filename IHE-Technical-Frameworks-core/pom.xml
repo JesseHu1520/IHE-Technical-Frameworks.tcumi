@@ -14,8 +14,6 @@
 
 	<name>IHE-Technical-Frameworks-core</name>
 	<description>IHE-Technical-Frameworks-core</description>
-	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise
-	</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

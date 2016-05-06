@@ -16,7 +16,6 @@
 	
 	<name>ITI-043-RetrieveDocumentSet</name>
 	<description>RetrieveDocumentSet</description>
-	<url>https://github.com/Gaduo/Integrating-The-Healthcare-Enterprise</url>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
