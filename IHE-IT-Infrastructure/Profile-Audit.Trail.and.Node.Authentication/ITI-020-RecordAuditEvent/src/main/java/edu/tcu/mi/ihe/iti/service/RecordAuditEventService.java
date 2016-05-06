@@ -17,12 +17,15 @@ import org.springframework.stereotype.Component;
 
 import edu.tcu.mi.ihe.iti.core.MessageBuilder;
 import edu.tcu.mi.ihe.iti.core.SocketTransaction;
+import lombok.Setter;
 
 @Component
 public class RecordAuditEventService extends SocketTransaction {
 
+	@Setter
 	@Value("${audit.record.host}")
 	private String host;
+	@Setter
 	@Value("${audit.record.port}")
 	private int port;
 	private int facility;
@@ -33,6 +36,7 @@ public class RecordAuditEventService extends SocketTransaction {
 	public String webservice(MessageBuilder builder) {
 		OMElement request = builder.getMessageFromXML();
 		if(host == null || port == 0){
+			System.out.println("no host");
 			return null;
 		}
 		int pri = facility * 8 + severity;
