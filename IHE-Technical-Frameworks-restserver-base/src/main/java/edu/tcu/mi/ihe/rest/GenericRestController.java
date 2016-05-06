@@ -10,22 +10,15 @@ import org.springframework.validation.FieldError;
 
 import com.google.gson.Gson;
 
-import etm.core.configuration.BasicEtmConfigurator;
-import etm.core.configuration.EtmManager;
-import etm.core.monitor.EtmMonitor;
-
-
 public abstract class GenericRestController {
 	// http://racksburg.com/choosing-an-http-status-code/
 	
 	protected static Logger logger = Logger.getLogger(GenericRestController.class);
-	protected static final EtmMonitor etmMonitor = EtmManager.getEtmMonitor();
 
 	protected HttpHeaders headers = new HttpHeaders();
 	protected Gson gson = new Gson();
 	
 	public GenericRestController(){
-        BasicEtmConfigurator.configure();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 	}
 	
