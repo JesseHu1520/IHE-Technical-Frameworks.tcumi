@@ -8,22 +8,15 @@ http://gaduo.github.io/IHE-Technical-Frameworks.tcumi/
 
 Install
 -------
-1. setting.xml
 
 ```
-	<repository>
-		<id>jetm</id>
-		<name>jetm</name>
-		<url>https://repository.openknowledge.de/jetm-libs</url>
-		<updatePolicy>never</updatePolicy>
-	</repository>
+$ mvn install:install-file -DgroupId=fm.void.jetm -DartifactId=jetm-spring -Dversion=1.3.0-SNAPSHOT -Dpackaging=jar -Dfile=./mavenrepo/lombok.jar
+$ mvn install:install-file -DgroupId=ca.uhn.hapi -DartifactId=hapi-extend -Dversion=2.2 -Dpackaging=jar -Dfile=mavenrepo/ca/uhn/hapi/hapi-extend/2.2/hapi-extend-2.2.jar
+$ mvn install -DskipTests
 ```
-1. copy mavenrepo\ca and mavenrepo\dcm4ch to .m2\repository\
-1. mvn install -DskipTests
 
 Development
 -----------
-
 1. copy mavenrepo\lombok.jar to eclipse\
 1. add `-Xbootclasspath/a:lombok.jar` in eclipse.ini last line
 
